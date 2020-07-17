@@ -1,7 +1,5 @@
 package Model;
 
 public abstract class Entity {
-
-    protected long id;
-
+    private int ID;
 }
