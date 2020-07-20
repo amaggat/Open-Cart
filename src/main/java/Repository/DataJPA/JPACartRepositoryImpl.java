@@ -16,7 +16,7 @@ public class JPACartRepositoryImpl implements CartRepository {
     @Override
     @SuppressWarnings("unchecked")
     public Collection<Product> findAllProduct() {
-        Query query = this.em.createQuery("SELECT productName FROM product p INNER JOIN cart c ON c.productID = p.productID");
+        Query query = this.em.createQuery("");
         return null;
     }
 }
