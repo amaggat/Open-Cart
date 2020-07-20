@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -15,7 +17,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Order extends Entity {
+@Table(name = "order")
+public class Order extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY)
     private Set<OrderDetail> orderDetails;
 
@@ -23,8 +26,18 @@ public class Order extends Entity {
     @JoinColumn(name = "customerId")
     private Customer customer;
 
+    @Column(name = "status")
     private String status;
-    private Date orderDate;
-    private Date requiredDate;
-    private Date shippedDate;
+
+    @Column(name = "orderDate")
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    private LocalDate orderDate;
+
+    @Column(name = "requiredDate")
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    private LocalDate requiredDate;
+
+    @Column(name = "shippedDate")
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    private LocalDate shippedDate;
 }
