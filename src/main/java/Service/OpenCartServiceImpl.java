@@ -6,6 +6,7 @@ import Model.Product;
 import Model.WishList;
 import Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
@@ -37,7 +38,8 @@ public class OpenCartServiceImpl implements OpenCartService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Collection<Product> showCartProduct() {
-        return null;
+        return cartRepository.findAllProduct();
     }
 }
