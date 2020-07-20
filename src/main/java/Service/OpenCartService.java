@@ -7,4 +7,5 @@ import java.util.Collection;
 
 public interface OpenCartService {
     Collection<Product> showCartProduct();
+    Collection<Product> showWishListProduct();
 }

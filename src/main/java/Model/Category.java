@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category {
+public class Category extends Entity{
     private int categoryID;
     private String categoryName;
     private String categoryDescription;

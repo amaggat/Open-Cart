@@ -42,4 +42,10 @@ public class OpenCartServiceImpl implements OpenCartService{
     public Collection<Product> showCartProduct() {
         return cartRepository.findAllProduct();
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Product> showWishListProduct() {
+        return wishListRepository.findAllProductInWishList();
+    }
 }

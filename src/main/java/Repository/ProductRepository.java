@@ -2,10 +2,12 @@ package Repository;
 
 import Model.Product;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface ProductRepository {
-    List<Product> findAllProduct();
+    Collection<Product> findAllProduct();
+    Collection<Product> findByBrandName();
     Product findByID(int ID);
     void save(Product product);
     void addToCart (int productID, int cartID);

@@ -11,7 +11,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
+public class Order extends Entity{
     private int orderID;
     private int customerID;
     private String status;

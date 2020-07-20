@@ -11,7 +11,7 @@ import java.net.URL;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Brand {
+public class Brand extends Entity{
     private int brandID;
     private String name;
     private String description;

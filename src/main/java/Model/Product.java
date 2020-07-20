@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
+import javax.persistence.Entity;
 import java.net.URL;
 import java.util.Date;
 
@@ -12,8 +14,14 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+@Entity
+public class Product extends Model.Entity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productID;
+
+    @OneToMany
+    @JoinColumn(name = "brandID")
     private int brandID;
     private String productName;
     private String description;

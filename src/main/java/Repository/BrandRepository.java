@@ -5,6 +5,6 @@ import Model.Brand;
 import java.util.List;
 
 public interface BrandRepository {
-    List<Brand> findBrand(String name);
+    List<Brand> findBrandByName(String name);
     Brand findByID(int ID);
 }
