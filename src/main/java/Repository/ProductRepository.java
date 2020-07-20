@@ -1,6 +1,5 @@
 package Repository;
 
-import Model.Brand;
 import Model.Product;
 
 import java.util.List;

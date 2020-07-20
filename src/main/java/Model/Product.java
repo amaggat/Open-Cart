@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.net.URL;
 import java.util.Date;
 
 @Getter
@@ -13,11 +14,12 @@ import java.util.Date;
 @NoArgsConstructor
 public class Product {
     private int productID;
-    private String name;
+    private int brandID;
+    private String productName;
     private String description;
     private Date dateAdded;
     private Date dateModify;
     private int quantity;
-    private double price;
-    private int brandID;
+    private double priceUnit;
+    private URL productImage;
 }

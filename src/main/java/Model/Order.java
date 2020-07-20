@@ -13,6 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Order {
     private int orderID;
+    private int customerID;
     private String status;
     private Date dateReceived;
     private Date dateDelivered;

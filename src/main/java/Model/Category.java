@@ -11,6 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Category {
     private int categoryID;
-    private String name;
-    private String description;
+    private String categoryName;
+    private String categoryDescription;
 }
