@@ -5,12 +5,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
+import javax.persistence.Entity;
+import java.util.Set;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category extends Entity{
-    private int categoryID;
-    private String categoryName;
-    private String categoryDescription;
+@Entity
+@Table(name = "category")
+public class Category extends BaseEntity {
+    @ManyToMany
+    @JoinTable(name = "category-product", joinColumns = @JoinColumn(name = "categoryId"),
+            inverseJoinColumns = @JoinColumn(name = "productId"))
+    private Set<Product> products;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "categoryDesciption")
+    private String description;
 }

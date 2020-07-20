@@ -4,17 +4,40 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
+import javax.persistence.Entity;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order extends Entity{
-    private int orderID;
-    private int customerID;
+@Entity
+@Table(name = "order")
+public class Order extends BaseEntity {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY)
+    private Set<OrderDetail> orderDetails;
+
+    @ManyToOne
+    @JoinColumn(name = "customerId")
+    private Customer customer;
+
+    @Column(name = "status")
     private String status;
-    private Date dateReceived;
-    private Date dateDelivered;
+
+    @Column(name = "orderDate")
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    private LocalDate orderDate;
+
+    @Column(name = "requiredDate")
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    private LocalDate requiredDate;
+
+    @Column(name = "shippedDate")
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    private LocalDate shippedDate;
 }

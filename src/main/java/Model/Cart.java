@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
 import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,13 +18,20 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "cart")
-public class Cart extends Model.Entity {
+public class Cart extends BaseEntity{
+    @OneToOne
+    @PrimaryKeyJoinColumn(name = "customerId", foreignKey = @ForeignKey(name = "CART_FK_CUSTOMER"))
+    private Customer customer;
 
-    @NotEmpty
-    private String customerID;
+    @ManyToMany
+    @JoinTable(name = "cart-product", joinColumns = @JoinColumn(name = "customerId"),
+            inverseJoinColumns = @JoinColumn(name = "productId"))
+    private Set<Product> products;
 
-    @NotEmpty
-    private int productID;
-    private Date dateAdded;
+    @Column(name = "dateAdded")
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    private LocalDate dateAdded;
+
+    @Column(name = "quantity")
     private int quantity;
 }

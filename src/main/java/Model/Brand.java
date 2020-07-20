@@ -5,15 +5,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.net.URL;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Brand extends Entity{
-    private int brandID;
-    private String name;
+@Entity
+@Table
+public class Brand extends BaseEntity{
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "brand", fetch = FetchType.LAZY)
+    private Set<Product> products;
+
+    private String brandName;
     private String description;
-    private URL brandImage;
 }
