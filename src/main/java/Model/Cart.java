@@ -23,9 +23,7 @@ public class Cart extends BaseEntity{
     @PrimaryKeyJoinColumn(name = "customerId", foreignKey = @ForeignKey(name = "CART_FK_CUSTOMER"))
     private Customer customer;
 
-    @ManyToMany
-    @JoinTable(name = "cart-product", joinColumns = @JoinColumn(name = "customerId"),
-            inverseJoinColumns = @JoinColumn(name = "productId"))
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "cart")
     private Set<Product> products;
 
     @Column(name = "dateAdded")
