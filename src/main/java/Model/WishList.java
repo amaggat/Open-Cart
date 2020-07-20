@@ -15,6 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "wishlist")
 public class WishList extends BaseEntity{
 
     @OneToOne

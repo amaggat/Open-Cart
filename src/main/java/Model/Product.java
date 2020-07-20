@@ -17,6 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "product")
 public class Product extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "brandId")
