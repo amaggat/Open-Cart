@@ -29,12 +29,12 @@ public class Product extends BaseEntity{
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "wishlist-product", joinColumns = @JoinColumn(name = "productId"),
-            inverseJoinColumns = @JoinColumn(name = "wishlistId"))
+            inverseJoinColumns = @JoinColumn(name = "customerId"))
     private Set<WishList> wishLists;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "cart-product", joinColumns = @JoinColumn(name = "productId"),
-            inverseJoinColumns = @JoinColumn(name = "cartId"))
+            inverseJoinColumns = @JoinColumn(name = "customerId"))
     private Set<Cart> carts;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "product", fetch = FetchType.LAZY)
