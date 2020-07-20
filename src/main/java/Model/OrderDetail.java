@@ -14,6 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "orderdetail")
 public class OrderDetail {
 
     @ManyToOne
@@ -24,6 +25,9 @@ public class OrderDetail {
     @JoinColumn(name = "orderId")
     private Order order;
 
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "quantity")
     private int quantity;
 }

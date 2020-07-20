@@ -15,7 +15,7 @@ import javax.persistence.MappedSuperclass;
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
-public class Entity {
+public class BaseEntity {
     @Id
     @GeneratedValue(generator = GenerationType.AUTO)
     private int id;
