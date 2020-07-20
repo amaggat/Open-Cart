@@ -9,7 +9,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Set;
 
 @Getter
@@ -17,6 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "product")
 public class Product extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "brandId")
