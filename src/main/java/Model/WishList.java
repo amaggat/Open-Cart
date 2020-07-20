@@ -6,27 +6,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import javax.persistence.Entity;
-import java.util.Set;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "wishlist")
-public class WishList extends BaseEntity{
+public class WishList {
+    @Id
+    @GeneratedValue(generator = GenerationType.AUTO)
+    private int customerId;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn(name = "customerId", foreignKey = @ForeignKey(name = "WISHLIST_FK_CUSTOMER"))
-    private Customer customer;
+    @Id
+    @GeneratedValue(generator = GenerationType.AUTO)
+    private int productId;
 
-    @ManyToMany
-    @JoinTable(name = "wishlist-product", joinColumns = @JoinColumn(name = "customerId"),
-            inverseJoinColumns = @JoinColumn(name = "productId"))
-    private Set<Product> products;
-
-    @Column(name = "status")
     private String status;
 }

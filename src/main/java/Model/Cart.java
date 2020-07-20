@@ -4,37 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
 import javax.persistence.Entity;
-import java.time.LocalDate;
-import java.util.Set;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.Date;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "cart")
-public class Cart extends BaseEntity{
-    @OneToOne
-    @PrimaryKeyJoinColumn(name = "customerId", foreignKey = @ForeignKey(name = "CART_FK_CUSTOMER"))
-    private Customer customer;
+public class Cart {
 
-    @ManyToOne
-    @JoinColumn(name = "productID")
-    private Product product;
-
-    @ManyToMany
-    @JoinTable(name = "cart-product", joinColumns = @JoinColumn(name = "customerId"),
-            inverseJoinColumns = @JoinColumn(name = "productId"))
-    private Set<Product> products;
-
-    @Column(name = "dateAdded")
-    @DateTimeFormat(pattern = "yyyy/mm/dd")
-    private LocalDate dateAdded;
-
-    @Column(name = "quantity")
+    private Date dateAdded;
     private int quantity;
 }
