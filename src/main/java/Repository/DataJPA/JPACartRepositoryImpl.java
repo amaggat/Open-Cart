@@ -1,8 +1,8 @@
 package Repository.DataJPA;
 
+import Model.Cart;
 import Model.Product;
 import Repository.CartRepository;
-import org.graalvm.compiler.core.common.SuppressSVMWarnings;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +16,17 @@ public class JPACartRepositoryImpl implements CartRepository {
     @Override
     @SuppressWarnings("unchecked")
     public Collection<Product> findAllProduct() {
-        Query query = this.em.createQuery("");
-        return null;
+        Query query = this.em.createQuery("SELECT productName FROM product p INNER JOIN cart-product cp ON cp.productId = p.productId INNER JOIN cart c ON c.customerId = cp.customerId");
+        return query.getResultList();
+    }
+
+    @Override
+    public void removeProductInCart(Product product) {
+        this.em.remove(product);
+    }
+
+    @Override
+    public void save(Cart cart) {
+
     }
 }
