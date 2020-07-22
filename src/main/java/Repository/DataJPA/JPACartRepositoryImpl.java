@@ -2,6 +2,7 @@ package Repository.DataJPA;
 
 import Model.Cart;
 import Model.Product;
+import Model.WishList;
 import Repository.CartRepository;
 
 import javax.persistence.EntityManager;
@@ -21,12 +22,30 @@ public class JPACartRepositoryImpl implements CartRepository {
     }
 
     @Override
+    public void addToWishList(Product product) {
+        WishList wishlist = em.find(WishList.class, 1);
+        em.getTransaction().begin();
+        em.merge(product);
+        em.getTransaction().commit();
+    }
+
+    @Override
     public void removeProductInCart(Product product) {
+        this.em.getTransaction().begin();
         this.em.remove(product);
+        this.em.getTransaction().commit();
+    }
+
+    @Override
+    public void addProduct(Product product) {
+        this.em.getTransaction().begin();
+        this.em.merge(product);
+        this.em.getTransaction().commit();
     }
 
     @Override
     public void save(Cart cart) {
-
+        if (cart.getId() == null) this.em.persist(cart);
+        else this.em.merge(cart);
     }
 }
