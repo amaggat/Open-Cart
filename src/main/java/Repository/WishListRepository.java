@@ -3,11 +3,11 @@ package Repository;
 import Model.Product;
 import Model.WishList;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface WishListRepository {
-    List<Product> findAllProductInWishList();
-    void addToCart(int productID, int customerID);
+    Collection<Product> findAllProductInWishList();
+    void addToCart(Product product);
     void removeProductInWishList (Product product);
     void save(WishList wishList);
 }

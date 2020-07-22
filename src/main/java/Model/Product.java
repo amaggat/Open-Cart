@@ -19,6 +19,7 @@ import java.util.Set;
 @Entity
 @Table(name = "product")
 public class Product extends BaseEntity{
+
     @ManyToOne
     @JoinColumn(name = "brandId")
     private Brand brand;

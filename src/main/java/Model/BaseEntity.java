@@ -18,5 +18,18 @@ import javax.persistence.MappedSuperclass;
 public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ID;
+
+    private Integer ID;
+
+    public Integer getId() {
+        return ID;
+    }
+
+    public void setId(Integer ID) {
+        this.ID = ID;
+    }
+
+    public boolean isNew() {
+        return this.ID == null;
+    }
 }

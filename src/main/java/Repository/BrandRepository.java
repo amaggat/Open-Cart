@@ -1,10 +1,12 @@
 package Repository;
 
 import Model.Brand;
+import Model.Product;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface BrandRepository {
-    List<Brand> findBrandByName(String name);
-    Brand findByID(int ID);
+    Collection<Brand> findBrandByName(String name);
+    Brand findBrandByID(int ID);
+    void removeProductInBrand (int productID);
 }

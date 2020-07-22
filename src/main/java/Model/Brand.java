@@ -24,4 +24,6 @@ public class Brand extends BaseEntity {
 
     @Column(name = "brandDescription")
     private String description;
+
+
 }
