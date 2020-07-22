@@ -48,4 +48,5 @@ public class OpenCartServiceImpl implements OpenCartService{
     public Collection<Product> showWishListProduct() {
         return wishListRepository.findAllProductInWishList();
     }
+
 }
