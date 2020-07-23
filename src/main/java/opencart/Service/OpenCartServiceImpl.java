@@ -11,13 +11,13 @@ import java.util.Collection;
 @Service
 public class OpenCartServiceImpl implements OpenCartService{
 
-    private BrandRepository brandRepository;
-    private CartRepository cartRepository;
-    private CategoryRepository categoryRepository;
-    private CustomerRepository customerRepository;
-    private OrderRepository orderRepository;
-    private ProductRepository productRepository;
-    private WishListRepository wishListRepository;
+    private final BrandRepository brandRepository;
+    private final CartRepository cartRepository;
+    private final CategoryRepository categoryRepository;
+    private final CustomerRepository customerRepository;
+    private final OrderRepository orderRepository;
+    private final ProductRepository productRepository;
+    private final WishListRepository wishListRepository;
 
     @Autowired
     public OpenCartServiceImpl(BrandRepository brandRepository,

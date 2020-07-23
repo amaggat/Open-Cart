@@ -19,7 +19,6 @@ public class JPACartRepositoryImpl implements CartRepository {
 
     @Override
     @SuppressWarnings("unchecked")
-    @Transactional
     public Collection<Product> findAllProduct() {
         Query query = this.em.createQuery(
                 "SELECT productName FROM product p " +
@@ -30,7 +29,6 @@ public class JPACartRepositoryImpl implements CartRepository {
     }
 
     @Override
-    @Transactional
     public Collection<Product> addToWishList(Product product) {
         this.em.getTransaction().begin();
         this.em.persist(product);
@@ -42,7 +40,6 @@ public class JPACartRepositoryImpl implements CartRepository {
     }
 
     @Override
-    @Transactional
     public Collection<Product> removeProductInCart(Product product) {
         //DELETE FROM cart-product cp WHERE cp.productID = productID
         Query query = this.em.createQuery("DELETE FROM cart-product cp WHERE cp.productID = :productID", Product.class);
@@ -51,7 +48,6 @@ public class JPACartRepositoryImpl implements CartRepository {
     }
 
     @Override
-    @Transactional
     public Collection<Product> addProduct(Integer productID, Integer customerID) {
         Query query = this.em.createQuery("INSERT INTO cart-product(customerID, productID) VALUES (:customerId, :productID)");
         query.setParameter("productID", productID).setParameter("customerID", customerID).getResultList();
@@ -63,17 +59,15 @@ public class JPACartRepositoryImpl implements CartRepository {
     }
 
     @Override
-    @Transactional
-    public String findCartByID(Integer ID) {
+    public Cart findCartByID(Integer ID) {
         Query query = this.em.createQuery("SELECT customerName cus FROM customer c" +
                 "INNER JOIN cart c ON c.customerID = cus.customerID" +
                 "WHERE cus.customerID = :ID");
-        String name = (String) query.setParameter("ID", ID).getSingleResult();
-        return name;
+        Cart cart = (Cart) query.setParameter("ID", ID).getSingleResult();
+        return cart;
     }
 
     @Override
-    @Transactional
     public Collection<Cart> findCartByName(String name) {
         Query query = this.em.createQuery("SELECT customerName cus FROM customer c" +
                 "INNER JOIN cart c ON c.customerID = cus.customerID" +
@@ -83,7 +77,6 @@ public class JPACartRepositoryImpl implements CartRepository {
     }
 
     @Override
-    @Transactional
     public void save(Cart cart) {
         if (cart.getId() == null) this.em.persist(cart);
         else this.em.merge(cart);

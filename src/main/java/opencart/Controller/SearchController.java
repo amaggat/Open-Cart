@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class SearchController {
-    private OpenCartService openCartService;
+    private final OpenCartService openCartService;
 
     @Autowired
     public SearchController(OpenCartService openCartService){

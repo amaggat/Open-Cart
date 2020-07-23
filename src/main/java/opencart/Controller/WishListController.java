@@ -3,7 +3,9 @@ package opencart.Controller;
 import opencart.Service.OpenCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import opencart.Model.Product;
@@ -15,6 +17,11 @@ public class WishListController {
     @Autowired
     public WishListController(OpenCartService openCartService) {
         this.openCartService = openCartService;
+    }
+
+    @InitBinder("wishlist")
+    public void setAllowedFields(WebDataBinder dataBinder) {
+        dataBinder.setDisallowedFields("id");
     }
 
     @GetMapping("/wishlist")

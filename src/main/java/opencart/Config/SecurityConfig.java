@@ -28,13 +28,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // Chỉ cho phép user có quyền ADMIN truy cập đường dẫn /admin/**
+        // Allow user with admin privilege access path /admin/**
         http.authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
-        // Chỉ cho phép user có quyền ADMIN hoặc USER truy cập đường dẫn /user/**
+        // Allow user with admin or user privilege access path /user/**
         http.authorizeRequests().antMatchers("/user/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')");
-        // Khi người dùng đã login, với vai trò USER, Nhưng truy cập vào trang yêu cầu vai trò ADMIN, sẽ chuyển hướng tới trang /403
+        // When user login, with user role, but request to path requiring admin role, direct to /403
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
-        // Cấu hình cho Login Form.
+        // Login Form Configuration.
         http.authorizeRequests().and().formLogin()//
                 .loginProcessingUrl("/j_spring_security_login")//
                 .loginPage("/login")//
@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?message=error")//
                 .usernameParameter("username")//
                 .passwordParameter("password")
-                // Cấu hình cho Logout Page.
+                //Logout Page Configuration.
                 .and().logout().logoutUrl("/j_spring_security_logout").logoutSuccessUrl("/login?message=logout");
     }
 }

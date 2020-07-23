@@ -12,7 +12,7 @@ public interface OpenCartService {
     Collection<Product> findProductByName(String name);
     Product findProductByID(Integer ID);
     Collection<Cart> findCartByName (String name);
-    String findCartByID(Integer ID);
+    Cart findCartByID(Integer ID);
     Collection<Brand> findBrandByName(String name);
     Brand findBrandByID(Integer ID);
     Collection<Category> findCategoryByName(String name);
