@@ -6,9 +6,10 @@ import java.util.Collection;
 
 public interface ProductRepository {
     Collection<Product> findAllProduct();
+    Collection<Product> findByName(String name);
     Collection<Product> findByBrandName();
     Product findByID(int ID);
     void save(Product product);
-    void addToCart (int productID, int cartID);
-    void addToWishList(int productID, int wishListID);
+    Collection<Product> addToCart (int productID, int cartID);
+    Collection<Product> addToWishList(int productID, int wishListID);
 }

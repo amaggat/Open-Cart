@@ -4,7 +4,9 @@ import opencart.Service.OpenCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import opencart.Model.Product;
 
 @Controller
 public class WishListController {
@@ -17,8 +19,10 @@ public class WishListController {
 
     @GetMapping("/wishlist")
     public ModelAndView showWishList(){
-        ModelAndView mav = new ModelAndView();
-        mav.addObject(openCartService.showWishListProduct());
-        return mav;
+        return null;
+    }
+    @PostMapping
+    public ModelAndView addProductToWishList(Product product){
+        return null;
     }
 }
