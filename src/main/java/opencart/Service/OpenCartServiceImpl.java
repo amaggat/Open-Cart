@@ -1,10 +1,7 @@
-package Service;
+package opencart.Service;
 
-import Model.Cart;
-import Model.Category;
-import Model.Product;
-import Model.WishList;
-import Repository.*;
+import opencart.Model.Product;
+import opencart.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 

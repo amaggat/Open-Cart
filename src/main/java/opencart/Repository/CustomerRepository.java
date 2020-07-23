@@ -1,6 +1,6 @@
-package Repository;
+package opencart.Repository;
 
-import Model.Customer;
+import opencart.Model.Customer;
 
 import java.util.Collection;
 

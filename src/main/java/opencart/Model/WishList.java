@@ -1,4 +1,4 @@
-package Model;
+package opencart.Model;
 
 
 import lombok.AllArgsConstructor;

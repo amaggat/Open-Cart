@@ -1,7 +1,6 @@
-package Service;
+package opencart.Service;
 
-import Model.Customer;
-import Model.Product;
+import opencart.Model.Product;
 
 import java.util.Collection;
 

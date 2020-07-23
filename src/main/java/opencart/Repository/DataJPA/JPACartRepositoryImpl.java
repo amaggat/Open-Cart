@@ -1,9 +1,9 @@
-package Repository.DataJPA;
+package opencart.Repository.DataJPA;
 
-import Model.Cart;
-import Model.Product;
-import Model.WishList;
-import Repository.CartRepository;
+import opencart.Model.Cart;
+import opencart.Model.Product;
+import opencart.Model.WishList;
+import opencart.Repository.CartRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

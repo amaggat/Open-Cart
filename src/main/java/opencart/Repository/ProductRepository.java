@@ -1,9 +1,8 @@
-package Repository;
+package opencart.Repository;
 
-import Model.Product;
+import opencart.Model.Product;
 
 import java.util.Collection;
-import java.util.List;
 
 public interface ProductRepository {
     Collection<Product> findAllProduct();

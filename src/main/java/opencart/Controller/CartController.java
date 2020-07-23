@@ -1,24 +1,25 @@
-package Controller;
+package opencart.Controller;
 
-import Service.OpenCartService;
+import opencart.Service.OpenCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class WishListController {
+public class CartController{
+
     private final OpenCartService openCartService;
 
     @Autowired
-    public WishListController(OpenCartService openCartService) {
+    public CartController(OpenCartService openCartService) {
         this.openCartService = openCartService;
     }
 
-    @GetMapping("/wishlist")
-    public ModelAndView showWishList(){
-        ModelAndView mav = new ModelAndView();
-        mav.addObject(openCartService.showWishListProduct());
+    @GetMapping("/cart")
+    public ModelAndView showCart(){
+        ModelAndView mav = new ModelAndView("cart");
+        mav.addObject(openCartService.showCartProduct());
         return mav;
     }
 }

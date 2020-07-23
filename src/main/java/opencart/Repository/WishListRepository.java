@@ -1,7 +1,7 @@
-package Repository;
+package opencart.Repository;
 
-import Model.Product;
-import Model.WishList;
+import opencart.Model.Product;
+import opencart.Model.WishList;
 
 import java.util.Collection;
 

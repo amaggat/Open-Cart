@@ -1,4 +1,4 @@
-package Model;
+package opencart.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Set;
 
 @Getter

@@ -1,9 +1,8 @@
-package Repository;
+package opencart.Repository;
 
-import Model.Order;
+import opencart.Model.Order;
 
 import java.util.Collection;
-import java.util.List;
 
 public interface OrderRepository {
     Collection<Order> findOrderByID(int ID);
