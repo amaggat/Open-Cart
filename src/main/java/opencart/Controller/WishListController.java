@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import opencart.Model.Product;
 
-@Controller
+//@Controller
 public class WishListController {
     private final OpenCartService openCartService;
 
