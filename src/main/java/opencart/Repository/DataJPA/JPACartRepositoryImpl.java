@@ -2,10 +2,9 @@ package opencart.Repository.DataJPA;
 
 import opencart.Model.Cart;
 import opencart.Model.Product;
-import opencart.Model.WishList;
 import opencart.Repository.CartRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,14 +13,15 @@ import java.util.Collection;
 
 @Repository
 public class JPACartRepositoryImpl implements CartRepository {
-    @PersistenceContext
+
+    @Autowired
     private EntityManager em;
 
     @Override
     @SuppressWarnings("unchecked")
     public Collection<Product> findAllProduct() {
         Query query = this.em.createQuery(
-                "SELECT productName FROM product p " +
+                "SELECT productName FROM Product p " +
                         "INNER JOIN cart-product cp ON cp.productId = p.productId " +
                         "INNER JOIN cart c ON c.customerId = cp.customerId");
         Collection<Product> products = query.getResultList();

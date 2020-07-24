@@ -2,10 +2,11 @@ package opencart.Repository;
 
 import opencart.Model.Cart;
 import opencart.Model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Collection;
 
-public interface CartRepository {
+public interface CartRepository{
     Collection<Product> findAllProduct();
     Collection<Product> removeProductInCart (Product product);
     Collection<Product> addProduct(Integer productID, Integer customerID);
