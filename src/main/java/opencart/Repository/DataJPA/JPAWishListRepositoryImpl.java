@@ -25,6 +25,7 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Product> addToCart(Integer productID, Integer customerID) {
         Query query = this.em.createQuery("INSERT INTO cart-product(customerID, productID) VALUES(:customerID, :productID)");
         query.setParameter("customerID", customerID).setParameter("productID", productID);
@@ -41,6 +42,7 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Product> addProduct(Integer productId, Integer customerID) {
         Query query = this.em.createQuery("\n" +
                 "INSERT INTO wishlist-product(customerID, productID) VALUES(:customerID, :productID)");
@@ -54,6 +56,16 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
     public void save(WishList wishList) {
         if(wishList.getId()==null) this.em.merge(wishList);
         else this.em.persist(wishList);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public WishList findWishListByID(Integer ID) {
+        Query query = this.em.createQuery("SELECT customerName, customerID FROM customer cus" +
+                "INNER JOIN wishlist w ON w.customerID = cus.customerID" +
+                "WHERE cus.customerID = :ID");
+        WishList wishList = (WishList) query.setParameter("ID", ID).getSingleResult();
+        return wishList;
     }
 
 }

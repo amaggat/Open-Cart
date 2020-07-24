@@ -39,6 +39,11 @@ public class JPACartRepositoryImpl implements CartRepository {
         return query.getResultList();
     }
 
+    /*
+    * Query query = this.em.createQuery("")
+    * this.em.createQuery("SELECT * FROM customer cus INNER JOIN cart c ON cus.customerID = c.customerID")
+    * */
+
     @Override
     public Collection<Product> removeProductInCart(Product product) {
         //DELETE FROM cart-product cp WHERE cp.productID = productID
@@ -48,6 +53,7 @@ public class JPACartRepositoryImpl implements CartRepository {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Product> addProduct(Integer productID, Integer customerID) {
         Query query = this.em.createQuery("INSERT INTO cart-product(customerID, productID) VALUES (:customerId, :productID)");
         query.setParameter("productID", productID).setParameter("customerID", customerID).getResultList();
@@ -60,7 +66,7 @@ public class JPACartRepositoryImpl implements CartRepository {
 
     @Override
     public Cart findCartByID(Integer ID) {
-        Query query = this.em.createQuery("SELECT customerName cus FROM customer c" +
+        Query query = this.em.createQuery("SELECT customerName, customerID FROM customer cus" +
                 "INNER JOIN cart c ON c.customerID = cus.customerID" +
                 "WHERE cus.customerID = :ID");
         Cart cart = (Cart) query.setParameter("ID", ID).getSingleResult();
@@ -80,5 +86,13 @@ public class JPACartRepositoryImpl implements CartRepository {
     public void save(Cart cart) {
         if (cart.getId() == null) this.em.persist(cart);
         else this.em.merge(cart);
+    }
+
+    @Override
+    public Double checkOut() {
+        Query query = this.em.createQuery("SELECT SUM(quantity*priceUnit) AS total FROM product p" +
+                "INNER JOIN cart-product cp ON cp.productID = p.productID" +
+                "GROUP BY customerID");
+        return null;
     }
 }

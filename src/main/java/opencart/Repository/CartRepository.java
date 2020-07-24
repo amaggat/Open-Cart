@@ -13,4 +13,5 @@ public interface CartRepository {
     Collection<Cart> findCartByName (String name);
     Collection<Product> addToWishList(Product product);
     void save (Cart cart);
+    Double checkOut();
 }

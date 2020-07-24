@@ -11,5 +11,6 @@ public interface WishListRepository {
     Collection<Product> addToCart(Integer productId, Integer customerID);
     Collection<Product> removeProductInWishList (Product product);
     void save(WishList wishList);
+    WishList findWishListByID(Integer ID);
     Collection<Product> addProduct(Integer productID, Integer customerID);
 }

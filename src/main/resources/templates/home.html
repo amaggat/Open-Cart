@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
-<!--    <link rel="stylesheet"type="text/css" href="../static/style.css"/>-->
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 </head>
 <body>
-    <h1>Open Cart Project</h1>
-    <h2>Please enter your account:</h2>
-    <form>
-        <label>Account</label><input type="text" name="Account"/>
-        </br>
-        <label>Password</label><input type="text" name="Password"/>
-        </br>
-        <button type="submit">Login</button>
+    <img src="https://www.opencart.com/application/view/image/icon/opencart-logo.png" alt="OpenCart" width="350" height="100">
+    <form name='login-form' th:action="@{/j_spring_security_login}" method='POST'>
+        <table>
+            <tr>
+                <td><input name="Login" type="submit" value="Login" /></td>
+                <td><input name="Register" type="submit" value="Register" /></td>
+            </tr>
+        </table>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    </form>
     </form>
 </body>
 </html>

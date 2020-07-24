@@ -1,4 +1,4 @@
-package opencart.Service;
+package opencart.Service.ServiceInt;
 
 import opencart.Model.*;
 
@@ -13,6 +13,8 @@ public interface OpenCartService {
     Product findProductByID(Integer ID);
     Collection<Cart> findCartByName (String name);
     Cart findCartByID(Integer ID);
+    Double checkOutCart();
+    WishList findWishListByID(Integer ID);
     Collection<Brand> findBrandByName(String name);
     Brand findBrandByID(Integer ID);
     Collection<Category> findCategoryByName(String name);

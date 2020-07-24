@@ -1,7 +1,8 @@
-package opencart.Service;
+package opencart.Service.ServiceImpl;
 
 import opencart.Model.*;
 import opencart.Repository.*;
+import opencart.Service.ServiceInt.OpenCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 
 @Service
-public class OpenCartServiceImpl implements OpenCartService{
+public class OpenCartServiceImpl implements OpenCartService {
 
     private final BrandRepository brandRepository;
     private final CartRepository cartRepository;
@@ -80,8 +81,13 @@ public class OpenCartServiceImpl implements OpenCartService{
 
     @Override
     @Transactional(readOnly = true)
-    public String findCartByID(Integer ID) {
+    public Cart findCartByID(Integer ID) {
         return cartRepository.findCartByID(ID);
+    }
+
+    @Override
+    public WishList findWishListByID(Integer ID) {
+        return wishListRepository.findWishListByID(ID);
     }
 
     @Override
@@ -121,9 +127,15 @@ public class OpenCartServiceImpl implements OpenCartService{
     }
 
     @Override
+    @Transactional
     public Collection<Product> removeProductFromCart(Product product) {
         return cartRepository.removeProductInCart(product);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Double checkOutCart() {
+        return cartRepository.checkOut();
+    }
 
 }

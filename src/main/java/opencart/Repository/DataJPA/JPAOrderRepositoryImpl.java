@@ -1,6 +1,7 @@
 package opencart.Repository.DataJPA;
 
 import opencart.Model.Order;
+import opencart.Model.Product;
 import opencart.Repository.OrderRepository;
 import org.springframework.stereotype.Repository;
 
@@ -21,5 +22,10 @@ public class JPAOrderRepositoryImpl implements OrderRepository {
     @Override
     public void save(Order order) {
 
+    }
+
+    @Override
+    public Collection<Product> showProductOrdered() {
+        return null;
     }
 }

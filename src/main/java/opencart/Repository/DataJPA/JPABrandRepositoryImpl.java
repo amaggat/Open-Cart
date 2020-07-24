@@ -11,6 +11,7 @@ import java.util.Collection;
 
 @Repository
 public class JPABrandRepositoryImpl implements BrandRepository {
+
     @PersistenceContext
     private EntityManager em;
 
@@ -25,7 +26,17 @@ public class JPABrandRepositoryImpl implements BrandRepository {
     }
 
     @Override
-    public Collection<Product> removeProductInBrand(int productID) {
+    public Collection<Product> removeProductFromBrand(int productID) {
+        return null;
+    }
+
+    @Override
+    public Collection<Product> addProductToBrand(Product product) {
+        return null;
+    }
+
+    @Override
+    public Collection<Product> showProductInBrand() {
         return null;
     }
 }

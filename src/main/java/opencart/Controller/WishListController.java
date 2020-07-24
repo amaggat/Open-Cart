@@ -1,22 +1,29 @@
 package opencart.Controller;
 
-import opencart.Service.OpenCartService;
+import opencart.Model.Customer;
+import opencart.Model.WishList;
+import opencart.Service.ServiceInt.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import opencart.Model.Product;
+
+import javax.validation.Valid;
 
 @Controller
 public class WishListController {
-    private final OpenCartService openCartService;
+    private final WishListService wishListService;
 
     @Autowired
-    public WishListController(OpenCartService openCartService) {
-        this.openCartService = openCartService;
+    public WishListController(WishListService wishListService) {
+        this.wishListService = wishListService;
+    }
+
+    @InitBinder("customer")
+    public void initCustomerBinder(WebDataBinder dataBinder) {
+        dataBinder.setDisallowedFields("id");
     }
 
     @InitBinder("wishlist")
@@ -24,12 +31,32 @@ public class WishListController {
         dataBinder.setDisallowedFields("id");
     }
 
-    @GetMapping("/wishlist")
+    @GetMapping("/wishlist.html")
     public ModelAndView showWishList(){
-        return null;
+        WishList wishList = new WishList();
+        ModelAndView mav = new ModelAndView();
+        mav.addObject(this.wishListService.showProductByWishList());
+        return mav;
     }
-    @PostMapping
-    public ModelAndView addProductToWishList(Product product){
-        return null;
+
+//    @ModelAttribute("customer")
+//    public Customer findCustomer(@PathVariable("customerID") Integer customerId) {
+//        return this.WishList.findCustomerByID(customerId);
+//    }
+
+    @ModelAttribute("wishlist")
+    public WishList findWishList(@PathVariable("wishlistID") Integer wishlistID) {
+        return this.wishListService.findWishListByID(wishlistID);
     }
+
+    @PostMapping(value = "/customer/{customerId}/wishlist/{wishlistID}/product/new")
+    public String addProductToWishList(@Valid Integer productID, @Valid Integer customerID, BindingResult result){
+        if (result.hasErrors()) {
+            return "wishlist/createOrUpdateProduct";
+        } else {
+            this.wishListService.addProductToWishList(productID, customerID);
+            return "redirect:/wishlist/{customerID}";
+        }
+    }
+
 }
