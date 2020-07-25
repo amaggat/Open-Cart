@@ -17,6 +17,10 @@ import java.util.Set;
 @Table(name = "customer")
 public class Customer extends BaseEntity {
 
+    @ManyToOne
+    @JoinColumn(name = "roleId")
+    private Role role;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", fetch = FetchType.LAZY)
     private Set<Order> orders;
 
@@ -38,11 +42,14 @@ public class Customer extends BaseEntity {
     @Column(name = "phone")
     private String phoneNumber;
 
-    @Column(name = "accountName")
-    private String accountName;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;
+
+    @Transient
+    private String confirmPassword
 
     @Column(name = "addressLine1")
     private String addressLine1;
