@@ -15,10 +15,6 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     Collection<Product> findByName(String name);
     Collection<Product> findByBrandName();
     Product findByID(int ID);
-//    void save(Product product);
-//    void delete(Integer ID);
-
-
-//    Collection<Product> addToCart (int productID, int cartID);
-//    Collection<Product> addToWishList(int productID, int wishListID);
+    Collection<Product> addToCart (int productID, int cartID);
+    Collection<Product> addToWishList(int productID, int wishListID);
 }
