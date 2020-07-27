@@ -22,7 +22,7 @@ public class WishList extends BaseEntity{
     @PrimaryKeyJoinColumn(name = "customerId", foreignKey = @ForeignKey(name = "WISHLIST_FK_CUSTOMER"))
     private Customer customer;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "wishlist")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "wishLists")
     private Set<Product> products;
 
     @Column(name = "status")

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 
-@RestController
+@Controller
 public class ProductController {
     @Autowired
     private ProductService productService;

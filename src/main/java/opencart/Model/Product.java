@@ -22,29 +22,34 @@ import java.util.Set;
 @Entity
 @EntityScan( basePackages = {"opencart.Model"} )
 @Table(name = "product")
-public class Product extends BaseEntity{
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "productid")
+    private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "brandId")
+    @JoinColumn(name = "brandid")
     private Brand brand;
 
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "category-product", joinColumns = @JoinColumn(name = "productId"),
-            inverseJoinColumns = @JoinColumn(name = "categoryId"))
+            inverseJoinColumns = @JoinColumn(name = "catetogoryId"))
     private Set<Category> categories;
 
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "wishlist-product", joinColumns = @JoinColumn(name = "productId"),
-            inverseJoinColumns = @JoinColumn(name = "customerId"))
+    @JoinTable(name = "wishlist-product", joinColumns = @JoinColumn(name = "productid"),
+            inverseJoinColumns = @JoinColumn(name = "customerid"))
     private Set<WishList> wishLists;
 
 
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "cart-product", joinColumns = @JoinColumn(name = "productId"),
-            inverseJoinColumns = @JoinColumn(name = "customerId"))
+    @JoinTable(name = "cart-product", joinColumns = @JoinColumn(name = "productid"),
+            inverseJoinColumns = @JoinColumn(name = "customerid"))
     private Set<Cart> carts;
 
 
@@ -54,19 +59,19 @@ public class Product extends BaseEntity{
 
 
 
-    @Column(name = "productName")
+    @Column(name = "productname")
     private String name;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "dateAdded")
+    @Column(name = "dateadded")
     @DateTimeFormat(pattern = "yyyy/mm/dd")
     private LocalDate dateAdded;
 
-    @Column(name = "dateModify")
+    @Column(name = "datemodified")
     @DateTimeFormat(pattern = "yyyy/mm/dd")
-    private LocalDate dateModify;
+    private LocalDate dateModified;
 
     @Column(name = "quantity")
     private int quantity;
@@ -138,12 +143,12 @@ public class Product extends BaseEntity{
         this.dateAdded = dateAdded;
     }
 
-    public LocalDate getDateModify() {
-        return dateModify;
+    public LocalDate getDateModified() {
+        return dateModified;
     }
 
-    public void setDateModify(LocalDate dateModify) {
-        this.dateModify = dateModify;
+    public void setDateModified(LocalDate dateModified) {
+        this.dateModified = dateModified;
     }
 
     public int getQuantity() {
@@ -162,4 +167,11 @@ public class Product extends BaseEntity{
         this.price = price;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

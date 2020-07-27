@@ -14,15 +14,20 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "brand")
-public class Brand extends BaseEntity {
+public class Brand {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "brandid")
+    private Integer id;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "brand", fetch = FetchType.LAZY)
     private Set<Product> products;
 
-    @Column(name = "brandName")
+    @Column(name = "brandname")
     private String brandName;
 
-    @Column(name = "brandDescription")
+    @Column(name = "branddescription")
     private String description;
 
 

@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional(readOnly = true)
     public Product findProductByID(Integer ID) {
-        return productRepository.findByID(ID);
+        return productRepository.findById(ID).orElse(null);
     }
 
     @Override
