@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -13,8 +14,10 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+//@EntityScan( basePackages = {"opencart.Model"} )
+
 @Table(name = "orderdetail")
-public class OrderDetail {
+public class OrderDetail extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "productID")

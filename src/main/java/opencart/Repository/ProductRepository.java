@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 import java.util.Collection;
-@EnableJpaRepositories
+
 public interface ProductRepository extends JpaRepository<Product,Integer> {
     //    Collection<Product> findAllProduct();
     Collection<Product> findByName(String name);
@@ -19,6 +19,6 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
 //    void delete(Integer ID);
 
 
-    Collection<Product> addToCart (int productID, int cartID);
-    Collection<Product> addToWishList(int productID, int wishListID);
+//    Collection<Product> addToCart (int productID, int cartID);
+//    Collection<Product> addToWishList(int productID, int wishListID);
 }

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ import java.util.Set;
 //@AllArgsConstructor
 //@NoArgsConstructor
 @Entity
+@EntityScan( basePackages = {"opencart.Model"} )
 @Table(name = "product")
 public class Product extends BaseEntity{
 
@@ -26,23 +28,31 @@ public class Product extends BaseEntity{
     @JoinColumn(name = "brandId")
     private Brand brand;
 
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "category-product", joinColumns = @JoinColumn(name = "productId"),
             inverseJoinColumns = @JoinColumn(name = "categoryId"))
     private Set<Category> categories;
+
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "wishlist-product", joinColumns = @JoinColumn(name = "productId"),
             inverseJoinColumns = @JoinColumn(name = "customerId"))
     private Set<WishList> wishLists;
 
+
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "cart-product", joinColumns = @JoinColumn(name = "productId"),
             inverseJoinColumns = @JoinColumn(name = "customerId"))
     private Set<Cart> carts;
 
+
+
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "product", fetch = FetchType.LAZY)
     private Set<OrderDetail> orderDetails;
+
+
 
     @Column(name = "productName")
     private String name;
