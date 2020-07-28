@@ -8,12 +8,11 @@ import opencart.Service.ServiceInt.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
+import java.util.Properties;
 
 @Controller
 public class ProductController {
@@ -21,23 +20,39 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping("/list")
-    public String viewListProductPage(Model model)
-    {
+    public String viewListProductPage(Model model) {
         Collection<Product> listProducts = productService.listAllProducts();
-        model.addAttribute("listProducts",listProducts);
+        model.addAttribute("listProducts", listProducts);
         return "list";
     }
+
     @RequestMapping("/new")
-    public String showNewProductForm(Model model)
-    {
+    public String showNewProductForm(Model model) {
         Product product = new Product();
-        model.addAttribute("product",product);
+        model.addAttribute("product", product);
         return "new_product";
     }
-    @RequestMapping(value = "/save",method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("product") Product product)
-    {
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveProduct(@ModelAttribute("product") Product product) {
+        System.out.println(product);
         productService.saveProduct(product);
+        return "redirect:/list";
+    }
+
+    @RequestMapping("/edit/{id}")
+    public ModelAndView editProduct(@PathVariable("id") Integer id)
+    {
+        ModelAndView modelAndView = new ModelAndView("editProduct");
+        Product product = productService.findProductByID(id);
+        modelAndView.addObject("product",product);
+        return modelAndView;
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable(name = "id") Integer id)
+    {
+        productService.deleteProduct(id);
         return "redirect:/list";
     }
 }

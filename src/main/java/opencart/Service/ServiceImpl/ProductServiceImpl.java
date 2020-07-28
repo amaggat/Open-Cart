@@ -43,14 +43,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional()
     public void saveProduct(Product product)
     {
         productRepository.save(product);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional()
     public void deleteProduct(Integer ID)
     {
         productRepository.deleteById(ID);

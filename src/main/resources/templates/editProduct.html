@@ -2,18 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New Product</title>
+    <title>Edit Product</title>
 </head>
 <body>
 <div align="center">
-    <h1>Create New Product</h1>
+    <h1>Product Information</h1>
     <br/>
-    <form action="#" th:action = "@{/save}" th:object="${product}" method="post">
+    <form th:action="@{/save}" th:object="${product}" method="post">
         <table border="0" cellpadding="10">
-            <tr>
-                <td>Brand ID</td>
-                <td><input type="text" th:field="*{brand.id}"/></td>
-            </tr>
+<!--            <tr>-->
+<!--                <td>Brand ID</td>-->
+<!--                <td><input type="text" th:field="*{brand}"/></td>-->
+<!--            </tr>-->
             <tr>
                 <td>Description</td>
                 <td><input type="text" th:field="*{description}"/></td>
@@ -28,11 +28,11 @@
             </tr>
             <tr>
                 <td>Date Added</td>
-                <td><input type="date" th:field="*{dateAdded}"/></td>
+                <td><input type="text" th:field="*{dateAdded}"/></td>
             </tr>
             <tr>
                 <td>Date Modified</td>
-                <td><input type="date" th:field="*{dateModified}"/></td>
+                <td><input type="text" th:field="*{dateModified}"/></td>
             </tr>
             <tr>
                 <td>Price Unit</td>
@@ -41,9 +41,9 @@
             <tr>
                 <td colspan="2">
                     <button type="submit">Save</button>
-<!--                    <input value="submit" type="submit">-->
                 </td>
             </tr>
+
         </table>
     </form>
 </div>

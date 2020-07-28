@@ -12,7 +12,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 //@Getter
@@ -20,7 +24,7 @@ import java.util.Set;
 //@AllArgsConstructor
 //@NoArgsConstructor
 @Entity
-@EntityScan( basePackages = {"opencart.Model"} )
+@EntityScan(basePackages = {"opencart.Model"})
 @Table(name = "product")
 public class Product {
 
@@ -46,17 +50,14 @@ public class Product {
     private Set<WishList> wishLists;
 
 
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "cart-product", joinColumns = @JoinColumn(name = "productid"),
             inverseJoinColumns = @JoinColumn(name = "customerid"))
     private Set<Cart> carts;
 
 
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "product", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
     private Set<OrderDetail> orderDetails;
-
 
 
     @Column(name = "productname")
@@ -66,11 +67,11 @@ public class Product {
     private String description;
 
     @Column(name = "dateadded")
-    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    @DateTimeFormat(pattern = "dd/mm/yyyy")
     private LocalDate dateAdded;
 
     @Column(name = "datemodified")
-    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    @DateTimeFormat(pattern = "dd/mm/yyyy")
     private LocalDate dateModified;
 
     @Column(name = "quantity")
@@ -86,6 +87,13 @@ public class Product {
     public void setBrand(Brand brand) {
         this.brand = brand;
     }
+    public Integer getBrandId(Brand brand)
+    {
+        return brand.getId();
+    }
+
+
+
 
     public Set<Category> getCategories() {
         return categories;
@@ -135,8 +143,16 @@ public class Product {
         this.description = description;
     }
 
+
+
+
+
     public LocalDate getDateAdded() {
         return dateAdded;
+    }
+
+    public void setDateAdded(String dateAdded) {
+        this.dateAdded = LocalDate.parse(dateAdded);
     }
 
     public void setDateAdded(LocalDate dateAdded) {
