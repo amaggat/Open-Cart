@@ -4,11 +4,9 @@ import opencart.Model.Cart;
 import opencart.Model.Product;
 import opencart.Repository.ProductRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Repository
@@ -50,24 +48,31 @@ public class JPAProductRepositoryImpl implements ProductRepository {
 
     //oke
     @Override
-    public Product save(Product b) {
-        if (b.getId() == null) {
-            em.persist(b);
-        } else {
-            b = em.merge(b);
-        }
-        return b;
+    public void save(Product b) {
+        Query query = this.em.createNativeQuery("INSERT INTO product " +
+                "(productId, brandId, description, productName, quantity, dateAdded, dateModified, priceunit) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        query.setParameter(1, b.getId());
+        query.setParameter(2, b.getBrand().getId());
+        query.setParameter(3, b.getDescription());
+        query.setParameter(4, b.getName());
+        query.setParameter(5, b.getQuantity());
+        query.setParameter(6, b.getDateAdded());
+        query.setParameter(7, b.getDateModified());
+        query.setParameter(8, b.getPrice());
+        query.executeUpdate();
     }
 
     //oke
     @Override
+    @Transactional
     public void deleteById(Integer ID) {
-        Product b = em.find(Product.class,ID);
-        if (em.contains(b)) {
-            em.remove(b);
-        } else {
-            em.merge(b);
-        }
+        em.getTransaction().begin();
+        Query query = this.em.createQuery("SELECT p FROM Product p WHERE p.id = :ID");
+        query.setParameter("ID", ID).executeUpdate();
+        Product p = (Product) query.getSingleResult();
+        em.remove(p);
+        em.getTransaction().commit();
     }
 
     @Override
