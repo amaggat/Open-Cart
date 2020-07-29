@@ -21,51 +21,51 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
     @Override
     public List<Product> findAllProductInWishList() {
         Query query = this.em.createQuery("SELECT productName FROM product p INNER JOIN wishlist-product wp ON wp.productID=p.productID INNER JOIN wishlist w ON w.customerID = wp.customerID");
-        return query.getResultList();
+        return null;
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public Collection<Product> addToCart(Integer productID, Integer customerID) {
-        Query query = this.em.createQuery("INSERT INTO cart-product(customerID, productID) VALUES(:customerID, :productID)");
-        query.setParameter("customerID", customerID).setParameter("productID", productID);
-        Collection<Product> products = query.getResultList();
-        return products;
+//        Query query = this.em.createQuery("INSERT INTO cart-product(customerID, productID) VALUES(:customerID, :productID)");
+//        query.setParameter("customerID", customerID).setParameter("productID", productID);
+//        Collection<Product> products = query.getResultList();
+        return null;
     }
 
     @Override
     public Collection<Product> removeProductInWishList(Product product) {
-        Query query = this.em.createQuery("DELETE FROM wishlist-product wp WHERE wp.productID = :productID");
-        query.setParameter("productID", product.getId());
-        Collection<Product> products = query.getResultList();
+//        Query query = this.em.createQuery("DELETE FROM wishlist-product wp WHERE wp.productID = :productID");
+//        query.setParameter("productID", product.getId());
+//        Collection<Product> products = query.getResultList();
         return null;
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public Collection<Product> addProduct(Integer productId, Integer customerID) {
-        Query query = this.em.createQuery("\n" +
-                "INSERT INTO wishlist-product(customerID, productID) VALUES(:customerID, :productID)");
-        query.setParameter("productID", productId).setParameter("customerID", customerID);
-        Query query1 = this.em.createQuery("SELECT productName FROM product p " +
-                "INNER JOIN wishlist-product wp ON wp.productID = p.productID");
-        return query1.getResultList();
+//        Query query = this.em.createQuery("\n" +
+//                "INSERT INTO wishlist-product(customerID, productID) VALUES(:customerID, :productID)");
+//        query.setParameter("productID", productId).setParameter("customerID", customerID);
+//        Query query1 = this.em.createQuery("SELECT productName FROM product p " +
+//                "INNER JOIN wishlist-product wp ON wp.productID = p.productID");
+        return null;
     }
 
     @Override
     public void save(WishList wishList) {
-        if(wishList.getId()==null) this.em.merge(wishList);
-        else this.em.persist(wishList);
+//        if(wishList.getId()==null) this.em.merge(wishList);
+//        else this.em.persist(wishList);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public WishList findWishListByID(Integer ID) {
-        Query query = this.em.createQuery("SELECT customerName, customerID FROM customer cus" +
-                "INNER JOIN wishlist w ON w.customerID = cus.customerID" +
-                "WHERE cus.customerID = :ID");
-        WishList wishList = (WishList) query.setParameter("ID", ID).getSingleResult();
-        return wishList;
+//        Query query = this.em.createQuery("SELECT customerName, customerID FROM customer cus" +
+//                "INNER JOIN wishlist w ON w.customerID = cus.customerID" +
+//                "WHERE cus.customerID = :ID");
+//        WishList wishList = (WishList) query.setParameter("ID", ID).getSingleResult();
+        return null;
     }
 
 }

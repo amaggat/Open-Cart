@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS `cart`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cart` (
   `customerId` int NOT NULL,
-  `dateAdded` datetime NOT NULL,
+  `dateAdded` date NOT NULL,
   `quantity` int NOT NULL,
   PRIMARY KEY (`customerId`),
   CONSTRAINT `CART_FK_CUSTOMER` FOREIGN KEY (`customerId`) REFERENCES `customer` (`customerId`)
@@ -181,9 +181,9 @@ DROP TABLE IF EXISTS `order`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `order` (
   `orderId` int NOT NULL AUTO_INCREMENT,
-  `orderDate` datetime NOT NULL,
-  `requiredDate` datetime NOT NULL,
-  `shippedDate` datetime NOT NULL,
+  `orderDate` date NOT NULL,
+  `requiredDate` date NOT NULL,
+  `shippedDate` date NOT NULL,
   `status` varchar(15) NOT NULL,
   `customerId` int NOT NULL,
   PRIMARY KEY (`orderId`),
@@ -242,8 +242,8 @@ CREATE TABLE `product` (
   `description` varchar(1000) NOT NULL,
   `productName` varchar(45) NOT NULL,
   `quantity` int NOT NULL,
-  `dateAdded` datetime NOT NULL,
-  `dateModified` datetime DEFAULT NULL,
+  `dateAdded` date NOT NULL,
+  `dateModified` date DEFAULT NULL,
   `priceunit` double NOT NULL,
   PRIMARY KEY (`productId`),
   KEY `PRODUCT_FK_BRAND_idx` (`brandId`),

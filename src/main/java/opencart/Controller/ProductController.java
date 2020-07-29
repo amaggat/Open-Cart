@@ -19,29 +19,29 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping("/list")
+    @RequestMapping("product/list")
     public String viewListProductPage(Model model) {
         Collection<Product> listProducts = productService.listAllProducts();
         model.addAttribute("listProducts", listProducts);
         return "list";
     }
 
-    @RequestMapping(value="/new", method= RequestMethod.GET)
+    @RequestMapping(value="product/new", method= RequestMethod.GET)
     public String showNewProductForm(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
         return "new_product";
     }
 
-    @RequestMapping(value = "/saveProduct", method = RequestMethod.POST)
+    @RequestMapping(value = "product/saveProduct", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute("product") Product product) {
-        System.out.println(product.getName());
+        //System.out.println(product.getName());
         productService.saveProduct(product);
-        System.out.println(product);
+        //System.out.println(product);
         return "redirect:/list";
     }
 
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("product/edit/{id}")
     public ModelAndView editProduct(@PathVariable("id") Integer id)
     {
         ModelAndView modelAndView = new ModelAndView("editProduct");
@@ -50,7 +50,7 @@ public class ProductController {
         return modelAndView;
     }
 
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("product/delete/{id}")
     public String deleteProduct(@PathVariable(name = "id") Integer id)
     {
         productService.deleteProduct(id);

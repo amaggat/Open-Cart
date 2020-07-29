@@ -4,11 +4,10 @@ import opencart.Model.Cart;
 import opencart.Model.Product;
 import opencart.Repository.ProductRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Repository
@@ -50,24 +49,38 @@ public class JPAProductRepositoryImpl implements ProductRepository {
 
     //oke
     @Override
-    public Product save(Product b) {
-        if (b.getId() == null) {
-            em.persist(b);
-        } else {
-            b = em.merge(b);
-        }
-        return b;
+    public void save(Product b) {
+//        if (b.getId() == null) {
+//            this.em.persist(b);
+//        } else {
+//            b = this.em.merge(b);
+//        }
+        Product product = new Product();
+        product.setDateAdded(b.getDateAdded());
+        product.setBrand(b.getBrand());
+        product.setCarts(b.getCarts());
+        product.setCategories(b.getCategories());
+        product.setId(b.getId());
+        product.setDateModified(b.getDateModified());
+        product.setDescription(b.getDescription());
+        product.setName(b.getName());
+        em.getTransaction().begin();
+        em.persist(product);
+        em.getTransaction().commit();
     }
 
     //oke
     @Override
     public void deleteById(Integer ID) {
-        Product b = em.find(Product.class,ID);
-        if (em.contains(b)) {
-            em.remove(b);
-        } else {
-            em.merge(b);
-        }
+//        Product b = em.find(Product.class,ID);
+//        if (em.contains(b)) {
+//            em.remove(b);
+//        } else {
+//            em.merge(b);
+//        }
+        Query query = this.em.createQuery("DELETE FROM Product p WHERE p.id = " + ID);
+        query.executeUpdate();
+        //query.setParameter("id", ID).executeUpdate();
     }
 
     @Override
