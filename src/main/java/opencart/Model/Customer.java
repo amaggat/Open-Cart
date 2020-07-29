@@ -58,4 +58,10 @@ public class Customer extends BaseEntity {
     @Column(name = "country")
     private String country;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "customer_role",
+            joinColumns = { @JoinColumn(name = "customerId", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "roleId", nullable = false, updatable = false) })
+    private Set<Role> roles;
+
 }
