@@ -29,8 +29,8 @@
             <td th:text="${product.description}">Description</td>
             <td th:text="${product.name}">Product Name</td>
             <td th:text="${product.quantity}">Quantity</td>
-            <td th:text="${product.dateAdded}">Date Added</td>
-            <td th:text="${product.dateModified}">Date Modified</td>
+            <td th:datetime="${product.dateAdded}">Date Added</td>
+            <td th:datetime="${product.dateModified}">Date Modified</td>
             <td th:text="${product.price}">Price Unit</td>
             <td>
                 <a th:href="@{'/edit/' + ${product.id} }">Edit</a>

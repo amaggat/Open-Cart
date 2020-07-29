@@ -26,17 +26,18 @@ public class ProductController {
         return "list";
     }
 
-    @RequestMapping("/new")
+    @RequestMapping(value="/new", method= RequestMethod.GET)
     public String showNewProductForm(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
         return "new_product";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveProduct", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute("product") Product product) {
-        System.out.println(product);
+        System.out.println(product.getName());
         productService.saveProduct(product);
+        System.out.println(product);
         return "redirect:/list";
     }
 
