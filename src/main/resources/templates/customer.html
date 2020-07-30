@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Customer Manager</title>
+</head>
+<body>
+<div align = "center">
+    <h1>Customer</h1>
+<!--    <br>-->
+<!--    <br>-->
+<!--    <a th:href="@{/cartlist}">Cart</a>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <a th:href="@{/wishlist}">Wishlist</a>-->
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>Account Name</th>
+            <th>Email</th>
+            <th>Action</th>
+
+        </tr>
+        <tr th:each = "customer : ${listCustomer}">
+            <td th:text="${customer.accountName}">Account Name</td>
+            <td th:text="${customer.email}">Email</td>
+            <td>
+                <a th:href="@{'/customer?'}">access</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
