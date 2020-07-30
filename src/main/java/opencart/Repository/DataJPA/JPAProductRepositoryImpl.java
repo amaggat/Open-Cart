@@ -40,7 +40,7 @@ public class JPAProductRepositoryImpl implements ProductRepository {
     //oke
     @Override
     public Product findById(int ID) {
-        TypedQuery<Product> q = em.createQuery("SELECT b FROM Product b WHERE b.id = :id", Product.class);
+        TypedQuery<Product> q = em.createQuery("SELECT b FROM Product b WHERE b.productId = :id", Product.class);
         q.setParameter("id", ID);
         return q.getSingleResult();
         //return em.find(Product.class, ID);
@@ -52,8 +52,8 @@ public class JPAProductRepositoryImpl implements ProductRepository {
         Query query = this.em.createNativeQuery("INSERT INTO product " +
                 "(productId, brandId, description, productName, quantity, dateAdded, dateModified, priceunit) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        query.setParameter(1, b.getId());
-        query.setParameter(2, b.getBrand().getId());
+        query.setParameter(1, b.getProductId());
+        query.setParameter(2, b.getBrand().getBrandId());
         query.setParameter(3, b.getDescription());
         query.setParameter(4, b.getName());
         query.setParameter(5, b.getQuantity());
@@ -65,17 +65,18 @@ public class JPAProductRepositoryImpl implements ProductRepository {
 
     @Override
     public void save(Product b) {
-        Query query = this.em.createQuery("UPDATE Product p " +
-                "SET p.id=:pid, " +
-                "p.brand.id=:bid, " +
+        Query query = this.em.createNativeQuery("UPDATE product p " +
+                "SET " +
+                "p.brandId=:bid, " +
                 "p.description=:des, " +
-                "p.name=:name, " +
+                "p.productName=:name, " +
                 "p.quantity=:qtt, " +
                 "p.dateAdded=:da, " +
                 "p.dateModified=:dm, " +
-                "p.price=:pr");
-        query.setParameter("pid", b.getId());
-        query.setParameter("bid", b.getBrand().getId());
+                "p.priceunit=:pr " +
+                "WHERE p.productId = " + b.getProductId());
+        //query.setParameter("id", b.getProductId());
+        query.setParameter("bid", b.getBrand().getBrandId());
         query.setParameter("des", b.getDescription());
         query.setParameter("name", b.getName());
         query.setParameter("qtt", b.getQuantity());
@@ -89,12 +90,9 @@ public class JPAProductRepositoryImpl implements ProductRepository {
     @Override
     @Transactional
     public void deleteById(Integer ID) {
-        em.getTransaction().begin();
-        Query query = this.em.createQuery("SELECT p FROM Product p WHERE p.id = :ID");
-        query.setParameter("ID", ID).executeUpdate();
-        Product p = (Product) query.getSingleResult();
-        em.remove(p);
-        em.getTransaction().commit();
+        Query query = em.createNativeQuery("DELETE FROM product WHERE " +
+                "productId = " + ID);
+        query.executeUpdate();
     }
 
     @Override

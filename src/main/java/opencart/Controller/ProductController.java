@@ -58,9 +58,19 @@ public class ProductController {
     }
 
     @RequestMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable(name = "id") Integer id)
+    public ModelAndView deleteProduct(@PathVariable(name = "id") Integer id)
     {
-        productService.deleteProduct(id);
+        ModelAndView modelAndView = new ModelAndView("delete");
+        Product product = productService.findProductByID(id);
+        modelAndView.addObject("product",product);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/deleteProduct", method = RequestMethod.POST)
+    public String deleteProduct(@ModelAttribute("product") Product product) {
+        System.out.println(product.getName());
+        productService.deleteProduct(product.getProductId());
+        System.out.println(product);
         return "redirect:/list";
     }
 }

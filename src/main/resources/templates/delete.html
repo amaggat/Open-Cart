@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Product</title>
+    <title>Delete Product</title>
 </head>
 <body>
 <div align="center">
     <h1>Product Information</h1>
     <br/>
-    <form th:action = "@{/saveProduct}" th:object="${product}" method="post">
+    <form th:action = "@{/deleteProduct}" th:object="${product}" method="post">
         <table border="0" cellpadding="10">
             <tr>
                 <input type="hidden" th:field = "*{productId}">
@@ -43,7 +43,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="submit">Save</button>
+                    <button type="submit">Delete</button>
                 </td>
             </tr>
 
