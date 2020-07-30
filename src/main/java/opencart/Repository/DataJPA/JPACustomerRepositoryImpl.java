@@ -17,12 +17,12 @@ public class JPACustomerRepositoryImpl implements CustomerRepository {
     private EntityManager em;
 
     @Override
-    public Collection<Customer> findByAccountNameAndPassword(String accountName, String password) {
+    public Customer findByAccountNameAndPassword(String accountName, String password) {
         TypedQuery<Customer> query = this.em.createQuery("SELECT c FROM Customer c " +
                 "WHERE c.accountName=:account AND c.password=:password", Customer.class);
         query.setParameter("account", accountName);
         query.setParameter("password", password);
-        return query.getResultList();
+        return query.getSingleResult();
     }
 
     @Override

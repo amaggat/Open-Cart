@@ -1,5 +1,6 @@
 package opencart.Service.ServiceImpl;
 
+import opencart.Model.Order;
 import opencart.Model.Product;
 import opencart.Repository.OrderDetailRepository;
 import opencart.Repository.OrderRepository;
@@ -30,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void removeOrder() {
-        orderRepository.showProductOrdered();
+    public void removeOrder(Order order) {
+        orderRepository.delete(order);
     }
 }

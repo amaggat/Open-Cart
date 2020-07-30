@@ -36,4 +36,9 @@ public class CustomerServiceImpl implements CustomerService {
     public Collection<Customer> showAllCustomer() {
         return customerRepository.findAllCustomer();
     }
+
+    @Override
+    public Customer findCustomerByAccountAndPassword(String account, String password) {
+        return customerRepository.findByAccountNameAndPassword(account, password);
+    }
 }
