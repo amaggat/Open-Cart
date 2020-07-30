@@ -21,7 +21,7 @@ public class WishListServiceImpl implements WishListService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Collection<Product> showProductByWishList() {
         return wishListRepository.findAllProductInWishList();
     }
@@ -33,17 +33,20 @@ public class WishListServiceImpl implements WishListService {
     }
 
     @Override
+    @Transactional
     public WishList findWishListByID(Integer ID) {
         return wishListRepository.findWishListByID(ID);
     }
 
     @Override
+    @Transactional
     public Collection<Product> removeProductFromWishList(Product product) {
         return wishListRepository.removeProductInWishList(product);
     }
 
     //null
     @Override
+    @Transactional
     public Product findProductByID(Integer ID) {
         return wishListRepository.findProductByID(ID);
     }

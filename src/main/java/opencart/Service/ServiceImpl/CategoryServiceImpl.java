@@ -21,13 +21,13 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Collection<Category> findCategoryByName(String name) {
         return categoryRepository.findCategoryByName(name);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Category findCategoryByID(Integer ID) {
         return categoryRepository.findCategoryById(ID);
     }

@@ -23,39 +23,39 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Collection<Product> findProductByName(String name) {
         return productRepository.findByName(name);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Product findProductByID(Integer ID) {
         return productRepository.findById(ID);//.orElse(null);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Collection<Product> listAllProducts()
     {
         return productRepository.findAllProduct();
     }
 
     @Override
-    @Transactional()
+    @Transactional
     public void addProduct(Product product)
     {
         productRepository.add(product);
     }
 
     @Override
-    @Transactional()
+    @Transactional
     public void saveProduct(Product product) {
         productRepository.save(product);
     }
 
     @Override
-    @Transactional()
+    @Transactional
     public void deleteProduct(Integer ID)
     {
         productRepository.deleteById(ID);

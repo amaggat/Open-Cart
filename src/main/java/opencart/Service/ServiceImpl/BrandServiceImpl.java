@@ -21,23 +21,25 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Collection<Brand> findBrandByName(String name) {
         return brandRepository.findBrandByName(name);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Brand findBrandByID(Integer ID) {
         return brandRepository.findBrandByID(ID);
     }
 
     @Override
+    @Transactional
     public Collection<Product> showProductByBrand() {
         return brandRepository.showProductInBrand();
     }
 
     @Override
+    @Transactional
     public Collection<Product> removeProductFromBrand(Product product) {
         return brandRepository.removeProductFromBrand(product.getProductId());
     }

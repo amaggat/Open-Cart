@@ -20,18 +20,19 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Collection<Customer> findCustomerByName(String name) {
         return customerRepository.findCustomerByName(name);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Customer findCustomerByID(Integer ID) {
         return customerRepository.findCustomerByID(ID);
     }
 
     @Override
+    @Transactional
     public Collection<Customer> showAllCustomer() {
         return customerRepository.findAllCustomer();
     }
