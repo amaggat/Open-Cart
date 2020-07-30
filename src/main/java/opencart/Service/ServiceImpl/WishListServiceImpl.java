@@ -41,4 +41,10 @@ public class WishListServiceImpl implements WishListService {
     public Collection<Product> removeProductFromWishList(Product product) {
         return wishListRepository.removeProductInWishList(product);
     }
+
+    //null
+    @Override
+    public Product findProductByID(Integer ID) {
+        return wishListRepository.findProductByID(ID);
+    }
 }

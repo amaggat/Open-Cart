@@ -10,4 +10,5 @@ public interface WishListService {
     Collection<Product> addProductToWishList(Integer productID, Integer customerID);
     WishList findWishListByID(Integer ID);
     Collection<Product> removeProductFromWishList(Product product);
+    Product findProductByID(Integer ID);
 }

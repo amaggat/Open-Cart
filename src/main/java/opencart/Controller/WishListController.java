@@ -29,48 +29,19 @@ public class WishListController {
         return "wishList";
     }
 
+    @RequestMapping("/wishlist/remove/{id}")
+    public ModelAndView removeProductForm(@PathVariable("id") Integer id)
+    {
+        ModelAndView modelAndView = new ModelAndView("removeProductFromWishlist");
+        Product product = wishListService.findProductByID(id);
+        modelAndView.addObject("product",product);
+        return modelAndView;
+    }
 
-//    @Autowired
-//    public WishListController(WishListService wishListService) {
-//        this.wishListService = wishListService;
-//    }
-//
-//    @InitBinder("customer")
-//    public void initCustomerBinder(WebDataBinder dataBinder) {
-//        dataBinder.setDisallowedFields("id");
-//    }
-//
-//    @InitBinder("wishlist")
-//    public void setAllowedFields(WebDataBinder dataBinder) {
-//        dataBinder.setDisallowedFields("id");
-//    }
-//
-//    @GetMapping("/wishlist.html")
-//    public ModelAndView showWishList(){
-//        WishList wishList = new WishList();
-//        ModelAndView mav = new ModelAndView();
-//        mav.addObject(this.wishListService.showProductByWishList());
-//        return mav;
-//    }
-//
-////    @ModelAttribute("customer")
-////    public Customer findCustomer(@PathVariable("customerID") Integer customerId) {
-////        return this.WishList.findCustomerByID(customerId);
-////    }
-//
-//    @ModelAttribute("wishlist")
-//    public WishList findWishList(@PathVariable("wishlistID") Integer wishlistID) {
-//        return this.wishListService.findWishListByID(wishlistID);
-//    }
-//
-//    @PostMapping(value = "/customer/{customerId}/wishlist/{wishlistID}/product/new")
-//    public String addProductToWishList(@Valid Integer productID, @Valid Integer customerID, BindingResult result){
-//        if (result.hasErrors()) {
-//            return "wishlist/createOrUpdateProduct";
-//        } else {
-//            this.wishListService.addProductToWishList(productID, customerID);
-//            return "redirect:/wishlist/{customerID}";
-//        }
-//    }
+    @RequestMapping(value = "/wishlistRemoveProduct", method = RequestMethod.POST)
+    public String removeProduct(@ModelAttribute("product") Product product) {
+        wishListService.removeProductFromWishList(product);
+        return "redirect:/wishlist";
+    }
 
 }
