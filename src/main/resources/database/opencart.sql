@@ -4,6 +4,7 @@
 -- ------------------------------------------------------
 -- Server version	8.0.20
 
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -48,7 +49,7 @@ DROP TABLE IF EXISTS `cart`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cart` (
   `customerId` int NOT NULL,
-  `dateAdded` date NOT NULL,
+  `dateAdded` datetime NOT NULL,
   `quantity` int NOT NULL,
   PRIMARY KEY (`customerId`),
   CONSTRAINT `CART_FK_CUSTOMER` FOREIGN KEY (`customerId`) REFERENCES `customer` (`customerId`)
@@ -173,6 +174,34 @@ LOCK TABLES `customer` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `customer-role`
+--
+
+DROP TABLE IF EXISTS `customer-role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `customer-role` (
+  `id` int NOT NULL,
+  `customerId` int NOT NULL,
+  `roleId` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `CUSTOMER_ROLE_FK1_idx` (`customerId`),
+  KEY `CUSTOMER_ROLE_FK2_idx` (`roleId`),
+  CONSTRAINT `CUSTOMER_ROLE_FK1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`customerId`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `CUSTOMER_ROLE_FK2` FOREIGN KEY (`roleId`) REFERENCES `role` (`roleId`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer-role`
+--
+
+LOCK TABLES `customer-role` WRITE;
+/*!40000 ALTER TABLE `customer-role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `customer-role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `order`
 --
 
@@ -181,9 +210,9 @@ DROP TABLE IF EXISTS `order`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `order` (
   `orderId` int NOT NULL AUTO_INCREMENT,
-  `orderDate` date NOT NULL,
-  `requiredDate` date NOT NULL,
-  `shippedDate` date NOT NULL,
+  `orderDate` datetime NOT NULL,
+  `requiredDate` datetime NOT NULL,
+  `shippedDate` datetime NOT NULL,
   `status` varchar(15) NOT NULL,
   `customerId` int NOT NULL,
   PRIMARY KEY (`orderId`),
@@ -242,8 +271,8 @@ CREATE TABLE `product` (
   `description` varchar(1000) NOT NULL,
   `productName` varchar(45) NOT NULL,
   `quantity` int NOT NULL,
-  `dateAdded` date NOT NULL,
-  `dateModified` date DEFAULT NULL,
+  `dateAdded` datetime NOT NULL,
+  `dateModified` datetime DEFAULT NULL,
   `priceunit` double NOT NULL,
   PRIMARY KEY (`productId`),
   KEY `PRODUCT_FK_BRAND_idx` (`brandId`),
@@ -258,6 +287,29 @@ CREATE TABLE `product` (
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `role` (
+  `roleId` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`roleId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role`
+--
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -324,4 +376,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-20 13:23:04
+-- Dump completed on 2020-07-30  9:47:52
