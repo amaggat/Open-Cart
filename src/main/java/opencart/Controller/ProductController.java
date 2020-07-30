@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.Collection;
 
 @Controller
@@ -54,7 +53,6 @@ public class ProductController {
         System.out.println(product);
         return "redirect:/list";
     }
-
     @RequestMapping("/delete/{id}")
     public ModelAndView deleteProduct(@PathVariable(name = "id") Integer id)
     {
@@ -63,7 +61,6 @@ public class ProductController {
         modelAndView.addObject("product",product);
         return modelAndView;
     }
-
     @RequestMapping(value = "/deleteProduct", method = RequestMethod.POST)
     public String deleteProduct(@ModelAttribute("product") Product product) {
         productService.deleteProduct(product.getProductId());

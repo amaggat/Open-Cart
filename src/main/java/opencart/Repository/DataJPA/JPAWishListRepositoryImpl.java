@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.Collection;
 import java.util.List;
 
@@ -55,7 +56,9 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
     //not
     @Override
     public Product findProductByID(Integer ID) {
-        return null;
+        TypedQuery<Product> q = em.createQuery("SELECT b FROM Product b WHERE b.productId = :id", Product.class);
+        q.setParameter("id", ID);
+        return q.getSingleResult();
     }
 
     @Override

@@ -36,8 +36,8 @@ public class JPACartRepositoryImpl implements CartRepository {
 
     @Override
     public void removeProductInCart(Product product) {
-//        Query query = this.em.createNativeQuery("DELETE FROM `cart-product` cp WHERE cp.productId = " + product.getProductId());
-//        query.executeUpdate();
+        Query query = this.em.createNativeQuery("DELETE FROM `cart-product` cp WHERE cp.productId = " + product.getProductId());
+        query.executeUpdate();
     }
 
     @Override
@@ -75,6 +75,8 @@ public class JPACartRepositoryImpl implements CartRepository {
     @Override
     public Product findProductById(Integer ID)
     {
-        return null;
+        TypedQuery<Product> q = em.createQuery("SELECT b FROM Product b WHERE b.productId = :id", Product.class);
+        q.setParameter("id", ID);
+        return q.getSingleResult();
     }
 }

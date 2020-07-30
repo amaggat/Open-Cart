@@ -23,7 +23,7 @@ public class WishListController {
         return "wishlist";
     }
 
-    @RequestMapping("/wishlist/remove/{id}")
+    @RequestMapping("/remove-from-wishlist/{id}")
     public ModelAndView removeProductForm(@PathVariable("id") Integer id)
     {
         ModelAndView modelAndView = new ModelAndView("removeProductFromWishlist");

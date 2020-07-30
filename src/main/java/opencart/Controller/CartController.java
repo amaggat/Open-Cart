@@ -22,7 +22,7 @@ public class CartController{
         model.addAttribute("cartProducts",cartProducts);
         return "cartlist";
     }
-    @RequestMapping("/remove/{id}")
+    @RequestMapping("/remove-from-cart/{id}")
     public ModelAndView removeProductForm(@PathVariable("id") Integer id)
     {
         ModelAndView modelAndView = new ModelAndView("removeProductFromCart");
@@ -36,6 +36,5 @@ public class CartController{
         System.out.println(product);
         return "redirect:/cartList";
     }
-
 
 }
