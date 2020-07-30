@@ -73,11 +73,9 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
     @Override
     @SuppressWarnings("unchecked")
     public WishList findWishListByID(Integer ID) {
-//        Query query = this.em.createQuery("SELECT customerName, customerID FROM customer cus" +
-//                "INNER JOIN wishlist w ON w.customerID = cus.customerID" +
-//                "WHERE cus.customerID = :ID");
-//        WishList wishList = (WishList) query.setParameter("ID", ID).getSingleResult();
-        return null;
+        Query query = this.em.createQuery("SELECT w FROM WishList w WHERE w.customerId=:ID");
+        query.setParameter("ID", ID);
+        return (WishList) query.getSingleResult();
     }
 
 }

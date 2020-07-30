@@ -15,7 +15,7 @@ public class WishListController {
     @Autowired
     private  WishListService wishListService;
 
-    @RequestMapping("/customer/{customerID}/wishlist")
+    @RequestMapping("/wishlist")
     public String showWishlist(Model model, @PathVariable("customerID") Integer ID)
     {
         Collection<Product> wishListProducts = wishListService.showProductByWishList(ID);

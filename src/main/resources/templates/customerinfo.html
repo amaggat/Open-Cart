@@ -11,9 +11,12 @@
     <form  th:object="${customer}" method="post">
         <table border="0" cellpadding="10">
             <tr>
-                <a th:href="@{'/customer/'  + ${customer.customerId} + '/cart/' }">Cart</a>
+<!--                <a th:href="@{'/customer/'  + ${customer.customerId} + '/cart/' }">Cart</a>-->
+<!--                <br/><br/>-->
+<!--                <a th:href="@{'/customer/'  + ${customer.customerId} + '/wishlist/' }">WishList</a>-->
+                <a th:href="@{'/cartlist/' }">Cart</a>
                 <br/><br/>
-                <a th:href="@{'/customer/'  + ${customer.customerId} + '/wishlist/' }">WishList</a>
+                <a th:href="@{'/wishlist/' }">WishList</a>
             </tr>
             <tr th:text="${customer.customerId}">Customer ID</tr>
             <tr th:text="${customer.firstName}">First Name</tr>
