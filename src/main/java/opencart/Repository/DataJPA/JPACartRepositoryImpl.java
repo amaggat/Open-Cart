@@ -52,13 +52,16 @@ public class JPACartRepositoryImpl implements CartRepository {
 
     @Override
     public Cart findCartByID(Integer ID) {
-
-        return null;
+        TypedQuery<Cart> q = em.createQuery("SELECT c FROM Cart c WHERE c.customerId = :id", Cart.class);
+        q.setParameter("id", ID);
+        return q.getSingleResult();
     }
 
     @Override
     public Collection<Cart> findCartByName(String name) {
-        return null;
+        TypedQuery<Cart> q = em.createQuery("SELECT c FROM Cart c WHERE c.customer.lastName = :name OR c.customer.firstName = :name", Cart.class);
+        q.setParameter("name", name);
+        return q.getResultList();
     }
 
     @Override

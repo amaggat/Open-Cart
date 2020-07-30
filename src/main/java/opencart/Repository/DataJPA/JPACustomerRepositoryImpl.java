@@ -18,17 +18,27 @@ public class JPACustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public Collection<Customer> findByAccountNameAndPassword(String accountName, String password) {
-        return null;
+        TypedQuery<Customer> query = this.em.createQuery("SELECT c FROM Customer c " +
+                "WHERE c.accountName=:account AND c.password=:password", Customer.class);
+        query.setParameter("account", accountName);
+        query.setParameter("password", password);
+        return query.getResultList();
     }
 
     @Override
     public Collection<Customer> findCustomerByName(String customerName) {
-        return null;
+        TypedQuery<Customer> query = this.em.createQuery("SELECT c FROM Customer c " +
+                "WHERE c.lastName=:name OR c.firstName=:name", Customer.class);
+        query.setParameter("name", customerName);
+        return query.getResultList();
     }
 
     @Override
     public Customer findCustomerByID(Integer ID) {
-        return null;
+        TypedQuery<Customer> query = this.em.createQuery("SELECT c FROM Customer c " +
+                "WHERE c.customerId=:id", Customer.class);
+        query.setParameter("id", ID);
+        return query.getSingleResult();
     }
 
     @Override
