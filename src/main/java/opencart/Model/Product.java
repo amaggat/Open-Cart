@@ -12,17 +12,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Set;
 
-//@Getter
-//@Setter
-//@AllArgsConstructor
-//@NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @EntityScan(basePackages = {"opencart.Model"})
 @Table(name = "product")
@@ -67,12 +67,12 @@ public class Product {
     private String description;
 
     @Column(name = "dateadded")
-    @DateTimeFormat(pattern = "dd/mm/yyyy")
-    private LocalDate dateAdded;
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    private String dateAdded;
 
     @Column(name = "datemodified")
-    @DateTimeFormat(pattern = "dd/mm/yyyy")
-    private LocalDate dateModified;
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    private String dateModified;
 
     @Column(name = "quantity")
     private int quantity;
@@ -80,114 +80,4 @@ public class Product {
     @Column(name = "priceunit")
     private double price;
 
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
-    }
-    public Integer getBrandId(Brand brand)
-    {
-        return brand.getId();
-    }
-
-
-
-
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
-    }
-
-    public Set<WishList> getWishLists() {
-        return wishLists;
-    }
-
-    public void setWishLists(Set<WishList> wishLists) {
-        this.wishLists = wishLists;
-    }
-
-    public Set<Cart> getCarts() {
-        return carts;
-    }
-
-    public void setCarts(Set<Cart> carts) {
-        this.carts = carts;
-    }
-
-    public Set<OrderDetail> getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void setOrderDetails(Set<OrderDetail> orderDetails) {
-        this.orderDetails = orderDetails;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
-
-
-
-    public LocalDate getDateAdded() {
-        return dateAdded;
-    }
-
-    public void setDateAdded(String dateAdded) {
-        this.dateAdded = LocalDate.parse(dateAdded);
-    }
-
-    public void setDateAdded(LocalDate dateAdded) {
-        this.dateAdded = dateAdded;
-    }
-
-    public LocalDate getDateModified() {
-        return dateModified;
-    }
-
-    public void setDateModified(LocalDate dateModified) {
-        this.dateModified = dateModified;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

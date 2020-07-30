@@ -11,6 +11,7 @@ public interface ProductService {
     Collection<Product> findProductByName(String name);
     Product findProductByID(Integer ID);
     Collection<Product> listAllProducts();
+    void addProduct(Product product);
     void saveProduct(Product product);
     void deleteProduct(Integer ID);
 }

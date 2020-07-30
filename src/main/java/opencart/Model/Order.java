@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -29,14 +30,14 @@ public class Order extends BaseEntity {
     private String status;
 
     @Column(name = "orderDate")
-    @DateTimeFormat(pattern = "yyyy/mm/dd")
-    private LocalDate orderDate;
+    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    private Date orderDate;
 
     @Column(name = "requiredDate")
-    @DateTimeFormat(pattern = "yyyy/mm/dd")
-    private LocalDate requiredDate;
+    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    private Date requiredDate;
 
     @Column(name = "shippedDate")
-    @DateTimeFormat(pattern = "yyyy/mm/dd")
-    private LocalDate shippedDate;
+    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    private Date shippedDate;
 }

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Collection;
 
 @Service
@@ -44,8 +43,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional()
-    public void saveProduct(Product product)
+    public void addProduct(Product product)
     {
+        productRepository.add(product);
+    }
+
+    @Override
+    @Transactional()
+    public void saveProduct(Product product) {
         productRepository.save(product);
     }
 

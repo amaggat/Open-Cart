@@ -48,7 +48,7 @@ public class JPAProductRepositoryImpl implements ProductRepository {
 
     //oke
     @Override
-    public void save(Product b) {
+    public void add(Product b) {
         Query query = this.em.createNativeQuery("INSERT INTO product " +
                 "(productId, brandId, description, productName, quantity, dateAdded, dateModified, priceunit) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
@@ -60,6 +60,28 @@ public class JPAProductRepositoryImpl implements ProductRepository {
         query.setParameter(6, b.getDateAdded());
         query.setParameter(7, b.getDateModified());
         query.setParameter(8, b.getPrice());
+        query.executeUpdate();
+    }
+
+    @Override
+    public void save(Product b) {
+        Query query = this.em.createQuery("UPDATE Product p " +
+                "SET p.id=:pid, " +
+                "p.brand.id=:bid, " +
+                "p.description=:des, " +
+                "p.name=:name, " +
+                "p.quantity=:qtt, " +
+                "p.dateAdded=:da, " +
+                "p.dateModified=:dm, " +
+                "p.price=:pr");
+        query.setParameter("pid", b.getId());
+        query.setParameter("bid", b.getBrand().getId());
+        query.setParameter("des", b.getDescription());
+        query.setParameter("name", b.getName());
+        query.setParameter("qtt", b.getQuantity());
+        query.setParameter("da", b.getDateAdded());
+        query.setParameter("dm", b.getDateModified());
+        query.setParameter("pr", b.getPrice());
         query.executeUpdate();
     }
 
