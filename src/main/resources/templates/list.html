@@ -23,14 +23,13 @@
             <th>Actions</th>
         </tr>
         <tr th:each = "product : ${listProducts}">
-
             <td th:text="${product.id}">Product ID</td>
-            <td th:text="${product.brand.getId()}">Brand Id</td>
+            <td th:text="${product.brand.id}">Brand Id</td>
             <td th:text="${product.description}">Description</td>
             <td th:text="${product.name}">Product Name</td>
             <td th:text="${product.quantity}">Quantity</td>
-            <td th:datetime="${product.dateAdded}">Date Added</td>
-            <td th:datetime="${product.dateModified}">Date Modified</td>
+            <td th:date="${product.dateAdded}">Date Added</td>
+            <td th:date="${product.dateModified}">Date Modified</td>
             <td th:text="${product.price}">Price Unit</td>
             <td>
                 <a th:href="@{'/edit/' + ${product.id} }">Edit</a>
