@@ -28,12 +28,18 @@ public class CartController{
         return "cartList";
     }
     @RequestMapping("/remove/{id}")
-    public ModelAndView removeProduct(@PathVariable("id") Integer id)
+    public ModelAndView removeProductForm(@PathVariable("id") Integer id)
     {
-        ModelAndView modelAndView = new ModelAndView("removeProduct");
-        Product product = cartService.removeProductFromCart(cartService.findProductByID(id));
+        ModelAndView modelAndView = new ModelAndView("removeProductFromCart");
+        Product product = cartService.findProductByID(id);
         modelAndView.addObject("product",product);
         return modelAndView;
+    }
+    @RequestMapping(value = "/removeProduct", method = RequestMethod.POST)
+    public String removeProduct(@ModelAttribute("product") Product product) {
+        cartService.removeProductFromCart(product);
+        System.out.println(product);
+        return "redirect:/cartList";
     }
 
 
