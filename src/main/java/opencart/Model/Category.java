@@ -21,9 +21,7 @@ public class Category {
     @Column(name = "categoryId", nullable = false)
     private Integer categoryID;
 
-    @ManyToMany
-    @JoinTable(name = "category-product", joinColumns = @JoinColumn(name = "categoryId"),
-            inverseJoinColumns = @JoinColumn(name = "productId"))
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
     private Set<Product> products;
 
     @Column(name = "name")

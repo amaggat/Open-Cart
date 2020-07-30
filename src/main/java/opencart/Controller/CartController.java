@@ -30,7 +30,7 @@ public class CartController{
         modelAndView.addObject("product",product);
         return modelAndView;
     }
-    @RequestMapping(value = "/removeProduct", method = RequestMethod.POST)
+    @RequestMapping(value = "/cartRemoveProduct", method = RequestMethod.POST)
     public String removeProduct(@ModelAttribute("product") Product product) {
         cartService.removeProductFromCart(product);
         System.out.println(product);

@@ -13,7 +13,6 @@
     <a th:href="@{/cartlist}">Cart</a>
     <br>
     <table border="1" cellpadding="10">
-
         <tr>
             <th>Product ID</th>
             <th>Product Name</th>
@@ -22,6 +21,7 @@
             <th>Date Modified</th>
             <th>Quantity</th>
             <th>Price Unit</th>
+            <th>Actions</th>
         </tr>
         <tr th:each = "product : ${wishlistProducts}">
             <td th:text="${product.productId}">Product ID</td>
@@ -31,6 +31,9 @@
             <td th:text="${product.dateModified}">Date Modified</td>
             <td th:text="${product.quantity}">Quantity</td>
             <td th:text="${product.price}">Price Unit</td>
+            <td>
+                <a th:href="@{'/wishlist/remove' + ${product.id} }">Remove</a>
+            </td>
         </tr>
     </table>
 </div>
