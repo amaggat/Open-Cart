@@ -28,8 +28,8 @@ public class CustomerController {
         model.addAttribute("listCustomer",listCustomer);
         return "customer";
     }
-    @RequestMapping("/customer?")
-    public ModelAndView editProduct(@PathVariable("id") Integer id)
+    @RequestMapping("/customer/{id}")
+    public ModelAndView editCustomer(@PathVariable("id") Integer id)
     {
         ModelAndView modelAndView = new ModelAndView("access");
         Customer customer = customerService.findCustomerByID(id);
@@ -40,8 +40,7 @@ public class CustomerController {
     @RequestMapping(value = "/confirm", method = RequestMethod.POST)
     public String checkCustomer(@ModelAttribute("customer") Customer customer) {
         customerService.findCustomerByAccountAndPassword(customer.getAccountName(),customer.getPassword());
-        return "customerinfo";
+        return "/customerinfo";
     }
-
 
 }

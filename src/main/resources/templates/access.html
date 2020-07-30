@@ -11,8 +11,11 @@
     <form th:action = "@{/confirm}" th:object="${customer}" method="post">
         <table border="0" cellpadding="10">
             <tr>
+                <td><input type="hidden" th:field = "*{customerId}"></td>
+            </tr>
+            <tr>
                 <td>Account Name</td>
-                <input type="text" th:field = "*{accountName}">
+                <td><input type="text" th:field = "*{accountName}"></td>
             </tr>
             <tr>
                 <td>PassWord</td>
