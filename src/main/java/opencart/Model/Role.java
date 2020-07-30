@@ -21,6 +21,4 @@ public class Role {
 
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "role")
-    private Set<Customer> customers;
 }

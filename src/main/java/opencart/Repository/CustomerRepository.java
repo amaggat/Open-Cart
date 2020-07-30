@@ -8,5 +8,6 @@ public interface CustomerRepository {
     Collection<Customer> findByAccountNameAndPassword (String accountName, String password);
     Collection<Customer> findCustomerByName (String customerName);
     Customer findCustomerByID(Integer ID);
+
     Customer findCustomerAccount(String accountName);
 }
