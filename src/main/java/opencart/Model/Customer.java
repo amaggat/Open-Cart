@@ -23,8 +23,15 @@ public class Customer {
     @Column(name = "customerId", nullable = false)
     private Integer customerId;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private Set<CustomerRole> customerRoles;
+//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+//    private Set<CustomerRole> customerRoles;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "customer-role",
+            joinColumns = @JoinColumn(name = "customerId"),
+            inverseJoinColumns = @JoinColumn(name = "roleId"))
+    private Set<Role> roles;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", fetch = FetchType.LAZY)
     private Set<Order> orders;

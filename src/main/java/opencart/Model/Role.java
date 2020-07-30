@@ -20,8 +20,11 @@ public class Role {
     @Column(name = "roleId")
     private Integer roleId;
 
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
-    private Set<CustomerRole> customerRoles;
+//    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+//    private Set<CustomerRole> customerRoles;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
+    private Set<Customer> customers;
 
     private String name;
 
