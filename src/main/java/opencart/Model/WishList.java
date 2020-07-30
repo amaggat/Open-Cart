@@ -16,7 +16,11 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "wishlist")
-public class WishList extends BaseEntity{
+public class WishList {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customerId")
+    private Integer customerId;
 
     @OneToOne
     @PrimaryKeyJoinColumn(name = "customerId", foreignKey = @ForeignKey(name = "WISHLIST_FK_CUSTOMER"))

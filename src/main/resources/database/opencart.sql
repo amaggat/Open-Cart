@@ -276,7 +276,7 @@ CREATE TABLE `product` (
   `priceunit` double NOT NULL,
   PRIMARY KEY (`productId`),
   KEY `PRODUCT_FK_BRAND_idx` (`brandId`),
-  CONSTRAINT `PRODUCT_FK_BRAND` FOREIGN KEY (`brandId`) REFERENCES `brand` (`brandId`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `PRODUCT_FK_BRAND` FOREIGN KEY (`brandId`) REFERENCES `brand` (brandId) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

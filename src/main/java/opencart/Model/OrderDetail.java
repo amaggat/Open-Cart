@@ -17,7 +17,11 @@ import javax.persistence.Entity;
 //@EntityScan( basePackages = {"opencart.Model"} )
 
 @Table(name = "orderdetail")
-public class OrderDetail extends BaseEntity{
+public class OrderDetail {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "orderDetailId")
+    private Integer orderDetailId;
 
     @ManyToOne
     @JoinColumn(name = "productID")

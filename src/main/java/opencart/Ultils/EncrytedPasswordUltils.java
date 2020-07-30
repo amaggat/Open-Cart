@@ -10,7 +10,7 @@ public class EncrytedPasswordUltils {
     }
 
     public static void main(String[] args) {
-        String password = "123456";
+        String password = "123";
 
         String encrytedPassword = encrytedPassword(password);
 

@@ -27,8 +27,8 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "productid")
-    private Integer id;
+    @Column(name = "productId")
+    private Integer productId;
 
     @ManyToOne
     @JoinColumn(name = "brandid")

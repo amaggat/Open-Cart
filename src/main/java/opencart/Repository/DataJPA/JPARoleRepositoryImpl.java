@@ -20,7 +20,7 @@ public class JPARoleRepositoryImpl implements RoleRepository {
     @Override
     public List<String> getRoleNames(Integer customerId) {
         try {
-            TypedQuery<String> q = em.createQuery("SELECT cr.role.name FROM CustomerRole cr WHERE cr.customer.ID = :customerId", String.class);
+            TypedQuery<String> q = em.createQuery("SELECT cr.role.name FROM CustomerRole cr WHERE cr.customer.customerId = :customerId", String.class);
             q.setParameter("customerId", customerId);
             return q.getResultList();
         } catch (NoResultException e) {

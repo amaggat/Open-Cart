@@ -79,7 +79,7 @@ public class JPACartRepositoryImpl implements CartRepository {
 
     @Override
     public void save(Cart cart) {
-        if (cart.getId() == null) this.em.persist(cart);
+        if (cart.getCustomerId() == null) this.em.persist(cart);
         else this.em.merge(cart);
     }
 

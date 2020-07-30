@@ -37,7 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         System.out.println("Found User: " + customer);
 
         // [ROLE_USER, ROLE_ADMIN,..]
-        List<String> roleNames = this.roleRepository.getRoleNames(customer.getId());
+        List<String> roleNames = this.roleRepository.getRoleNames(customer.getCustomerId());
 
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
         if (roleNames != null) {

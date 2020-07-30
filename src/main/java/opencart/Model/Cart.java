@@ -17,7 +17,12 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "cart")
-public class Cart extends BaseEntity{
+public class Cart {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customerId")
+    private Integer customerId;
+
     @OneToOne
     @PrimaryKeyJoinColumn(name = "customerId", foreignKey = @ForeignKey(name = "CART_FK_CUSTOMER"))
     private Customer customer;

@@ -17,7 +17,12 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "order")
-public class Order extends BaseEntity {
+public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "orderId", nullable = false)
+    private Integer orderId;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY)
     private Set<OrderDetail> orderDetails;
 

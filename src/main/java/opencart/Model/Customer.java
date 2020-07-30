@@ -17,7 +17,14 @@ import java.util.*;
 @Setter
 @Entity
 @Table(name = "customer")
-public class Customer extends BaseEntity {
+public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customerId", nullable = false)
+    private Integer customerId;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private Set<CustomerRole> customerRoles;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", fetch = FetchType.LAZY)
     private Set<Order> orders;

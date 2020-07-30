@@ -13,7 +13,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "customer-role")
-public class CustomerRole extends BaseEntity{
+public class CustomerRole {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer ID;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customerID", nullable = false)
     private Customer customer;

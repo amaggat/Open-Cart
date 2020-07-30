@@ -39,6 +39,6 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public Collection<Product> removeProductFromBrand(Product product) {
-        return brandRepository.removeProductFromBrand(product.getId());
+        return brandRepository.removeProductFromBrand(product.getProductId());
     }
 }

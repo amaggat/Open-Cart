@@ -17,7 +17,11 @@ import java.util.Set;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "roleId")
+    private Integer roleId;
+
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    private Set<CustomerRole> customerRoles;
 
     private String name;
 

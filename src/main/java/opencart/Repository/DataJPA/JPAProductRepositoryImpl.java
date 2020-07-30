@@ -40,9 +40,9 @@ public class JPAProductRepositoryImpl implements ProductRepository {
 
     //oke
     @Override
-    public Product findById(int ID) {
-        TypedQuery<Product> q = em.createQuery("SELECT b FROM Product b WHERE b.id = :id", Product.class);
-        q.setParameter("id", ID);
+    public Product findById(int productID) {
+        TypedQuery<Product> q = em.createQuery("SELECT b FROM Product b WHERE b.productId = :productId", Product.class);
+        q.setParameter("productId", productID);
         return q.getSingleResult();
         //return em.find(Product.class, ID);
     }
@@ -60,7 +60,7 @@ public class JPAProductRepositoryImpl implements ProductRepository {
         product.setBrand(b.getBrand());
         product.setCarts(b.getCarts());
         product.setCategories(b.getCategories());
-        product.setId(b.getId());
+        product.setProductId(b.getProductId());
         product.setDateModified(b.getDateModified());
         product.setDescription(b.getDescription());
         product.setName(b.getName());
@@ -78,7 +78,7 @@ public class JPAProductRepositoryImpl implements ProductRepository {
 //        } else {
 //            em.merge(b);
 //        }
-        Query query = this.em.createQuery("DELETE FROM Product p WHERE p.id = " + ID);
+        Query query = this.em.createQuery("DELETE FROM Product p WHERE p.productId = " + ID);
         query.executeUpdate();
         //query.setParameter("id", ID).executeUpdate();
     }
