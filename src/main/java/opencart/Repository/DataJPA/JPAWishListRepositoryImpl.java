@@ -19,9 +19,9 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
     private EntityManager em;
 
     @Override
-    public List<Product> findAllProductInWishList() {
-        Query query = this.em.createQuery("SELECT productName FROM product p INNER JOIN wishlist-product wp ON wp.productID=p.productID INNER JOIN wishlist w ON w.customerID = wp.customerID");
-        return null;
+    public Collection<Product> findAllProductInWishList() {
+        Query query = this.em.createQuery("SELECT p FROM Product p");
+        return query.getResultList();
     }
 
     @Override

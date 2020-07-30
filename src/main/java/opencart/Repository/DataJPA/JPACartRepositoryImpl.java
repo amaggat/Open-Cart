@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.Collection;
 
 @Repository
@@ -20,35 +21,33 @@ public class JPACartRepositoryImpl implements CartRepository {
     @Override
     @SuppressWarnings("unchecked")
     public Collection<Product> findAllProduct() {
-        Query query = this.em.createNativeQuery("SELECT * FROM product p" +
-                "INNER JOIN `cart-product` cp ON cp.productId = pINNER.productId");
-        query.executeUpdate();
+        Query query = this.em.createQuery("SELECT p FROM Product p");
         return query.getResultList();
     }
 
     @Override
     public void addToWishList(Product product, Integer customerID) {
-        Query query = this.em.createNativeQuery("INSERT INTO `wishlist-product`(customerId, productId) " +
-                "VALUES (?, ?)");
-        query.setParameter(1, customerID);
-        query.setParameter(2, product.getProductId());
-        query.executeUpdate();
+//        Query query = this.em.createNativeQuery("INSERT INTO `wishlist-product`(customerId, productId) " +
+//                "VALUES (?, ?)");
+//        query.setParameter(1, customerID);
+//        query.setParameter(2, product.getProductId());
+//        query.executeUpdate();
     }
 
     @Override
     public void removeProductInCart(Product product) {
-        Query query = this.em.createNativeQuery("DELETE FROM `cart-product` cp WHERE cp.productId = " + product.getProductId());
-        query.executeUpdate();
+//        Query query = this.em.createNativeQuery("DELETE FROM `cart-product` cp WHERE cp.productId = " + product.getProductId());
+//        query.executeUpdate();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void addProduct(Integer productID, Integer customerID) {
-        Query query = this.em.createNativeQuery("INSERT INTO `cart-product`(customerId, productId) " +
-                "VALUES (?, ?)");
-        query.setParameter(1, customerID);
-        query.setParameter(2, customerID);
-        query.executeUpdate();
+//        Query query = this.em.createNativeQuery("INSERT INTO `cart-product`(customerId, productId) " +
+//                "VALUES (?, ?)");
+//        query.setParameter(1, customerID);
+//        query.setParameter(2, customerID);
+//        query.executeUpdate();
     }
 
     @Override

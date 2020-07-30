@@ -17,7 +17,7 @@ public class JPAProductRepositoryImpl implements ProductRepository {
     //oke
     @Override
     public Collection<Product> findAllProduct() {
-        TypedQuery<Product> q = em.createQuery("SELECT b FROM Product b",Product.class);
+        TypedQuery<Product> q = em.createQuery("SELECT b FROM Product b ORDER BY b.name ",Product.class);
         return (Collection<Product>)q.getResultList();
     }
 

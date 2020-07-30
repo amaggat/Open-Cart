@@ -10,7 +10,7 @@ public interface CartService {
     Cart findCartByID(Integer ID);
     Double checkOutCart();
     Collection<Product> showProductByCart();
-    Collection<Product> addProductToCart(Integer productID, Integer customerID);
-    Product removeProductFromCart(Product product);
+    void addProductToCart(Integer productID, Integer customerID);
+    void removeProductFromCart(Product product);
     Product findProductByID(Integer ID);
 }

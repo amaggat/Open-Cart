@@ -39,21 +39,21 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional()
     public Collection<Product> showProductByCart() {
         return cartRepository.findAllProduct();
     }
 
     @Override
     @Transactional
-    public Collection<Product> addProductToCart(Integer productID, Integer customerID) {
-        return cartRepository.addProduct(productID, customerID);
+    public void addProductToCart(Integer productID, Integer customerID) {
+        cartRepository.addProduct(productID, customerID);
     }
 
     @Override
     @Transactional
-    public Collection<Product> removeProductFromCart(Product product) {
-        return cartRepository.removeProductInCart(product);
+    public void removeProductFromCart(Product product) {
+        cartRepository.removeProductInCart(product);
     }
 
     @Override
@@ -61,6 +61,5 @@ public class CartServiceImpl implements CartService {
     public Product findProductByID(Integer ID) {
         return cartRepository.findProductById(ID);
     }
-
 
 }
