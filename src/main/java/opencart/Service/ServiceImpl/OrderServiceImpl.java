@@ -26,12 +26,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public Collection<Product> showProductOrdered() {
-        return orderRepository.showProductOrdered();
+    public Collection<Order> listAllOrder() {
+        return orderRepository.listAllOrders();
     }
 
-    @Override
-    public void removeOrder(Order order) {
-        orderRepository.delete(order);
-    }
+//    @Override
+//    public void removeOrder(Order order) {
+//        orderRepository.delete(order);
+//    }
 }

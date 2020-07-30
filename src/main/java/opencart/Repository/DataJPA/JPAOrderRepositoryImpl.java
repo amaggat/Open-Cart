@@ -3,11 +3,13 @@ package opencart.Repository.DataJPA;
 import opencart.Model.Order;
 import opencart.Model.Product;
 import opencart.Repository.OrderRepository;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.Collection;
 
 @Repository
@@ -31,13 +33,14 @@ public class JPAOrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public void delete(Order order) {
-        Query query = this.em.createQuery("DELETE FROM Order o WHERE o.orderId = :ID");
-        query.setParameter("ID", order.getOrderId()).executeUpdate();
+    public void deleteById(Integer Id) {
+
     }
 
     @Override
-    public Collection<Product> showProductOrdered() {
-        return null;
+    public Collection<Order> listAllOrders() {
+        TypedQuery<Order> query = (TypedQuery<Order>) em.createQuery("SELECT o FROM Order o", Order.class);
+        return (Collection<Order>) query.getResultList();
     }
+
 }

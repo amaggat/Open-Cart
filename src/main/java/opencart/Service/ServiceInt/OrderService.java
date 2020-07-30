@@ -6,6 +6,6 @@ import opencart.Model.Product;
 import java.util.Collection;
 
 public interface OrderService {
-    Collection<Product> showProductOrdered();
-    void removeOrder(Order order);
+    Collection<Order> listAllOrder();
+//    void removeOrder(Order order);
 }
