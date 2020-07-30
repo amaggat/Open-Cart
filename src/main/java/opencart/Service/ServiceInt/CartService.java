@@ -3,6 +3,7 @@ package opencart.Service.ServiceInt;
 import opencart.Model.Cart;
 import opencart.Model.Product;
 
+import javax.persistence.Column;
 import java.util.Collection;
 
 public interface CartService {
@@ -11,6 +12,6 @@ public interface CartService {
     Double checkOutCart();
     Collection<Product> showProductByCart();
     Collection<Product> addProductToCart(Integer productID, Integer customerID);
-    Product removeProductFromCart(Product product);
+    Collection<Product> removeProductFromCart(Product product);
     Product findProductByID(Integer ID);
 }
