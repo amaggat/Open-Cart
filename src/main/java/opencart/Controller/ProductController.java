@@ -34,7 +34,6 @@ public class ProductController {
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") Product product) {
-        System.out.println(product.getName());
         productService.addProduct(product);
         System.out.println(product);
         return "redirect:/list";
@@ -51,7 +50,6 @@ public class ProductController {
 
     @RequestMapping(value = "/saveProduct", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute("product") Product product) {
-        System.out.println(product.getName());
         productService.saveProduct(product);
         System.out.println(product);
         return "redirect:/list";
@@ -68,7 +66,6 @@ public class ProductController {
 
     @RequestMapping(value = "/deleteProduct", method = RequestMethod.POST)
     public String deleteProduct(@ModelAttribute("product") Product product) {
-        System.out.println(product.getName());
         productService.deleteProduct(product.getProductId());
         System.out.println(product);
         return "redirect:/list";

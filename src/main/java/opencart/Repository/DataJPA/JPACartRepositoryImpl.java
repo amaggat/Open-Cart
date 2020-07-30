@@ -64,12 +64,18 @@ public class JPACartRepositoryImpl implements CartRepository {
 
     @Override
     public void save(Cart cart) {
-        if (cart.getCustomerId() == null) this.em.persist(cart);
-        else this.em.merge(cart);
+//        if (cart.getCustomerId() == null) this.em.persist(cart);
+//        else this.em.merge(cart);
     }
 
     @Override
     public Double checkOut() {
+        return null;
+    }
+
+    @Override
+    public Product findProductById(Integer ID)
+    {
         return null;
     }
 }

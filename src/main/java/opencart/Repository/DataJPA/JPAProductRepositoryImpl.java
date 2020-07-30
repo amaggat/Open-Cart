@@ -29,6 +29,7 @@ public class JPAProductRepositoryImpl implements ProductRepository {
         return (Collection<Product>) q.getResultList();
     }
 
+
     //oke
     @Override
     public Product findById(int ID) {
