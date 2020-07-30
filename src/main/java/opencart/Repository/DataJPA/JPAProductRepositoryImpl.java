@@ -5,7 +5,6 @@ import opencart.Model.Product;
 import opencart.Repository.ProductRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -40,47 +39,62 @@ public class JPAProductRepositoryImpl implements ProductRepository {
 
     //oke
     @Override
-    public Product findById(int productID) {
-        TypedQuery<Product> q = em.createQuery("SELECT b FROM Product b WHERE b.productId = :productId", Product.class);
-        q.setParameter("productId", productID);
+    public Product findById(int ID) {
+        TypedQuery<Product> q = em.createQuery("SELECT b FROM Product b WHERE b.id = :id", Product.class);
+        q.setParameter("id", ID);
         return q.getSingleResult();
         //return em.find(Product.class, ID);
     }
 
     //oke
     @Override
+    public void add(Product b) {
+        Query query = this.em.createNativeQuery("INSERT INTO product " +
+                "(productId, brandId, description, productName, quantity, dateAdded, dateModified, priceunit) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        query.setParameter(1, b.getId());
+        query.setParameter(2, b.getBrand().getId());
+        query.setParameter(3, b.getDescription());
+        query.setParameter(4, b.getName());
+        query.setParameter(5, b.getQuantity());
+        query.setParameter(6, b.getDateAdded());
+        query.setParameter(7, b.getDateModified());
+        query.setParameter(8, b.getPrice());
+        query.executeUpdate();
+    }
+
+    @Override
     public void save(Product b) {
-//        if (b.getId() == null) {
-//            this.em.persist(b);
-//        } else {
-//            b = this.em.merge(b);
-//        }
-        Product product = new Product();
-        product.setDateAdded(b.getDateAdded());
-        product.setBrand(b.getBrand());
-        product.setCarts(b.getCarts());
-        product.setCategories(b.getCategories());
-        product.setProductId(b.getProductId());
-        product.setDateModified(b.getDateModified());
-        product.setDescription(b.getDescription());
-        product.setName(b.getName());
-        em.getTransaction().begin();
-        em.persist(product);
-        em.getTransaction().commit();
+        Query query = this.em.createQuery("UPDATE Product p " +
+                "SET p.id=:pid, " +
+                "p.brand.id=:bid, " +
+                "p.description=:des, " +
+                "p.name=:name, " +
+                "p.quantity=:qtt, " +
+                "p.dateAdded=:da, " +
+                "p.dateModified=:dm, " +
+                "p.price=:pr");
+        query.setParameter("pid", b.getId());
+        query.setParameter("bid", b.getBrand().getId());
+        query.setParameter("des", b.getDescription());
+        query.setParameter("name", b.getName());
+        query.setParameter("qtt", b.getQuantity());
+        query.setParameter("da", b.getDateAdded());
+        query.setParameter("dm", b.getDateModified());
+        query.setParameter("pr", b.getPrice());
+        query.executeUpdate();
     }
 
     //oke
     @Override
+    @Transactional
     public void deleteById(Integer ID) {
-//        Product b = em.find(Product.class,ID);
-//        if (em.contains(b)) {
-//            em.remove(b);
-//        } else {
-//            em.merge(b);
-//        }
-        Query query = this.em.createQuery("DELETE FROM Product p WHERE p.productId = " + ID);
-        query.executeUpdate();
-        //query.setParameter("id", ID).executeUpdate();
+        em.getTransaction().begin();
+        Query query = this.em.createQuery("SELECT p FROM Product p WHERE p.id = :ID");
+        query.setParameter("ID", ID).executeUpdate();
+        Product p = (Product) query.getSingleResult();
+        em.remove(p);
+        em.getTransaction().commit();
     }
 
     @Override

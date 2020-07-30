@@ -9,11 +9,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Set;
 
 @Getter
@@ -64,12 +64,12 @@ public class Product {
     private String description;
 
     @Column(name = "dateadded")
-    @DateTimeFormat(pattern = "dd/mm/yyyy")
-    private Date dateAdded;
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    private String dateAdded;
 
     @Column(name = "datemodified")
-    @DateTimeFormat(pattern = "dd/mm/yyyy")
-    private Date dateModified;
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    private String dateModified;
 
     @Column(name = "quantity")
     private int quantity;

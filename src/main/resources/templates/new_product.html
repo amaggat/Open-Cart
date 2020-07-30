@@ -8,7 +8,7 @@
 <div align="center">
     <h1>Create New Product</h1>
     <br/>
-    <form th:action = "@{/saveProduct}" th:object="${product}" method="post">
+    <form th:action = "@{/addProduct}" th:object="${product}" method="post">
         <table border="0" cellpadding="10">
             <tr>
                 <td>Brand ID</td>
@@ -41,7 +41,6 @@
             <tr>
                 <td colspan="2">
                     <button type="submit">Save</button>
-<!--                    <input value="submit" type="submit">-->
                 </td>
             </tr>
         </table>

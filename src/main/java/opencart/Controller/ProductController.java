@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
-import java.util.Properties;
 
 @Controller
 public class ProductController {
@@ -33,11 +32,11 @@ public class ProductController {
         return "new_product";
     }
 
-    @RequestMapping(value = "/saveProduct", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("product") Product product) {
-        //System.out.println(product.getName());
-        productService.saveProduct(product);
-        //System.out.println(product);
+    @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+    public String addProduct(@ModelAttribute("product") Product product) {
+        System.out.println(product.getName());
+        productService.addProduct(product);
+        System.out.println(product);
         return "redirect:/list";
     }
 
@@ -48,6 +47,14 @@ public class ProductController {
         Product product = productService.findProductByID(id);
         modelAndView.addObject("product",product);
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/saveProduct", method = RequestMethod.POST)
+    public String saveProduct(@ModelAttribute("product") Product product) {
+        System.out.println(product.getName());
+        productService.saveProduct(product);
+        System.out.println(product);
+        return "redirect:/list";
     }
 
     @RequestMapping("/delete/{id}")
