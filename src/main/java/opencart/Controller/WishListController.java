@@ -15,15 +15,15 @@ public class WishListController {
     @Autowired
     private  WishListService wishListService;
 
-    @RequestMapping("/wishlist")
-    public String showWishlist(Model model)
+    @RequestMapping("/customer/{customerID}/wishlist")
+    public String showWishlist(Model model, @PathVariable("customerID") Integer ID)
     {
-        Collection<Product> wishListProducts = wishListService.showProductByWishList();
+        Collection<Product> wishListProducts = wishListService.showProductByWishList(ID);
         model.addAttribute("wishlistProducts",wishListProducts);
         return "wishlist";
     }
 
-    @RequestMapping("/remove-from-wishlist/{id}")
+    @RequestMapping("/wishlist/remove/{id}")
     public ModelAndView removeProductForm(@PathVariable("id") Integer id)
     {
         ModelAndView modelAndView = new ModelAndView("removeProductFromWishlist");
