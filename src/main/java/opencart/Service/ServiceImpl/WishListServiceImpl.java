@@ -22,8 +22,8 @@ public class WishListServiceImpl implements WishListService {
 
     @Override
     @Transactional
-    public Collection<Product> showProductByWishList() {
-        return wishListRepository.findAllProductInWishList();
+    public Collection<Product> showProductByWishList(Integer ID) {
+        return wishListRepository.findAllProductInWishList(ID);
     }
 
     @Override

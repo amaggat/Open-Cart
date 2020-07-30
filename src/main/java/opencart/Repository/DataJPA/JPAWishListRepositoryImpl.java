@@ -20,8 +20,11 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
     private EntityManager em;
 
     @Override
-    public Collection<Product> findAllProductInWishList() {
-        Query query = this.em.createQuery("SELECT p FROM Product p");
+    public Collection<Product> findAllProductInWishList(Integer ID) {
+        Query query = this.em.createNativeQuery("SELECT productId, brandId, description, productName, quantity, dateAdded, dateModified, priceunit" +
+                " FROM product p JOIN `wishlist-product` wp " +
+                "ON p.productId = wp.productId " +
+                "WHERE wp.customerId = " + ID);
         return query.getResultList();
     }
 
@@ -70,11 +73,9 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
     @Override
     @SuppressWarnings("unchecked")
     public WishList findWishListByID(Integer ID) {
-//        Query query = this.em.createQuery("SELECT customerName, customerID FROM customer cus" +
-//                "INNER JOIN wishlist w ON w.customerID = cus.customerID" +
-//                "WHERE cus.customerID = :ID");
-//        WishList wishList = (WishList) query.setParameter("ID", ID).getSingleResult();
-        return null;
+        Query query = this.em.createQuery("SELECT w FROM WishList w WHERE w.customerId=:ID");
+        query.setParameter("ID", ID);
+        return (WishList) query.getSingleResult();
     }
 
 }
