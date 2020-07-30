@@ -28,4 +28,9 @@ public class OrderServiceImpl implements OrderService {
     public Collection<Product> showProductOrdered() {
         return orderRepository.showProductOrdered();
     }
+
+    @Override
+    public void removeOrder() {
+        orderRepository.showProductOrdered();
+    }
 }
