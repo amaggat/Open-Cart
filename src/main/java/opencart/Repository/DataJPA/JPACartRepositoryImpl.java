@@ -37,7 +37,7 @@ public class JPACartRepositoryImpl implements CartRepository {
     }
 
     @Override
-    public Collection<Product> removeProductInCart(Product product) {
+    public Product removeProductInCart(Product product) {
         //DELETE FROM cart-product cp WHERE cp.productID = productID
 //        Query query = this.em.createQuery("DELETE FROM cart-product cp WHERE cp.productID = :productID", Product.class);
 //        Collection<Product> products = query.setParameter("productID", product.getId()).getResultList();

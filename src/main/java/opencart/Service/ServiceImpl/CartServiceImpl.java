@@ -52,7 +52,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     @Transactional
-    public Collection<Product> removeProductFromCart(Product product) {
+    public Product removeProductFromCart(Product product) {
         return cartRepository.removeProductInCart(product);
     }
 

@@ -8,7 +8,7 @@ import java.util.Collection;
 
 public interface CartRepository{
     Collection<Product> findAllProduct();
-    Collection<Product> removeProductInCart (Product product);
+    Product removeProductInCart (Product product);
     Collection<Product> addProduct(Integer productID, Integer customerID);
     Cart findCartByID(Integer ID);
     Collection<Cart> findCartByName (String name);

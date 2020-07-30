@@ -52,6 +52,12 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
         return null;
     }
 
+    //not
+    @Override
+    public Product findProductByID(Integer ID) {
+        return null;
+    }
+
     @Override
     public void save(WishList wishList) {
 //        if(wishList.getId()==null) this.em.merge(wishList);
