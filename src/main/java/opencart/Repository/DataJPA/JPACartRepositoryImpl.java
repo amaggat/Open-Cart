@@ -79,8 +79,8 @@ public class JPACartRepositoryImpl implements CartRepository {
 
     @Override
     public void save(Cart cart) {
-        if (cart.getCustomerId() == null) this.em.persist(cart);
-        else this.em.merge(cart);
+//        if (cart.getCustomerId() == null) this.em.persist(cart);
+//        else this.em.merge(cart);
     }
 
     @Override
@@ -88,6 +88,12 @@ public class JPACartRepositoryImpl implements CartRepository {
 //        Query query = this.em.createQuery("SELECT SUM(pINNER.quantity * pINNER.price) AS total FROM Product p" +
 //                "INNER JOIN FETCH Cart c" +
 //                "GROUP ");
+        return null;
+    }
+
+    @Override
+    public Product findProductById(Integer ID)
+    {
         return null;
     }
 }

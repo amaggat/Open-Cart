@@ -11,5 +11,6 @@ public interface CartService {
     Double checkOutCart();
     Collection<Product> showProductByCart();
     Collection<Product> addProductToCart(Integer productID, Integer customerID);
-    Collection<Product> removeProductFromCart(Product product);
+    Product removeProductFromCart(Product product);
+    Product findProductByID(Integer ID);
 }

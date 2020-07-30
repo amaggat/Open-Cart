@@ -55,4 +55,12 @@ public class CartServiceImpl implements CartService {
     public Collection<Product> removeProductFromCart(Product product) {
         return cartRepository.removeProductInCart(product);
     }
+
+    @Override
+    @Transactional
+    public Product findProductByID(Integer ID) {
+        return cartRepository.findProductById(ID);
+    }
+
+
 }

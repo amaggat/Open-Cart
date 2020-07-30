@@ -15,4 +15,6 @@ public interface CartRepository{
     Collection<Product> addToWishList(Product product);
     void save (Cart cart);
     Double checkOut();
+
+    Product findProductById(Integer ID);
 }

@@ -27,5 +27,14 @@ public class CartController{
         model.addAttribute("cartProducts",cartProducts);
         return "cartList";
     }
+    @RequestMapping("/remove/{id}")
+    public ModelAndView removeProduct(@PathVariable("id") Integer id)
+    {
+        ModelAndView modelAndView = new ModelAndView("removeProduct");
+        Product product = cartService.removeProductFromCart(cartService.findProductByID(id));
+        modelAndView.addObject("product",product);
+        return modelAndView;
+    }
+
 
 }
