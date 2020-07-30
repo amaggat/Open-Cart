@@ -20,61 +20,46 @@ public class JPACartRepositoryImpl implements CartRepository {
     @Override
     @SuppressWarnings("unchecked")
     public Collection<Product> findAllProduct() {
-        Query query = this.em.createQuery("SELECT product FROM Product product " +
-                "INNER JOIN product.carts cart");
+        Query query = this.em.createNativeQuery("SELECT * FROM product p" +
+                "INNER JOIN `cart-product` cp ON cp.productId = pINNER.productId");
+        query.executeUpdate();
         return query.getResultList();
     }
 
     @Override
-    public Collection<Product> addToWishList(Product product) {
-//        this.em.getTransaction().begin();
-//        this.em.persist(product);
-//        this.em.getTransaction().commit();
-//        Query query = this.em.createQuery(
-//                "SELECT * FROM product p " +
-//                        "INNER JOIN wishlist-product wp ON wp.productID = p.productID\n");
-        return null;
+    public void addToWishList(Product product, Integer customerID) {
+        Query query = this.em.createNativeQuery("INSERT INTO `wishlist-product`(customerId, productId) " +
+                "VALUES (?, ?)");
+        query.setParameter(1, customerID);
+        query.setParameter(2, product.getProductId());
+        query.executeUpdate();
     }
 
     @Override
-    public Collection<Product> removeProductInCart(Product product) {
-        //DELETE FROM cart-product cp WHERE cp.productID = productID
-//        Query query = this.em.createQuery("DELETE FROM cart-product cp WHERE cp.productID = :productID", Product.class);
-//        Collection<Product> products = query.setParameter("productID", product.getId()).getResultList();
-        return null;
+    public void removeProductInCart(Product product) {
+        Query query = this.em.createNativeQuery("DELETE FROM `cart-product` cp WHERE cp.productId = " + product.getProductId());
+        query.executeUpdate();
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public Collection<Product> addProduct(Integer productID, Integer customerID) {
-//        Query query = this.em.createQuery("INSERT INTO cart-product(customerID, productID) VALUES (:customerId, :productID)");
-//        query.setParameter("productID", productID).setParameter("customerID", customerID).getResultList();
-//        Query query1 = this.em.createQuery(
-//                "SELECT productName FROM product p " +
-//                        "INNER JOIN cart-product cp ON cp.productID = p.productID");
-//        Collection<Product> products = query1.getResultList();
-        return null;
+    public void addProduct(Integer productID, Integer customerID) {
+        Query query = this.em.createNativeQuery("INSERT INTO `cart-product`(customerId, productId) " +
+                "VALUES (?, ?)");
+        query.setParameter(1, customerID);
+        query.setParameter(2, customerID);
+        query.executeUpdate();
     }
 
     @Override
     public Cart findCartByID(Integer ID) {
-//        Query query = this.em.createQuery("SELECT Cart.ID FROM Cart c" +
-//                "LEFT JOIN FETCH Customer cus" +
-//                "WHERE  = :ID");
-//        Cart cart = (Cart) query.setParameter("ID", ID).getSingleResult();
+
         return null;
     }
 
     @Override
     public Collection<Cart> findCartByName(String name) {
-//        Query query = this.em.createQuery("SELECT customerName cus FROM customer c" +
-//                "INNER JOIN cart c ON c.customerID = cus.customerID" +
-//                "WHERE cus.customerName = :customerName");
-//        Collection<Cart> carts = query.setParameter("customerName", name).getResultList();
-//        Query query1 = this.em.createQuery("SELECT c.accountName FROM Customer c WHERE Customer.accountName = :name");
-//        query1.setParameter("name", name);
         return null;
-        //return carts;
     }
 
     @Override
@@ -85,9 +70,6 @@ public class JPACartRepositoryImpl implements CartRepository {
 
     @Override
     public Double checkOut() {
-//        Query query = this.em.createQuery("SELECT SUM(pINNER.quantity * pINNER.price) AS total FROM Product p" +
-//                "INNER JOIN FETCH Cart c" +
-//                "GROUP ");
         return null;
     }
 }

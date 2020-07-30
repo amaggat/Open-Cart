@@ -29,14 +29,6 @@ public class JPAProductRepositoryImpl implements ProductRepository {
         return (Collection<Product>) q.getResultList();
     }
 
-
-//    @Override
-//    public Collection<Product> findByBrandName(String brandName) {
-//        TypedQuery<Product> q = em.createQuery("SELECT b FROM Book b WHERE b.title = :title", Product.class);
-//        q.setParameter("", brandName);
-//        return q.getSingleResult();
-//    }
-
     //oke
     @Override
     public Product findById(int ID) {
