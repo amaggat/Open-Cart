@@ -30,4 +30,9 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer findCustomerByID(Integer ID) {
         return customerRepository.findCustomerByID(ID);
     }
+
+    @Override
+    public Collection<Customer> showAllCustomer() {
+        return customerRepository.findAllCustomer();
+    }
 }

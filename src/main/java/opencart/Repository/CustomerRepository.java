@@ -9,4 +9,5 @@ public interface CustomerRepository {
     Collection<Customer> findCustomerByName (String customerName);
     Customer findCustomerByID(Integer ID);
     Customer findCustomerAccount(String accountName);
+    Collection<Customer> findAllCustomer();
 }

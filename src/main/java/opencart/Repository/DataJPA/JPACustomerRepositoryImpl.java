@@ -51,4 +51,10 @@ public class JPACustomerRepositoryImpl implements CustomerRepository {
             return null;
         }
     }
+
+    @Override
+    public Collection<Customer> findAllCustomer() {
+        TypedQuery<Customer> query = this.em.createQuery("SELECT c FROM Customer c", Customer.class);
+        return query.getResultList();
+    }
 }
