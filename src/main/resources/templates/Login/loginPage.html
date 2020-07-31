@@ -1,54 +1,113 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
+    <meta charset="ISO-8859-1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #33EEFF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        .container {
+            padding: 16px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+
+        .loginbtn {
+            background-color: #28ace0;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+            border-radius: 10px;
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+
+
+        a {
+            color: white
+        }
+
+
+        .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+
+        .logoimg {
+            size: 100%;
+            width: 30%;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    </style>
+    <title>Welcome to Opencart</title>
 </head>
+
 <body>
-<!-- Include _menu.html -->
-<th:block th:include="/menu"></th:block>
 
-<h1>Login</h1>
+<form action="/action_page.php">
+    <div class="container">
+        <div class="menu">
+            <img src="opencart-logo.png" alt="" class="logoimg">
+        </div>
+        <h1>Sign in</h1>
+        <hr>
 
-<!-- /login?error=true -->
-<div th:if="${#request.getParameter('error') == 'true'}"
-     style="color:red;margin:10px 0px;">
-    Login Failed!!!<br />
-    Reason :
-    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
-          th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
-                Static summary
-         </span>
+        <label for="psw"><b>Account name</b></label>
+        <input type="password" placeholder="Enter Accout name" name="psw" id="psw" required>
 
-</div>
 
-<h3>Enter user name and password:</h3>
-<form name='f' th:action="@{/j_spring_security_check}" method='POST'>
-    <table>
-        <tr>
-            <td>User:</td>
-            <td><input type='text' name='username' value=''></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type='password' name='password' /></td>
-        </tr>
-        <tr>
-            <td>Remember Me?</td>
-            <td><input type="checkbox" name="remember-me" /></td>
-        </tr>
-        <tr>
-            <td><input name="submit" type="submit" value="submit" /></td>
-        </tr>
-    </table>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+        <hr>
+        <a th:href="@{/list}"><button type="submit" class="loginbtn" >Sign in</button></a>
+    </div>
+
+    <div class="container signin">
+        <p>Not have an account? <a href="#">Sign up</a>.</p>
+    </div>
 </form>
 
-<br>
-Username/pass:
-<ul>
-    <li>dbuser1/123</li>
-    <li>dbadmin1/123</li>
-</ul>
-
 </body>
-
 </html>
