@@ -39,7 +39,7 @@ public class JPAOrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Collection<Order> listAllOrders() {
-        TypedQuery<Order> query = (TypedQuery<Order>) em.createQuery("SELECT o FROM Order o", Order.class);
+        TypedQuery<Order> query = (TypedQuery<Order>) this.em.createQuery("SELECT o FROM Order o", Order.class);
         return (Collection<Order>) query.getResultList();
     }
 
