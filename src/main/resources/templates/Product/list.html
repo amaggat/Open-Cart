@@ -271,9 +271,15 @@
             <form th:action = "@{/list/search}" th:object="${product}" method="post">
                 <table border="0" cellpadding="10">
                     <tr>
-                        <td><input type="text" th:field="*{name}"/></td>
+                        <td>
+                            <input type="text" th:field="*{name}" name="Type product ID" placeholder="Seach" class="search-form">
+                        </td>
                         <td colspan="2">
-                            <button type="submit">Search</button>
+                            <button type="submit" class="searchbtn">
+                                <a href="">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </a>
+                            </button>
                         </td>
                     </tr>
                 </table>
