@@ -262,7 +262,7 @@
 <div class="header">
     <div class="wrapper">
         <div class="logo">
-            <a href="">
+            <a th:href="@{/list}">
                 <img src="https://www.opencart.com/application/view/image/icon/opencart-logo.png" alt="">
             </a>
         </div>
@@ -288,13 +288,13 @@
 
         <div class="otherbtn">
             <button type="submit" class="cartbtn">
-                <a href="">
+                <a th:href="@{/list}">
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 </a>
             </button>
 
             <button type="submit" class="wishlistbtn">
-                <a href="">
+                <a th:href="@{/list}">
                     <i class="fa fa-heart" aria-hidden="true"></i>
                 </a>
             </button>
@@ -348,7 +348,16 @@
     <!-- <span class="dot" onclick="currentSlide(3)"></span>  -->
 </div>
 
+<div align="center">
+    <a th:href="@{/new}">Create New Product</a>
+    <br>
+    <br>
+    <a th:href="@{/customer}">Customer</a>
+    <br>
+</div>
+
 <div class="container">
+
     <table border="1" cellpadding="10">
 
         <tr>
@@ -378,6 +387,7 @@
             </td>
         </tr>
     </table>
+
 </div>
 
 <div class="footer"></div>
