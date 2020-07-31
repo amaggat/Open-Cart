@@ -1,34 +1,349 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Product Manager</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        *{
+
+        }
+
+        body {
+            width: 100%;
+            background-color: white;
+            font-family: open sans,sans-serif;
+            font-weight: 400;
+        }
+
+        .wrapper {
+            width: 70%;
+            background-color: white;
+            margin: auto;
+        }
+
+        /* HEADER */
+        .header {
+            /* margin-bottom: 20px; */
+            height: 60px;
+        }
+
+        .header  .wrapper  {
+            /* position: relative; */
+            display: flex;
+        }
+
+        .header  .wrapper  .logo {
+            width: 30%;;
+            padding: 10px;
+            height: 100%;
+        }
+
+        .header  .wrapper  .logo  img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .header  .wrapper  .searchbar  {
+            /* overflow: hidden; */
+            display: flex;
+            /* position: relative; */
+            width: 380px;
+            padding-top: auto;
+            padding-bottom: auto;
+            vertical-align: middle;
+            padding-left: 10px;
+
+        }
+
+        .searchbar  .container {
+            height: 50px;
+        }
+
+        .header  .wrapper  .searchbar  .search-form {
+            /* position: absolute; */
+            transform: translateY(50%);
+
+        }
+
+        .header  .wrapper  .searchbar  .searchbtn {
+            /* position: absolute;    */
+            width: 100px;
+            background-color: #33B7FF;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            transform: translateY(50%);
+        }
+
+        .header  .wrapper  .searchbar  .search  a{}
+
+        .otherbtn {
+            width: 400px;
+        }
+
+        .header  .wrapper  .cartbtn {
+            /* width: 20%; */
+            width: 100px;
+            background-color: #23272A;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            float: right;
+            height: 40px;
+        }
+
+        .header  .wrapper  .wishlistbtn {
+            /* width: 20%; */
+
+            width: 100px;
+            background-color: #23272A;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            float: right;
+            height: 40px;
+            margin-right: 20px;
+        }
+
+        /* MENU */
+        .menu  {
+        }
+
+        .menulist {
+            background-color: #33B7FF;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .menulist li {
+            float: left;
+        }
+
+        .menulist li a {
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            padding: 14px 16px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .menulist  li  a:hover  {
+            background-color: #339EFF;
+        }
+
+
+        /* SLIDE */
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0}
+        .mySlides {display: none}
+        img {vertical-align: middle;}
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+            .prev, .next,.text {font-size: 11px}
+        }
+
+
+        /* CONTAINER */
+        .container {}
+
+
+
+        .footer {}
+
+
+
+    </style>
+
+    <title>Document</title>
 </head>
+
 <body>
-<div align = "center">
-    <h1>Product Manager</h1>
-    <form th:action = "@{/list/search}" th:object="${product}" method="post">
-        <table border="0" cellpadding="10">
-            <tr>
-                <td>Product Name</td>
-                <td><input type="text" th:field="*{name}"/></td>
-            </tr>
 
-            <tr>
-                <td colspan="2">
-                    <button type="submit">Search</button>
-                </td>
-            </tr>
-        </table>
-    </form>
+<div class="header">
+    <div class="wrapper">
+        <div class="logo">
+            <a href="">
+                <img src="https://www.opencart.com/application/view/image/icon/opencart-logo.png" alt="">
+            </a>
+        </div>
 
-    <a th:href="@{/new}">Create New Product</a>
-    <br>
-    <br>
-    <a th:href="@{/customer}">Customer</a>
-    <br>
+        <div class="searchbar">
+            <div class="container">
+                <input type="text" name="Type product ID" placeholder="Seach" class="search-form">
+            </div>
 
+            <div class="container">
+                <button type="submit" class="searchbtn">
+                    <a href="">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </a>
+                </button>
+            </div>
+        </div>
 
+        <div class="otherbtn">
+            <button type="submit" class="cartbtn">
+                <a href="">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </a>
+            </button>
+
+            <button type="submit" class="wishlistbtn">
+                <a href="">
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                </a>
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="menu">
+    <div class="wrapper">
+        <ul class="menulist">
+            <li><a href="">DESKTOPS</a></li>
+            <li><a href="">TABLETS</a></li>
+            <li><a href="">LAPTOPS</a></li>
+            <li><a href="">PHONES</a></li>
+            <li><a href="">CAMERAS</a></li>
+            <li><a href="">MP3 PLAYERS</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 2</div>
+        <img src="https://demo.opencart.com/image/cache/catalog/demo/banners/iPhone6-1140x380.jpg" style="width:100%">
+        <div class="text">Caption Text</div>
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">2 / 2</div>
+        <img src="https://demo.opencart.com/image/cache/catalog/demo/banners/MacBookAir-1140x380.jpg" style="width:100%">
+        <div class="text">Caption Two</div>
+    </div>
+
+    <!-- <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="img_mountains_wide.jpg" style="width:100%">
+      <div class="text">Caption Three</div>
+    </div>
+     -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <!-- <span class="dot" onclick="currentSlide(3)"></span>  -->
+</div>
+
+<div class="container">
     <table border="1" cellpadding="10">
 
         <tr>
@@ -55,14 +370,42 @@
                 <a th:href="@{'/edit/' + ${product.productId} }">Edit</a>
                 <br/><br/>
                 <a th:href="@{'/delete/' + ${product.productId} }">Delete</a>
-                <br/><br/>
-<!--                <a th:href="@{'/customer/' + ${customer.customerId} + '/cart/addtowishlist/' +${product.productId}}">Add To Wishlist</a>-->
-<!--                <br/><br/>-->
-<!--                <a th:href="@{'/customer/' + ${customer.customerId} + '/wishlist/addtocart/' +${product.productId}}">Add To Cart</a>-->
-<!--&lt;!&ndash;                <a th:href="@{/customer/{customerID}/cart/addtocart/{id}}">AddtoCart</a>&ndash;&gt;-->
             </td>
         </tr>
     </table>
 </div>
+
+<div class="footer"></div>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+</script>
 </body>
+
+
 </html>
