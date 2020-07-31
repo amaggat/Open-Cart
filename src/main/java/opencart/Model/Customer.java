@@ -26,11 +26,11 @@ public class Customer {
 //    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 //    private Set<CustomerRole> customerRoles;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "customer-role",
-            joinColumns = @JoinColumn(name = "customerId"),
-            inverseJoinColumns = @JoinColumn(name = "roleId"))
-    private Set<Role> roles;
+//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinTable(name = "customer-role",
+//            joinColumns = @JoinColumn(name = "customerId"),
+//            inverseJoinColumns = @JoinColumn(name = "roleId"))
+//    private Set<Role> roles;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", fetch = FetchType.LAZY)
