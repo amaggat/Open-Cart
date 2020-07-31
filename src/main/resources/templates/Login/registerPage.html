@@ -79,7 +79,7 @@
         }
 
         .logoimg {
-            size: 100%;
+            /*size: 100%;*/
             width: 30%;
             margin-left: 50px;
             margin-right: 50px;
@@ -90,7 +90,7 @@
 
 <body>
 
-<form th:action="">
+<form th:action = "@{/adduser}" th:object="${customer}" method="post">
     <div class="container">
         <div class="menu">
             <img src="https://www.opencart.com/application/view/image/icon/opencart-logo.png" alt="" class="logoimg">
@@ -101,39 +101,39 @@
 
         <div class="full_name">
             <div class="name">
-                <label for="psw"><b>First name</b></label>
-                <input type="password" placeholder="Enter First name" name="psw" id="psw" required>
+                <label for="fname"><b>First name</b></label>
+                <input type="text" th:field="*{firstName}" placeholder="Enter First name" name="psw" id="fname" required>
             </div>
 
             <div class="name">
-                <label for="psw"><b>Last name</b></label>
-                <input type="password" placeholder="Enter Last name" name="psw" id="psw" required>
+                <label for="lname"><b>Last name</b></label>
+                <input type="text" th:field="*{lastName}" placeholder="Enter Last name" name="psw" id="lname" required>
             </div>
         </div>
 
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="email" required>
+        <input type="text" th:field="*{email}" placeholder="Enter Email" name="email" id="email" required>
 
-        <label for="psw"><b>Phone</b></label>
-        <input type="password" placeholder="Enter Phone" name="psw" id="psw" required>
+        <label for="phone"><b>Phone</b></label>
+        <input type="text" th:field="*{phoneNumber}" placeholder="Enter Phone" name="phone" id="phone" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+        <label for="account"><b>Account</b></label>
+        <input type="text" th:field="*{accountName}" placeholder="Enter Account Name" name="account" id="account" required>
 
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+        <label for="password"><b>Password</b></label>
+        <input type="text" th:field="*{password}" placeholder="Repeat Password" name="password" id="password" required>
 
-        <label for="psw"><b>Address 1</b></label>
-        <input type="password" placeholder="Enter Address1" name="psw" id="psw" required>
+        <label for="add1"><b>Address 1</b></label>
+        <input type="text" th:field="*{addressLine1}" placeholder="Enter Address1" name="add1" id="add1" required>
 
-        <label for="psw"><b>Address 2</b></label>
-        <input type="password" placeholder="Enter Address2" name="psw" id="psw" required>
+        <label for="add2"><b>Address 2</b></label>
+        <input type="text" th:field="*{addressLine2}" placeholder="Enter Address2" name="add2" id="add2" required>
 
-        <label for="psw"><b>City</b></label>
-        <input type="password" placeholder="Enter City" name="psw" id="psw" required>
+        <label for="city"><b>City</b></label>
+        <input type="text" th:field="*{city}" placeholder="Enter City" name="city" id="city" required>
 
-        <label for="psw"><b>Country</b></label>
-        <input type="password" placeholder="Enter Country" name="psw" id="psw" required>
+        <label for="country"><b>Country</b></label>
+        <input type="text" th:field="*{country}" placeholder="Enter Country" name="country" id="country" required>
 
         <hr>
         <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
@@ -142,7 +142,7 @@
     </div>
 
     <div class="container signin">
-        <p>Already have an account? <a href="#">Sign in</a>.</p>
+        <p>Already have an account? <a th:href="@{/loginPage}" >Sign in</a>.</p>
     </div>
 </form>
 

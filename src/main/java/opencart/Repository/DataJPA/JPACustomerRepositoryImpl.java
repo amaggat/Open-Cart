@@ -5,10 +5,7 @@ import opencart.Model.Product;
 import opencart.Repository.CustomerRepository;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Repository
@@ -56,5 +53,24 @@ public class JPACustomerRepositoryImpl implements CustomerRepository {
     public Collection<Customer> findAllCustomer() {
         TypedQuery<Customer> query = this.em.createQuery("SELECT c FROM Customer c", Customer.class);
         return query.getResultList();
+    }
+
+    @Override
+    public void addCustomer(Customer customer) {
+        Query query = this.em.createNativeQuery("INSERT INTO customer " +
+                "(firstName, lastName, email, phone, accountName, password, addressLine1, addressLine2, city, country) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        //query.setParameter(1, customer.getCustomerId());
+        query.setParameter(1, customer.getFirstName());
+        query.setParameter(2, customer.getLastName());
+        query.setParameter(3, customer.getEmail());
+        query.setParameter(4, customer.getPhoneNumber());
+        query.setParameter(5, customer.getAccountName());
+        query.setParameter(6, customer.getPassword());
+        query.setParameter(7, customer.getAddressLine1());
+        query.setParameter(8, customer.getAddressLine2());
+        query.setParameter(9, customer.getCity());
+        query.setParameter(10, customer.getCountry());
+        query.executeUpdate();
     }
 }

@@ -10,4 +10,5 @@ public interface CustomerRepository {
     Customer findCustomerByID(Integer ID);
     Customer findCustomerAccount(String accountName);
     Collection<Customer> findAllCustomer();
+    void addCustomer(Customer customer);
 }

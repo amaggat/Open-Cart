@@ -9,4 +9,5 @@ public interface CustomerService {
     Customer findCustomerByID(Integer ID);
     Collection<Customer> showAllCustomer();
     Customer findCustomerByAccountAndPassword(String account, String password);
+    void addCustomer(Customer customer);
 }

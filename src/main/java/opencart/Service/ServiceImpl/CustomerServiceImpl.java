@@ -38,7 +38,14 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public Customer findCustomerByAccountAndPassword(String account, String password) {
         return customerRepository.findByAccountNameAndPassword(account, password);
+    }
+
+    @Override
+    @Transactional
+    public void addCustomer(Customer customer) {
+        customerRepository.addCustomer(customer);
     }
 }
