@@ -1,17 +1,3 @@
-/* Brand */
-# INSERT INTO brand VALUES ('1', 'Laptop', 'Expensive');
-# INSERT INTO brand VALUES ('2', 'Smartphone', 'Expensive');
-# INSERT INTO brand VALUES ('3', 'Car', 'Expensive');
-# INSERT INTO brand VALUES ('4', 'Wine', 'Expensive');
-# INSERT INTO brand VALUES ('5', 'Diamond', 'Expensive');
-# INSERT INTO brand VALUES ('6', 'Gold', 'Expensive');
-# INSERT INTO brand VALUES ('7', 'Villa', 'Expensive');
-# INSERT INTO brand VALUES ('8', 'Apartment', 'Expensive');
-# INSERT INTO brand VALUES ('9', 'Planet', 'Expensive');
-# INSERT INTO brand VALUES ('10', 'Crush', 'Expensive');
-
-/* Product */
-
 -- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
 -- Host: localhost    Database: opencart
@@ -35,7 +21,6 @@
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-INSERT INTO `brand` VALUES (1,'Smartphone','This brand is so expensive'),(2,'Laptop','This brand is so expensive'),(3,'Camera','This brand is so expensive'),(4,'You','This brand is non-valuable');
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -45,7 +30,6 @@ UNLOCK TABLES;
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (1,'2020-10-30 08:57:52',1);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,6 +58,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `category-product` WRITE;
 /*!40000 ALTER TABLE `category-product` DISABLE KEYS */;
+INSERT INTO `category-product` VALUES (2,9);
 /*!40000 ALTER TABLE `category-product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,18 +68,8 @@ UNLOCK TABLES;
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Thanh','Dat','thanhdat.vnu@gmail.com','0943883280','dbuser1','$2a$10$nFt.7l8RnXWUmjfHGTaLqOEsI23fTatzHI8/FTUlNVeQ9mIQyl2/.','Mai Dich','Cau Giay','Ha Noi','Viet Nam');
+INSERT INTO `customer` VALUES (1,'Thanh','Dat','thanhdat.vnu@gmail.com','0943883280','thanhhdatt','1','Mai Dich','Cau Giay','Ha Noi','Viet Nam'),(2,'Thanh','Dat','thanhdat.9620@gmail.com','0943883280','bundaumamtom','123','University of Engineering and Technology','Ha Noi','HaNoi','Vietnam'),(3,'Thanh','Dat','thanhdat.vnu@gmail.com','113','chaolongtietcanh','123','University of Engineering and Technology','HaNoi','HaNoi','Vietnam'),(4,'Thanh','Dat','thanhdat.9620@gmail.com','0943883280','thitchoruaman','hihahiho','University of Engineering and Technology, Ha Noi','HaNoi','HaNoi','Vietnam');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `customer-role`
---
-
-LOCK TABLES `customer-role` WRITE;
-/*!40000 ALTER TABLE `customer-role` DISABLE KEYS */;
-INSERT INTO `customer-role` VALUES (1,1,1);
-/*!40000 ALTER TABLE `customer-role` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -123,18 +98,8 @@ UNLOCK TABLES;
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (2,1,'Rẻ lắm','iPhone 6s cộng',1,'2020-07-27','2020-07-30',3),(3,1,'Đắt lắm','iPhone 8 pờ lớt',5,'2020-07-27','2020-07-30',11),(5,1,'Đắt lắm','Mercedes Maybach S650',5,'2020-07-27','2020-07-30',123),(6,1,'Chùi đ*t','Lá Chuối',5,'2020-07-27','2020-07-30',12),(8,1,'Chưa ăn','Cháo Lòng',5,'2020-07-27','2020-07-30',12),(9,1,'Kinh lắm','Tiết Canh',5,'2020-07-27','2020-07-30',123),(10,1,'Cute','Mèo',5,'2020-07-27','2020-07-30',1),(11,1,'Cute','Sen Đá',5,'2020-07-27','2020-07-30',1),(12,1,'Chán ','Phở',5,'2020-07-27','2020-07-30',123),(13,1,'Ngon','Cây chuối',5,'2020-07-27','2020-07-30',1),(14,1,'Ngon lắm','Lá Ngón',5,'2020-07-27','2020-07-30',2),(15,1,'Riềng mẻ mắm tôm','Chó',2,'2020-06-30','2020-07-30',412),(16,1,'Riềng mẻ mắm tôm','Chó',3,'2020-07-06','2020-08-01',1234),(17,3,'Mắm Tôm','Bún Đậu',3,'2020-07-03','2020-07-19',123),(18,3,'Mắm Tôm','Thành Đạt',9,'2020-06-15','2020-07-24',1);
+INSERT INTO `product` VALUES (9,1,'Kinh lắm','Tiết Canh',5,'2020-07-27','2020-07-30',123),(10,1,'Cute','Mèo',5,'2020-07-27','2020-07-30',1),(11,1,'Cute','Sen Đá',5,'2020-07-27','2020-07-30',1),(12,1,'Chán ','Phở',5,'2020-07-27','2020-07-30',123),(13,1,'Ngon','Cây chuối',5,'2020-07-27','2020-07-30',1),(14,1,'Ngon lắm','Lá Ngón',5,'2020-07-27','2020-07-30',2),(15,1,'Riềng mẻ mắm tôm','Chó',2,'2020-06-30','2020-07-30',412),(16,1,'Riềng mẻ mắm tôm','Chó',3,'2020-07-06','2020-08-01',1234),(20,1,'Mắm Tôm','Chó',1,'2020-06-30','2020-06-30',10),(21,1,'Description','Chó',1,'2020-07-06','2020-07-27',1.2),(22,3,'Description','Acid B1',0,'2020-06-28','2020-07-07',0),(23,4,'Hello','Thanh Dat',0,'2020-06-28','2020-07-10',0),(24,4,'Cháo Lòng','Tiết Canh',1,'2020-07-06','2020-07-13',123),(26,1,'Laptop','iPhone 6s cộng',1,'2020-07-21','2020-07-13',12);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `role`
---
-
-LOCK TABLES `role` WRITE;
-/*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,'ROLE_ADMIN'),(2,'ROLE_USER');
-/*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -143,6 +108,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `wishlist` WRITE;
 /*!40000 ALTER TABLE `wishlist` DISABLE KEYS */;
+INSERT INTO `wishlist` VALUES (1,'Favorite');
 /*!40000 ALTER TABLE `wishlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,6 +118,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `wishlist-product` WRITE;
 /*!40000 ALTER TABLE `wishlist-product` DISABLE KEYS */;
+INSERT INTO `wishlist-product` VALUES (1,1),(1,11),(1,10),(1,10),(1,10),(1,10),(1,9),(1,9),(1,9),(1,9),(1,9);
 /*!40000 ALTER TABLE `wishlist-product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -164,5 +131,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-30 22:48:29
-
+-- Dump completed on 2020-07-31 23:58:30
