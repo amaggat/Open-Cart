@@ -21,14 +21,14 @@ public class ProductController {
     public String viewListProductPage(Model model) {
         Collection<Product> listProducts = productService.listAllProducts();
         model.addAttribute("listProducts", listProducts);
-        return "list";
+        return "Product/list";
     }
 
     @RequestMapping(value="/new", method= RequestMethod.GET)
     public String showNewProductForm(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
-        return "new_product";
+        return "Product/new_product";
     }
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
@@ -41,7 +41,7 @@ public class ProductController {
     @RequestMapping("/edit/{id}")
     public ModelAndView editProduct(@PathVariable("id") Integer id)
     {
-        ModelAndView modelAndView = new ModelAndView("editProduct");
+        ModelAndView modelAndView = new ModelAndView("Product/editProduct");
         Product product = productService.findProductByID(id);
         modelAndView.addObject("product",product);
         return modelAndView;
@@ -56,7 +56,7 @@ public class ProductController {
     @RequestMapping("/delete/{id}")
     public ModelAndView deleteProduct(@PathVariable(name = "id") Integer id)
     {
-        ModelAndView modelAndView = new ModelAndView("delete");
+        ModelAndView modelAndView = new ModelAndView("Product/delete");
         Product product = productService.findProductByID(id);
         modelAndView.addObject("product",product);
         return modelAndView;

@@ -1,7 +1,6 @@
 package opencart.Controller;
 
 import opencart.Model.Order;
-import opencart.Model.Product;
 import opencart.Service.ServiceInt.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +15,9 @@ public class OrderController {
     private OrderService orderService;
 
     @RequestMapping("/orderlist")
-    public String viewListProductPage(Model model) {
+    public String viewOrderList(Model model) {
         Collection<Order> listOrders = orderService.listAllOrder();
         model.addAttribute("listOrders", listOrders);
-        return "orderlist";
+        return "order-list";
     }
 }

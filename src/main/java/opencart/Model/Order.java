@@ -36,13 +36,13 @@ public class Order {
 
     @Column(name = "orderDate")
     @DateTimeFormat(pattern = "mm/dd/yyyy")
-    private Date orderDate;
+    private String orderDate;
 
     @Column(name = "requiredDate")
     @DateTimeFormat(pattern = "mm/dd/yyyy")
-    private Date requiredDate;
+    private String requiredDate;
 
     @Column(name = "shippedDate")
     @DateTimeFormat(pattern = "mm/dd/yyyy")
-    private Date shippedDate;
+    private String shippedDate;
 }

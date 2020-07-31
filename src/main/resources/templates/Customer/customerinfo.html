@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Info</title>
+</head>
+<body>
+<div align="center">
+    <h1>Customer Information</h1>
+    <br/>
+    <form  th:object="${customer}" method="get">
+        <table border="2" cellpadding="10">
+            <tr>
+                <a th:href="@{'/customer/'  + ${customer.customerId} + '/cartlist/' }">Cart</a>
+                <br/><br/>
+                <a th:href="@{'/customer/'  + ${customer.customerId} + '/wishlist/' }">WishList</a>
+<!--                <a th:href="@{'/cartlist/' }">Cart</a>-->
+<!--                <br/><br/>-->
+<!--                <a th:href="@{'/wishlist/' }">WishList</a>-->
+            </tr>
+            <tr><th>Customer ID</th><td th:text="${customer.customerId}">Customer ID</td></tr>
+            <tr><th>First Name</th><td th:text="${customer.firstName}">First Name</td></tr>
+            <tr><th>Last Name</th><td th:text="${customer.lastName}">Last Name</td></tr>
+            <tr><th>Email</th><td th:text="${customer.email}">Email</td></tr>
+            <tr><th>Phone Number</th><td th:text="${customer.phoneNumber}">Phone Number</td></tr>
+            <tr><th>Account Name</th><td th:text="${customer.accountName}">Account Name</td></tr>
+            <tr><th>Address Line 1</th><td th:text="${customer.addressLine1}">Address Line 1</td></tr>
+            <tr><th>Address Line 2</th><td th:text="${customer.addressLine2}">Address Line 2</td></tr>
+            <tr><th>City</th><td th:text="${customer.city}">City</td></tr>
+            <tr><th>Country</th><td th:text="${customer.country}">Country</td></tr>
+        </table>
+
+    </form>
+</div>
+</body>
+</html>

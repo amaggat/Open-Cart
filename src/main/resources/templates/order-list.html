@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Order Manager</title>
+</head>
+<body>
+<div align = "center">
+    <h1>Order Manager</h1>
+    <br>
+    <br>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Required Date</th>
+            <th>Shipped Date</th>
+            <th>Status</th>
+            <th>Customer Id</th>
+        </tr>
+        <tr th:each = "order : ${listOrders}">
+            <td th:text="${order.orderId}">Order ID</td>
+            <td th:text="${order.orderDate}">Order Date</td>
+            <td th:text="${order.requiredDate}">Required Date</td>
+            <td th:text="${order.shippedDate}">Shipped Date</td>
+            <td th:text="${order.status}">Status</td>
+            <td th:text="${order.customer.customerId}">Customer ID</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -34,7 +34,7 @@ public class Cart {
 
     @Column(name = "dateAdded")
     @DateTimeFormat(pattern = "mm/dd/yyyy")
-    private Date dateAdded;
+    private String dateAdded;
 
     @Column(name = "quantity")
     private int quantity;
