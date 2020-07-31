@@ -9,10 +9,10 @@ import java.util.Collection;
 
 public interface WishListRepository {
     Collection<Product> findAllProductInWishList(Integer ID);
-    Collection<Product> addToCart(Integer productId, Integer customerID);
+    void addToCart(Integer productId, Integer customerID);
     void removeProductInWishList (Product product);
     void save(WishList wishList);
     WishList findWishListByID(Integer ID);
-    Collection<Product> addProduct(Integer productID, Integer customerID);
+    void addProduct(Integer productID, Integer customerID);
     Product findProductByID(Integer ID);
 }

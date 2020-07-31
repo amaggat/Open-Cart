@@ -30,6 +30,7 @@
             <td th:text="${product.price}">Price Unit</td>
             <td>
                 <a th:href="@{'/customer/' + ${customer.customerId} + '/wishlist/remove/' + ${product.productId} }">Remove</a>
+                <a th:href="@{'/customer/' + ${customer.customerId} + '/wishlist/addtocart/' +${product.productId}}">AddtoCart</a>
             </td>
         </tr>
     </table>

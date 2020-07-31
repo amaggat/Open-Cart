@@ -49,15 +49,13 @@ public class CartController{
         return "redirect:/customer/" + customerID + "/cart";
     }
 
-//    @RequestMapping("/customer/{customerID}/cart/addtocart/{id}")
-//    public ModelAndView addtocartForm(@PathVariable("customerID") Integer customerID,@PathVariable("id") Integer id)
-//    {
-//        ModelAndView mnv = new ModelAndView("redirect://customer/{customerID}");
-//        Product product = cartService.findProductByID(id);
-//        mnv.addObject("product",product);
-//        Customer customer = customerService.findCustomerByID(customerID);
-//        mnv.addObject("customer",customer);
-//        cartService.addProductToCart(product.getProductId(),customer.getCustomerId());
-//        return mnv;
-//    }
+    @RequestMapping("/customer/{customerID}/cart/addtowishlist/{id}")
+    public String AddtoWishlist(@PathVariable("customerID") Integer customerID,@PathVariable("id") Integer id)
+    {
+        Product product = cartService.findProductByID(id);
+        Customer customer = customerService.findCustomerByID(customerID);
+        cartService.addProductToWishList(product.getProductId(),customer.getCustomerId());
+        return "redirect:/customer/" + customerID + "/cart";
+    }
+
 }

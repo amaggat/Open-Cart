@@ -28,30 +28,25 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Collection<Product> addToCart(Integer productID, Integer customerID) {
-        Query query = this.em.createNativeQuery("INSERT INTO `cart-product`(customerID, productID) VALUES(:customerID, :productID)", Product.class);
-        query.setParameter("customerID", customerID).setParameter("productID", productID);
-        return query.getResultList();
+    public void addToCart(Integer productID, Integer customerID) {
+        Query query = this.em.createNativeQuery("INSERT INTO `cart-product`(customerID, productID) VALUES(:customerID, :productID)");
+        query.setParameter("customerID", customerID).setParameter("productID", productID).executeUpdate();
     }
 
     @Override
     public void removeProductInWishList(Product product) {
-        Query query = this.em.createQuery("DELETE FROM wishlist-product wp WHERE wp.productID = :productID");
-        query.setParameter("productID", product.getProductId());
-//        Query query = em.createNativeQuery("DELETE FROM product WHERE " +
-//                "productId = " + product.getProductId());
+        Query query = this.em.createNativeQuery("DELETE FROM `wishlist-product` wp WHERE wp.productID = " + product.getProductId());
         query.executeUpdate();
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public Collection<Product> addProduct(Integer productId, Integer customerID) {
-//        Query query = this.em.createQuery("\n" +
-//                "INSERT INTO wishlist-product(customerID, productID) VALUES(:customerID, :productID)");
-//        query.setParameter("productID", productId).setParameter("customerID", customerID);
-//        Query query1 = this.em.createQuery("SELECT productName FROM product p " +
-//                "INNER JOIN wishlist-product wp ON wp.productID = p.productID");
-        return null;
+    public void addProduct(Integer productID, Integer customerID) {
+        Query query = this.em.createNativeQuery("INSERT INTO `wishlist-product`(customerId, productId) " +
+                "VALUES (?, ?)");
+        query.setParameter(1, customerID);
+        query.setParameter(2, productID);
+        query.executeUpdate();
     }
 
     //not

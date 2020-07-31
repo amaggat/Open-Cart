@@ -28,8 +28,8 @@ public class WishListServiceImpl implements WishListService {
 
     @Override
     @Transactional
-    public Collection<Product> addProductToWishList(Integer productId, Integer customerID) {
-        return wishListRepository.addProduct(productId, customerID);
+    public void addProductToCart(Integer productId, Integer customerID) {
+        wishListRepository.addToCart(productId, customerID);
     }
 
     @Override
@@ -49,5 +49,10 @@ public class WishListServiceImpl implements WishListService {
     @Transactional
     public Product findProductByID(Integer ID) {
         return wishListRepository.findProductByID(ID);
+    }
+
+    @Override
+    public void addToWishList(Integer productID, Integer customerID) {
+        wishListRepository.addProduct(productID, customerID);
     }
 }

@@ -56,7 +56,10 @@
                 <br/><br/>
                 <a th:href="@{'/delete/' + ${product.productId} }">Delete</a>
                 <br/><br/>
-<!--                <a th:href="@{/customer/{customerID}/cart/addtocart/{id}}">AddtoCart</a>-->
+<!--                <a th:href="@{'/customer/' + ${customer.customerId} + '/cart/addtowishlist/' +${product.productId}}">Add To Wishlist</a>-->
+<!--                <br/><br/>-->
+<!--                <a th:href="@{'/customer/' + ${customer.customerId} + '/wishlist/addtocart/' +${product.productId}}">Add To Cart</a>-->
+<!--&lt;!&ndash;                <a th:href="@{/customer/{customerID}/cart/addtocart/{id}}">AddtoCart</a>&ndash;&gt;-->
             </td>
         </tr>
     </table>

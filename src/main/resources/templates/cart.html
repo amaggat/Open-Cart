@@ -37,6 +37,7 @@
             <td>
                 <a th:href="@{'/customer/' + ${customer.customerId} + '/cart/remove/' + ${product.productId} }">Remove</a>
 <!--                <a th:href="@{'/customer/'+ ${customer.customerId} + 'cart/orderdetail' + ${product.productId}}">OrderDetail</a>-->
+                <a th:href="@{'/customer/' + ${customer.customerId} + '/cart/addtowishlist/' +${product.productId}}">AddtoWishlist</a>
             </td>
         </tr>
     </table>

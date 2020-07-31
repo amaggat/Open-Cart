@@ -45,10 +45,10 @@ public class JPACartRepositoryImpl implements CartRepository {
     @Override
     @SuppressWarnings("unchecked")
     public void addProduct(Integer productID, Integer customerID) {
-        Query query = this.em.createNativeQuery("INSERT INTO `cart-product`(customerId, productId) " +
+        Query query = this.em.createNativeQuery("INSERT INTO `wishlist-product`(customerId, productId) " +
                 "VALUES (?, ?)");
         query.setParameter(1, customerID);
-        query.setParameter(2, customerID);
+        query.setParameter(2, productID);
         query.executeUpdate();
     }
 

@@ -40,13 +40,23 @@ public class WishListController {
         modelAndView.addObject("customer", customer);
         return modelAndView;
     }
-
     @RequestMapping(value = "/customer/{customerID}/wishlist/remove/{id}/wishlist-remove", method = RequestMethod.POST)
     public String removeProduct(@ModelAttribute("product") Product product,
                                 @PathVariable("customerID") Integer customerID,
                                 @PathVariable("id") Integer id) {
         wishListService.removeProductFromWishList(product);
+        System.out.println(product);
         return "redirect:/customer/" + customerID + "/wishlist";
     }
+    @RequestMapping("/customer/{customerID}/wishlist/addtocart/{id}")
+    public String AddtoWishlist(@PathVariable("customerID") Integer customerID,@PathVariable("id") Integer id)
+    {
+        Product product = wishListService.findProductByID(id);
+        Customer customer = customerService.findCustomerByID(customerID);
+        wishListService.addProductToCart(product.getProductId(),customer.getCustomerId());
+        return "redirect:/customer/" + customerID + "/wishlist";
+    }
+
+
 
 }

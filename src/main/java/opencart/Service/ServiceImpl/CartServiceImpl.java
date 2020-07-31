@@ -46,7 +46,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     @Transactional
-    public void addProductToCart(Integer productID, Integer customerID) {
+    public void addProductToWishList(Integer productID, Integer customerID) {
         cartRepository.addProduct(productID, customerID);
     }
 
@@ -60,6 +60,11 @@ public class CartServiceImpl implements CartService {
     @Transactional
     public Product findProductByID(Integer ID) {
         return cartRepository.findProductById(ID);
+    }
+
+    @Override
+    public void addToCart(Integer productID, Integer customerID) {
+        cartRepository.addProduct(productID, customerID);
     }
 
 }

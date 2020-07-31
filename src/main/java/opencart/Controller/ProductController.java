@@ -4,6 +4,7 @@
 package opencart.Controller;
 
 import opencart.Model.Product;
+import opencart.Service.ServiceInt.CustomerService;
 import opencart.Service.ServiceInt.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,9 @@ import java.util.Collection;
 public class ProductController {
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private CustomerService customerService;
 
     @RequestMapping("/list")
     public String viewListProductPage(Model model) {
@@ -69,7 +73,6 @@ public class ProductController {
         System.out.println(product);
         return "redirect:/list";
     }
-
 
     @RequestMapping(value="/list/search")
     public String searchProduct(Model model, Product product) {
