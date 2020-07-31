@@ -10,6 +10,8 @@
     <a th:href="@{/list}">Product List</a>
     <br>
     <br>
+    <th>Checkout: </th>
+    <td th:object="${checkout}" th:text="${checkout}"></td>
     <table border="1" cellpadding="10">
 
         <tr>
@@ -34,7 +36,7 @@
             <td th:text="${product.price}">Price Unit</td>
             <td>
                 <a th:href="@{'/customer/' + ${customer.customerId} + '/cart/remove/' + ${product.productId} }">Remove</a>
-                <a th:href="@{'/customer/'+ ${customer.customerId} + 'cart/orderdetail' + ${product.productId}}">OrderDetail</a>
+<!--                <a th:href="@{'/customer/'+ ${customer.customerId} + 'cart/orderdetail' + ${product.productId}}">OrderDetail</a>-->
             </td>
         </tr>
     </table>

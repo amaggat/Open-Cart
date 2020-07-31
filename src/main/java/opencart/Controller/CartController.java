@@ -23,9 +23,11 @@ public class CartController{
     @RequestMapping("/customer/{ID}/cart")
     public String showCart(Model model, @PathVariable Integer ID){
         Collection<Product> cartProducts = cartService.showProductByCart(ID);
+        double checkOut = cartService.checkOutCart();
         model.addAttribute("cartProducts",cartProducts);
         Customer customer = customerService.findCustomerByID(ID);
         model.addAttribute("customer", customer);
+        model.addAttribute("checkout", checkOut);
         return "cart";
     }
     @RequestMapping("/customer/{customerID}/cart/remove/{id}")
