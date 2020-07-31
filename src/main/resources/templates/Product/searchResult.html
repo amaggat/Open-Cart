@@ -2,14 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Cart Manager</title>
+    <title>Search Result</title>
 </head>
 <body>
 <div align = "center">
-    <h1>Cart Manager</h1>
-    <a th:href="@{/list}">Product List</a>
-    <br>
-    <br>
+    <h1>Search Result</h1>
+
     <table border="1" cellpadding="10">
 
         <tr>
@@ -23,8 +21,7 @@
             <th>Price Unit</th>
             <th>Actions</th>
         </tr>
-        <tr th:each = "product : ${cartProducts}">
-
+        <tr th:each = "product : ${product}">
             <td th:text="${product.productId}">Product ID</td>
             <td th:text="${product.brand.brandId}">Brand Id</td>
             <td th:text="${product.description}">Description</td>
@@ -34,8 +31,7 @@
             <td th:text="${product.dateModified}">Date Modified</td>
             <td th:text="${product.price}">Price Unit</td>
             <td>
-                <a th:href="@{'/customer/' + ${customer.customerId} + '/cart/remove/' + ${product.productId} }">Remove</a>
-                <a th:href="@{'/customer/'+ ${customer.customerId} + 'cart/orderdetail' + ${product.productId}}">OrderDetail</a>
+
             </td>
         </tr>
     </table>

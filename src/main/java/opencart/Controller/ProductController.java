@@ -67,4 +67,13 @@ public class ProductController {
         System.out.println(product);
         return "redirect:/list";
     }
+
+
+    @RequestMapping(value="/search", method= RequestMethod.GET)
+    public String searchProduct(@ModelAttribute("product") Product product) {
+        productService.findProductByName(product.getName());
+        System.out.println(product);
+        return "Product/searchResult";
+    }
+
 }
