@@ -29,7 +29,11 @@ public class LoginController {
 
     @RequestMapping(value = "/validate", method = RequestMethod.POST)
     public String loginProcess(@ModelAttribute("customer") Customer customer) {
-        customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword());
-        return "redirect:/list";
+        try {
+            customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword());
+            return "redirect:/list";
+        } catch (Exception e) {
+            return "403Page";
+        }
     }
 }
