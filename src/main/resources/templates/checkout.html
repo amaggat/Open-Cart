@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Check Out</title>
+</head>
+<body>
+<div align = "center" th:object="${customer}">
+    <h1>Check Out</h1>
+    <a th:href="@{'/customer/'  + ${customer.customerId} + '/cart/' }">Cart List</a>
+    <br>
+    <br>
+
+</div>
+</body>
+</html>

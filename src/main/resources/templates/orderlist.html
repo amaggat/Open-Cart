@@ -18,6 +18,7 @@
             <th>Shipped Date</th>
             <th>Status</th>
             <th>Customer Id</th>
+            <th>Action</th>
         </tr>
         <tr th:each = "order : ${listOrders}">
             <td th:text="${order.orderId}">Order ID</td>
@@ -26,6 +27,9 @@
             <td th:text="${order.shippedDate}">Shipped Date</td>
             <td th:text="${order.status}">Status</td>
             <td th:text="${order.customer.customerId}">Customer ID</td>
+            <td>
+                <a th:href="@{/orderdetail}">Order Detail</a>
+            </td>
         </tr>
     </table>
 </div>

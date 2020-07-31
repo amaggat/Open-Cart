@@ -37,8 +37,11 @@ public class CustomerController {
 
     @RequestMapping(value = "/customer/{id}/info", method = RequestMethod.POST)
     public String checkCustomer(@ModelAttribute("customer") Customer customer) {
-        customerService.findCustomerByAccountAndPassword(customer.getAccountName(),customer.getPassword());
-        return "Customer/customerinfo";
+        try {
+            customerService.findCustomerByAccountAndPassword(customer.getAccountName(),customer.getPassword());
+            return "Customer/customerinfo";
+        } catch (Exception e) {
+            return "403Page";
+        }
     }
-
 }

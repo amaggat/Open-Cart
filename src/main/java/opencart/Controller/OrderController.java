@@ -18,6 +18,6 @@ public class OrderController {
     public String viewOrderList(Model model) {
         Collection<Order> listOrders = orderService.listAllOrder();
         model.addAttribute("listOrders", listOrders);
-        return "order-list";
+        return "orderlist";
     }
 }

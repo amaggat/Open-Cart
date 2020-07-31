@@ -21,25 +21,19 @@ public class JPACartRepositoryImpl implements CartRepository {
     @Override
     @SuppressWarnings("unchecked")
     public Collection<Product> findAllProduct(Integer ID) {
-        Query query = this.em.createQuery("SELECT p FROM Product p");
-        //Query query = this.em.createNativeQuery("SELECT p.* FROM product p JOIN `cart-product` cp on p.productId = cp.productId JOIN cart c on cp.customerId = c.customerId WHERE c.customerId = " + ID);
+//        Query query = this.em.createQuery("SELECT p FROM Product p");
+        Query query = this.em.createNativeQuery("SELECT p.* FROM product p JOIN `cart-product` cp on p.productId = cp.productId JOIN cart c on cp.customerId = c.customerId WHERE c.customerId = :ID", Product.class);
+        query.setParameter("ID", ID);
         return query.getResultList();
     }
 
-//    SELECT * FROM Product p
-//    INNER JOIN cart-product cp
-//    ON cp.productID=p.productID
-//    INNER JOIn cart c
-//    ON c.customerID=cp.customerID
-//    WHERE c.customerID = ID
-
     @Override
     public void addToWishList(Product product, Integer customerID) {
-//        Query query = this.em.createNativeQuery("INSERT INTO `wishlist-product`(customerId, productId) " +
-//                "VALUES (?, ?)");
-//        query.setParameter(1, customerID);
-//        query.setParameter(2, product.getProductId());
-//        query.executeUpdate();
+        Query query = this.em.createNativeQuery("INSERT INTO `wishlist-product`(customerId, productId) " +
+                "VALUES (?, ?)");
+        query.setParameter(1, customerID);
+        query.setParameter(2, product.getProductId());
+        query.executeUpdate();
     }
 
     @Override
@@ -51,11 +45,11 @@ public class JPACartRepositoryImpl implements CartRepository {
     @Override
     @SuppressWarnings("unchecked")
     public void addProduct(Integer productID, Integer customerID) {
-//        Query query = this.em.createNativeQuery("INSERT INTO `cart-product`(customerId, productId) " +
-//                "VALUES (?, ?)");
-//        query.setParameter(1, customerID);
-//        query.setParameter(2, customerID);
-//        query.executeUpdate();
+        Query query = this.em.createNativeQuery("INSERT INTO `cart-product`(customerId, productId) " +
+                "VALUES (?, ?)");
+        query.setParameter(1, customerID);
+        query.setParameter(2, customerID);
+        query.executeUpdate();
     }
 
     @Override
@@ -74,13 +68,14 @@ public class JPACartRepositoryImpl implements CartRepository {
 
     @Override
     public void save(Cart cart) {
-//        if (cart.getCustomerId() == null) this.em.persist(cart);
-//        else this.em.merge(cart);
+        if (cart.getCustomerId() == null) this.em.persist(cart);
+        else this.em.merge(cart);
     }
 
     @Override
     public Double checkOut() {
-        return null;
+        Query query = this.em.createNativeQuery("SELECT SUM(c.quantity * p.priceunit) FROM cart c JOIN `cart-product` cp ON c.customerId = cp.customerId JOIN product p ON cp.productId = p.productId");
+        return (Double) query.getSingleResult();
     }
 
     @Override

@@ -23,9 +23,11 @@ public class CartController{
     @RequestMapping("/customer/{ID}/cart")
     public String showCart(Model model, @PathVariable Integer ID){
         Collection<Product> cartProducts = cartService.showProductByCart(ID);
+        double checkOut = cartService.checkOutCart();
         model.addAttribute("cartProducts",cartProducts);
         Customer customer = customerService.findCustomerByID(ID);
         model.addAttribute("customer", customer);
+        model.addAttribute("checkout", checkOut);
         return "cart";
     }
     @RequestMapping("/customer/{customerID}/cart/remove/{id}")
@@ -47,4 +49,15 @@ public class CartController{
         return "redirect:/customer/" + customerID + "/cart";
     }
 
+//    @RequestMapping("/customer/{customerID}/cart/addtocart/{id}")
+//    public ModelAndView addtocartForm(@PathVariable("customerID") Integer customerID,@PathVariable("id") Integer id)
+//    {
+//        ModelAndView mnv = new ModelAndView("redirect://customer/{customerID}");
+//        Product product = cartService.findProductByID(id);
+//        mnv.addObject("product",product);
+//        Customer customer = customerService.findCustomerByID(customerID);
+//        mnv.addObject("customer",customer);
+//        cartService.addProductToCart(product.getProductId(),customer.getCustomerId());
+//        return mnv;
+//    }
 }
