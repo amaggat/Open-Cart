@@ -7,12 +7,9 @@
             font-family: Arial, Helvetica, sans-serif;
             background-color: #33EEFF;
         }
-
         * {
             box-sizing: border-box;
         }
-
-
         .container {
             margin-top: 125px;
             padding: 16px;
@@ -22,26 +19,18 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         h1 {
             text-align: center;
         }
-
         /* Overwrite default styles of hr */
         hr {
             border: 1px solid #f1f1f1;
             margin-bottom: 25px;
         }
-
         .btn_container {
             width: 70%;
             margin: auto;
         }
-
-
-
-
-
         .login  .loginbtn {
             background-color: #28ace0;
             color: white;
@@ -56,15 +45,11 @@
             margin-bottom: 50px;
             border-radius: 10px;
         }
-
         .login  .loginbtn:hover {
             opacity: 1;
         }
-
         .register {
-
         }
-
         .register  .registerbtn {
             background-color: #28ace0;
             color: white;
@@ -76,16 +61,12 @@
             opacity: 0.9;
             border-radius: 10px;
         }
-
         .register  .registerbtn:hover {
             opacity: 1;
         }
-
-
         a {
             color: dodgerblue;
         }
-
         ul.menungang {
             list-style: none;
             width: 1200px;
@@ -95,7 +76,6 @@
         ul.menungang li {
             display: inline;
         }
-
         .menu {
             /* margin-top: 80px; */
             height:80px;
@@ -103,7 +83,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         ul.menungang a {
             margin: auto;
             color: rgb(12, 10, 10);
@@ -121,19 +100,15 @@
             padding-top:3px;
             padding-bottom: 6px;
         }
-
         .logoimg {
             size: 100%;
             width: 30%;
             margin-left: 330px;
-
         }
     </style>
     <title>Welcome to Opencart</title>
 </head>
-
 <body>
-
 <div class="container">
     <div class="menu">
         <img src="opencart-logo.png" alt="" class="logoimg">
@@ -149,9 +124,7 @@
         <div class="register">
             <a th:href="@{/registerPage}"><button type="submit" class="registerbtn" >Sign up</button></a>
         </div>
-
     </div>
 </div>
-
 </body>
 </html>
