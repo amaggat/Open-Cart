@@ -21,6 +21,8 @@ public class ProductController {
     public String viewListProductPage(Model model) {
         Collection<Product> listProducts = productService.listAllProducts();
         model.addAttribute("listProducts", listProducts);
+        Product product = new Product();
+        model.addAttribute("product", product);
         return "Product/list";
     }
 
@@ -69,10 +71,11 @@ public class ProductController {
     }
 
 
-    @RequestMapping(value="/search", method= RequestMethod.GET)
-    public String searchProduct(@ModelAttribute("product") Product product) {
-        productService.findProductByName(product.getName());
-        System.out.println(product);
+    @RequestMapping(value="/list/search")
+    public String searchProduct(Model model, Product product) {
+        Collection<Product> products = productService.findProductByName(product.getName());
+        model.addAttribute("products", products);
+        System.out.println(products);
         return "Product/searchResult";
     }
 

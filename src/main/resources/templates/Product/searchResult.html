@@ -21,7 +21,7 @@
             <th>Price Unit</th>
             <th>Actions</th>
         </tr>
-        <tr th:each = "product : ${product}">
+        <tr th:each = "product : ${products}">
             <td th:text="${product.productId}">Product ID</td>
             <td th:text="${product.brand.brandId}">Brand Id</td>
             <td th:text="${product.description}">Description</td>

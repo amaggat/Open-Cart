@@ -21,30 +21,25 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
 
     @Override
     public Collection<Product> findAllProductInWishList(Integer ID) {
-//        Query query = this.em.createNativeQuery("SELECT productId, brandId, description, productName, quantity, dateAdded, dateModified, priceunit" +
-//                " FROM product p JOIN `wishlist-product` wp " +
-//                "ON p.productId = wp.productId " +
-//                "WHERE wp.customerId = " + ID);
-        Query query = this.em.createQuery("SELECT p FROM Product p");
+        Query query = this.em.createNativeQuery("SELECT p.* FROM product p JOIN `wishlist-product` wp on p.productId = wp.productId JOIN wishlist w on wp.customerId = w.customerId WHERE w.customerId = :ID", Product.class);
+        query.setParameter("ID", ID);
         return query.getResultList();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public Collection<Product> addToCart(Integer productID, Integer customerID) {
-//        Query query = this.em.createQuery("INSERT INTO cart-product(customerID, productID) VALUES(:customerID, :productID)");
-//        query.setParameter("customerID", customerID).setParameter("productID", productID);
-//        Collection<Product> products = query.getResultList();
-        return null;
+        Query query = this.em.createNativeQuery("INSERT INTO `cart-product`(customerID, productID) VALUES(:customerID, :productID)", Product.class);
+        query.setParameter("customerID", customerID).setParameter("productID", productID);
+        return query.getResultList();
     }
 
     @Override
     public void removeProductInWishList(Product product) {
-//        Query query = this.em.createQuery("DELETE FROM wishlist-product wp WHERE wp.productID = :productID");
-//        query.setParameter("productID", product.getId());
-//        Collection<Product> products = query.getResultList();
-        Query query = em.createNativeQuery("DELETE FROM product WHERE " +
-                "productId = " + product.getProductId());
+        Query query = this.em.createQuery("DELETE FROM wishlist-product wp WHERE wp.productID = :productID");
+        query.setParameter("productID", product.getProductId());
+//        Query query = em.createNativeQuery("DELETE FROM product WHERE " +
+//                "productId = " + product.getProductId());
         query.executeUpdate();
     }
 
@@ -69,8 +64,8 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
 
     @Override
     public void save(WishList wishList) {
-//        if(wishList.getId()==null) this.em.merge(wishList);
-//        else this.em.persist(wishList);
+        if(wishList.getCustomerId()==null) this.em.merge(wishList);
+        else this.em.persist(wishList);
     }
 
     @Override
