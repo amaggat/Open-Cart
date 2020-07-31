@@ -20,10 +20,18 @@ public class JPACartRepositoryImpl implements CartRepository {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Collection<Product> findAllProduct() {
+    public Collection<Product> findAllProduct(Integer ID) {
         Query query = this.em.createQuery("SELECT p FROM Product p");
+        //Query query = this.em.createNativeQuery("SELECT p.* FROM product p JOIN `cart-product` cp on p.productId = cp.productId JOIN cart c on cp.customerId = c.customerId WHERE c.customerId = " + ID);
         return query.getResultList();
     }
+
+//    SELECT * FROM Product p
+//    INNER JOIN cart-product cp
+//    ON cp.productID=p.productID
+//    INNER JOIn cart c
+//    ON c.customerID=cp.customerID
+//    WHERE c.customerID = ID
 
     @Override
     public void addToWishList(Product product, Integer customerID) {

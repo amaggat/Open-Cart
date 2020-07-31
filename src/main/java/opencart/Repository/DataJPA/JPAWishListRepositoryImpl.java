@@ -21,10 +21,11 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
 
     @Override
     public Collection<Product> findAllProductInWishList(Integer ID) {
-        Query query = this.em.createNativeQuery("SELECT productId, brandId, description, productName, quantity, dateAdded, dateModified, priceunit" +
-                " FROM product p JOIN `wishlist-product` wp " +
-                "ON p.productId = wp.productId " +
-                "WHERE wp.customerId = " + ID);
+//        Query query = this.em.createNativeQuery("SELECT productId, brandId, description, productName, quantity, dateAdded, dateModified, priceunit" +
+//                " FROM product p JOIN `wishlist-product` wp " +
+//                "ON p.productId = wp.productId " +
+//                "WHERE wp.customerId = " + ID);
+        Query query = this.em.createQuery("SELECT p FROM Product p");
         return query.getResultList();
     }
 
@@ -38,11 +39,13 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
     }
 
     @Override
-    public Collection<Product> removeProductInWishList(Product product) {
+    public void removeProductInWishList(Product product) {
 //        Query query = this.em.createQuery("DELETE FROM wishlist-product wp WHERE wp.productID = :productID");
 //        query.setParameter("productID", product.getId());
 //        Collection<Product> products = query.getResultList();
-        return null;
+        Query query = em.createNativeQuery("DELETE FROM product WHERE " +
+                "productId = " + product.getProductId());
+        query.executeUpdate();
     }
 
     @Override

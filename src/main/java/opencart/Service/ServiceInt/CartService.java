@@ -9,7 +9,7 @@ public interface CartService {
     Collection<Cart> findCartByName (String name);
     Cart findCartByID(Integer ID);
     Double checkOutCart();
-    Collection<Product> showProductByCart();
+    Collection<Product> showProductByCart(Integer ID);
     void addProductToCart(Integer productID, Integer customerID);
     void removeProductFromCart(Product product);
     Product findProductByID(Integer ID);

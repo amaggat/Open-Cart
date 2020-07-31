@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Collection;
 
 public interface CartRepository{
-    Collection<Product> findAllProduct();
+    Collection<Product> findAllProduct(Integer ID);
     void removeProductInCart (Product product);
     void addProduct(Integer productID, Integer customerID);
     Cart findCartByID(Integer ID);

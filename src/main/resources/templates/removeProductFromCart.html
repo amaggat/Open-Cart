@@ -8,7 +8,9 @@
 <div align="center">
     <h1>Product Information</h1>
     <br/>
-    <form th:action = "@{/cartRemoveProduct}" th:object="${product}" method="post">
+    <form th:action = "@{/customer/{customerID}/cart/remove/{id}/cart-remove
+    (customerID=${customer.customerId}, id=${product.productId})}"
+          th:object="${product}" method="post">
         <table border="0" cellpadding="10">
             <tr>
                 <input type="hidden" th:field = "*{productId}">

@@ -40,8 +40,8 @@ public class CartServiceImpl implements CartService {
 
     @Override
     @Transactional
-    public Collection<Product> showProductByCart() {
-        return cartRepository.findAllProduct();
+    public Collection<Product> showProductByCart(Integer ID) {
+        return cartRepository.findAllProduct(ID);
     }
 
     @Override

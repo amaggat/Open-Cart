@@ -1,8 +1,11 @@
 package opencart.Controller;
 
+import opencart.Model.Customer;
 import opencart.Model.Product;
+import opencart.Service.ServiceInt.CustomerService;
 import opencart.Service.ServiceInt.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,29 +16,37 @@ import java.util.Collection;
 @Controller
 public class WishListController {
     @Autowired
-    private  WishListService wishListService;
+    private WishListService wishListService;
+    @Autowired
+    private CustomerService customerService;
 
-    @RequestMapping("/wishlist")
-    public String showWishlist(Model model, @PathVariable("customerID") Integer ID)
+    @RequestMapping(value = "/customer/{ID}/wishlist")
+    public String showWishlist(Model model, @PathVariable Integer ID)
     {
         Collection<Product> wishListProducts = wishListService.showProductByWishList(ID);
         model.addAttribute("wishlistProducts",wishListProducts);
+        Customer customer = customerService.findCustomerByID(ID);
+        model.addAttribute("customer", customer);
         return "wishlist";
     }
 
-    @RequestMapping("/wishlist/remove/{id}")
-    public ModelAndView removeProductForm(@PathVariable("id") Integer id)
+    @RequestMapping("/customer/{customerID}/wishlist/remove/{id}")
+    public ModelAndView removeProductForm(@PathVariable("customerID") Integer customerID, @PathVariable("id") Integer id)
     {
         ModelAndView modelAndView = new ModelAndView("removeProductFromWishlist");
         Product product = wishListService.findProductByID(id);
         modelAndView.addObject("product",product);
+        Customer customer = customerService.findCustomerByID(customerID);
+        modelAndView.addObject("customer", customer);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/wishlistRemoveProduct", method = RequestMethod.POST)
-    public String removeProduct(@ModelAttribute("product") Product product) {
+    @RequestMapping(value = "/customer/{customerID}/wishlist/remove/{id}/wishlist-remove", method = RequestMethod.POST)
+    public String removeProduct(@ModelAttribute("product") Product product,
+                                @PathVariable("customerID") Integer customerID,
+                                @PathVariable("id") Integer id) {
         wishListService.removeProductFromWishList(product);
-        return "redirect:/wishlist";
+        return "redirect:/customer/" + customerID + "/wishlist";
     }
 
 }

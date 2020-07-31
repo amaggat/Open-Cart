@@ -40,8 +40,8 @@ public class WishListServiceImpl implements WishListService {
 
     @Override
     @Transactional
-    public Collection<Product> removeProductFromWishList(Product product) {
-        return wishListRepository.removeProductInWishList(product);
+    public void removeProductFromWishList(Product product) {
+        wishListRepository.removeProductInWishList(product);
     }
 
     //null
