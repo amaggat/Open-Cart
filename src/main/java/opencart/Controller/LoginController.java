@@ -27,19 +27,9 @@ public class LoginController {
         return "Login/loginPage";
     }
 
-//    @RequestMapping(value = "/loginPage", method = RequestMethod.POST)
-//    public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
-//                                     @RequestParam("accountName") String accountName,
-//                                     @RequestParam("password") String password) {
-//        ModelAndView mav = new ModelAndView("Login/loginPage");
-//        Customer customer = this.customerService.findCustomerByAccountAndPassword(accountName, password);
-//        return mav;
-//    }
-
-    @RequestMapping(value = "/loginPage", method = RequestMethod.POST)
-    public ModelAndView loginProcess(@ModelAttribute("customer") Customer customer) {
-        ModelAndView mav = new ModelAndView("Login/loginPage");
+    @RequestMapping(value = "/validate", method = RequestMethod.POST)
+    public String loginProcess(@ModelAttribute("customer") Customer customer) {
         customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword());
-        return mav;
+        return "redirect:/list";
     }
 }
