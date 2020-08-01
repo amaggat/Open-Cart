@@ -91,7 +91,7 @@
 </head>
 
 <body>
-
+<!--<a th:href="@{'/customer/' + ${customer.customerId}}">access</a>-->
 <form th:action="@{/validate}" th:object="${customer}" method="post">
     <div class="container">
         <div class="menu">
@@ -101,6 +101,10 @@
         <hr>
 
         <div class="full_name">
+            <div class="name">
+                <label for="ID"><b></b></label>
+                <input type="hidden" th:field="*{customerId}" placeholder="" name="psw" id="ID" required>
+            </div>
             <div class="name">
                 <label for="fname"><b></b></label>
                 <input type="hidden" th:field="*{firstName}" placeholder="Enter First name" name="psw" id="fname" required>

@@ -48,4 +48,10 @@ public class CustomerServiceImpl implements CustomerService {
     public void addCustomer(Customer customer) {
         customerRepository.addCustomer(customer);
     }
+
+    @Override
+    @Transactional
+    public void saveUserInfo(Customer customer) {
+        customerRepository.saveInfo(customer);
+    }
 }

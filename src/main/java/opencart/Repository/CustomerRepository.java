@@ -11,4 +11,5 @@ public interface CustomerRepository {
     Customer findCustomerAccount(String accountName);
     Collection<Customer> findAllCustomer();
     void addCustomer(Customer customer);
+    void saveInfo(Customer customer);
 }

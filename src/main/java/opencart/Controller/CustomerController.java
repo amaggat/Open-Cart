@@ -1,6 +1,7 @@
 package opencart.Controller;
 
 import opencart.Model.Customer;
+import opencart.Model.Product;
 import opencart.Service.ServiceInt.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,29 +20,31 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping("/customer")
-    public String showCustomer(Model model)
-    {
-        Collection<Customer> listCustomer = customerService.showAllCustomer();
-        model.addAttribute("listCustomer",listCustomer);
-        return "Customer/customer";
-    }
-    @RequestMapping("/customer/{id}")
-    public ModelAndView editCustomer(@PathVariable("id") Integer id)
-    {
-        ModelAndView modelAndView = new ModelAndView("Customer/access");
-        Customer customer = customerService.findCustomerByID(id);
-        modelAndView.addObject("customer",customer);
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/customer/{id}/info", method = RequestMethod.POST)
-    public String checkCustomer(@ModelAttribute("customer") Customer customer) {
+    @RequestMapping(value = "/{ID}/customer/info")
+    public String checkCustomer(@PathVariable Integer ID, Model model) {
         try {
-            customerService.findCustomerByAccountAndPassword(customer.getAccountName(),customer.getPassword());
+            Customer customer = customerService.findCustomerByID(ID);
+            model.addAttribute("customer", customer);
             return "Customer/customerinfo";
         } catch (Exception e) {
             return "403Page";
         }
     }
+
+    @RequestMapping(value = "/{ID}/customer/info/edit/save", method = RequestMethod.POST)
+    public String saveInfo(@ModelAttribute("customer") Customer customer, @PathVariable Integer ID, Model model){
+        customerService.saveUserInfo(customer);
+        System.out.println(customer);
+        return "redirect:/{ID}/customer/info";
+    }
+
+    @RequestMapping(value = "/{ID}/customer/info/edit")
+    public ModelAndView editUser(@PathVariable("ID") Integer customerID)
+    {
+        ModelAndView modelAndView = new ModelAndView("Customer/customeredit");
+        Customer customer = customerService.findCustomerByID(customerID);
+        modelAndView.addObject("customer", customer);
+        return modelAndView;
+    }
+
 }

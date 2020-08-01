@@ -8,7 +8,7 @@
 <div align="center">
     <h1>Product Information</h1>
     <br/>
-    <form th:action = "@{/customer/{customerID}/wishlist/remove/{id}/wishlist-remove
+    <form th:action = "@{/{customerID}/customer/info/wishlist/remove/{id}/wishlist-remove
     (customerID=${customer.customerId}, id=${product.productId})}"
           th:object="${product}" method="post">
         <table border="0" cellpadding="10">

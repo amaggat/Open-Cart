@@ -262,13 +262,13 @@
 <div class="header">
     <div class="wrapper">
         <div class="logo">
-            <a th:href="@{/list}">
+            <a th:href="@{{ID}/list (ID=${customer.customerId})}">
                 <img src="https://www.opencart.com/application/view/image/icon/opencart-logo.png" alt="">
             </a>
         </div>
 
         <div class="searchbar">
-            <form th:action = "@{/list/search}" th:object="${product}" method="post">
+            <form th:action = "@{/{ID}/list/search(ID=${customer.customerId})}" th:object="${product}" method="post">
                 <table border="0" cellpadding="10">
                     <tr>
                         <td>

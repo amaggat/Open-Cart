@@ -5,9 +5,9 @@
     <title>Cart Manager</title>
 </head>
 <body>
-<div align = "center">
+<div align = "center" th:object="${customer}">
     <h1>Cart Manager</h1>
-    <a th:href="@{/list}">Product List</a>
+    <a th:href="@{/{ID}/list (ID=${customer.customerId})}">Product List</a>
     <br>
     <br>
     <th>Checkout: </th>
@@ -35,9 +35,8 @@
             <td th:text="${product.dateModified}">Date Modified</td>
             <td th:text="${product.price}">Price Unit</td>
             <td>
-                <a th:href="@{'/customer/' + ${customer.customerId} + '/cart/remove/' + ${product.productId} }">Remove</a>
-<!--                <a th:href="@{'/customer/'+ ${customer.customerId} + 'cart/orderdetail' + ${product.productId}}">OrderDetail</a>-->
-                <a th:href="@{'/customer/' + ${customer.customerId} + '/cart/addtowishlist/' +${product.productId}}">AddtoWishlist</a>
+                <a th:href="@{/{cID}/customer/info/cart/remove/{pID}(cID=${customer.customerId}, pID=${product.productId})}">Remove</a>
+                <a th:href="@{/{cID}/customer/info/cart/addtowishlist/{pID}(cID=${customer.customerId}, pID=${product.productId})}">AddtoWishlist</a>
             </td>
         </tr>
     </table>

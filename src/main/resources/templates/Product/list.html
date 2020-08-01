@@ -262,13 +262,13 @@
 <div class="header">
     <div class="wrapper">
         <div class="logo">
-            <a th:href="@{/list}">
+            <a th:href="@{/{id}/list (id=${customer.customerId})}">
                 <img src="https://www.opencart.com/application/view/image/icon/opencart-logo.png" alt="">
             </a>
         </div>
 
         <div class="searchbar">
-            <form th:action = "@{/list/search}" th:object="${product}" method="post">
+            <form th:action = "@{/{ID}/list/search(ID=${customer.customerId})}" th:object="${product}" method="post">
                 <table border="0" cellpadding="10">
                     <tr>
                         <td>
@@ -286,15 +286,15 @@
             </form>
         </div>
 
-        <div class="otherbtn">
+        <div class="otherbtn" th:object="${customer}">
             <button type="submit" class="cartbtn">
-                <a th:href="@{/list}">
+                <a th:href="@{/{id}/list (id=${customer.customerId})}">
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 </a>
             </button>
 
             <button type="submit" class="wishlistbtn">
-                <a th:href="@{/list}">
+                <a th:href="@{/{id}/list (id=${customer.customerId})}">
                     <i class="fa fa-heart" aria-hidden="true"></i>
                 </a>
             </button>
@@ -349,10 +349,10 @@
 </div>
 
 <div align="center">
-    <a th:href="@{/new}">Create New Product</a>
+    <a th:href="@{/{id}/list/new (id=${customer.customerId})}">Create New Product</a>
     <br>
     <br>
-    <a th:href="@{/customer}">Customer</a>
+    <a th:href="@{/{ID}/customer/info (ID = ${customer.customerId})}">Customer</a>
     <br>
 </div>
 
@@ -381,9 +381,9 @@
             <td th:text="${product.dateModified}">Date Modified</td>
             <td th:text="${product.price}">Price Unit</td>
             <td>
-                <a th:href="@{'/edit/' + ${product.productId} }">Edit</a>
-                <br/><br/>
-                <a th:href="@{'/delete/' + ${product.productId} }">Delete</a>
+                <a th:href="@{/{customerID}/list/edit/{productID} (customerID=${customer.customerId}, productID=${product.productId})}">Edit</a>
+                <a th:href="@{/{customerID}/list/delete/{productID} (customerID=${customer.customerId}, productID=${product.productId})}">Delete</a>
+<!--                <a th:href="@{/{cID}/customer/info/cart/addtowishlist/{pID}(cID=${customer.customerId}, pID=${product.productId})}">AddWishlist</a>-->
             </td>
         </tr>
     </table>

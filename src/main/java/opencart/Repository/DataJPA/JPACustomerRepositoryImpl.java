@@ -73,4 +73,33 @@ public class JPACustomerRepositoryImpl implements CustomerRepository {
         query.setParameter(10, customer.getCountry());
         query.executeUpdate();
     }
+
+    @Override
+    public void saveInfo(Customer customer) {
+        Query query = this.em.createNativeQuery("UPDATE customer c " +
+                "SET " +
+                "c.accountName=:account, " +
+                "c.addressLine1=:al1, " +
+                "c.addressLine2=:al2, " +
+                "c.city=:city, " +
+                "c.country=:coun, " +
+                "c.email=:email, " +
+                "c.firstName=:fn, " +
+                "c.lastName=:ln, " +
+                "c.password=:pw, " +
+                "c.phone=:phone " +
+                "WHERE c.customerId = " + customer.getCustomerId());
+        //query.setParameter("id", customer.getCustomerId());
+        query.setParameter("account", customer.getAccountName());
+        query.setParameter("al1", customer.getAddressLine1());
+        query.setParameter("al2", customer.getAddressLine2());
+        query.setParameter("city", customer.getCity());
+        query.setParameter("coun", customer.getCountry());
+        query.setParameter("email", customer.getEmail());
+        query.setParameter("fn", customer.getFirstName());
+        query.setParameter("ln", customer.getLastName());
+        query.setParameter("pw", customer.getPassword());
+        query.setParameter("phone", customer.getPhoneNumber());
+        query.executeUpdate();
+    }
 }

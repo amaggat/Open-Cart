@@ -20,7 +20,7 @@ public class WishListController {
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping(value = "/customer/{ID}/wishlist")
+    @RequestMapping(value = "/{ID}/customer/info/wishlist")
     public String showWishlist(Model model, @PathVariable Integer ID)
     {
         Collection<Product> wishListProducts = wishListService.showProductByWishList(ID);
@@ -30,7 +30,7 @@ public class WishListController {
         return "wishlist";
     }
 
-    @RequestMapping("/customer/{customerID}/wishlist/remove/{id}")
+    @RequestMapping("/{customerID}/customer/info/wishlist/remove/{id}")
     public ModelAndView removeProductForm(@PathVariable("customerID") Integer customerID, @PathVariable("id") Integer id)
     {
         ModelAndView modelAndView = new ModelAndView("removeProductFromWishlist");
@@ -40,21 +40,21 @@ public class WishListController {
         modelAndView.addObject("customer", customer);
         return modelAndView;
     }
-    @RequestMapping(value = "/customer/{customerID}/wishlist/remove/{id}/wishlist-remove", method = RequestMethod.POST)
+    @RequestMapping(value = "/{customerID}/customer/info/wishlist/remove/{id}/wishlist-remove", method = RequestMethod.POST)
     public String removeProduct(@ModelAttribute("product") Product product,
                                 @PathVariable("customerID") Integer customerID,
                                 @PathVariable("id") Integer id) {
         wishListService.removeProductFromWishList(product);
         System.out.println(product);
-        return "redirect:/customer/" + customerID + "/wishlist";
+        return "redirect:/" + customerID + "/customer/info/wishlist";
     }
-    @RequestMapping("/customer/{customerID}/wishlist/addtocart/{id}")
-    public String AddtoWishlist(@PathVariable("customerID") Integer customerID,@PathVariable("id") Integer id)
+    @RequestMapping("/{customerID}/customer/info/wishlist/addtocart/{id}")
+    public String AddtoCart(@PathVariable("customerID") Integer customerID,@PathVariable("id") Integer id)
     {
         Product product = wishListService.findProductByID(id);
         Customer customer = customerService.findCustomerByID(customerID);
         wishListService.addProductToCart(product.getProductId(),customer.getCustomerId());
-        return "redirect:/customer/" + customerID + "/wishlist";
+        return "redirect:/" + customerID + "/customer/info/wishlist";
     }
 
 

@@ -10,4 +10,5 @@ public interface CustomerService {
     Collection<Customer> showAllCustomer();
     Customer findCustomerByAccountAndPassword(String account, String password);
     void addCustomer(Customer customer);
+    void saveUserInfo(Customer customer);
 }
