@@ -9,6 +9,10 @@
     <h1>Wish List Manager</h1>
     <a th:href="@{/{ID}/list (ID=${customer.customerId})}">Product List</a>
     <br>
+    <br>
+    <a th:href="@{/{ID}/customer/info/cart (ID = ${customer.customerId})}">Cart</a>
+    <br>
+    <br>
     <table border="1" cellpadding="10">
         <tr>
             <th>Product ID</th>

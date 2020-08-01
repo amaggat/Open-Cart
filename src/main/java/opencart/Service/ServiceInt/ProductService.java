@@ -14,4 +14,6 @@ public interface ProductService {
     void addProduct(Product product);
     void saveProduct(Product product);
     void deleteProduct(Integer ID);
+    void addToCart(Integer productID, Integer customerID);
+    void addToWishList(Integer productID, Integer customerID);
 }

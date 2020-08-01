@@ -349,11 +349,12 @@
 </div>
 
 <div align="center">
+    <br><br>
     <a th:href="@{/{id}/list/new (id=${customer.customerId})}">Create New Product</a>
     <br>
     <br>
     <a th:href="@{/{ID}/customer/info (ID = ${customer.customerId})}">Customer</a>
-    <br>
+    <br><br>
 </div>
 
 <div class="container">
@@ -370,6 +371,7 @@
             <th>Date Modified</th>
             <th>Price Unit</th>
             <th>Actions</th>
+            <th>Add To Cart/Wish</th>
         </tr>
         <tr th:each = "product : ${listProducts}">
             <td th:text="${product.productId}">Product ID</td>
@@ -383,7 +385,10 @@
             <td>
                 <a th:href="@{/{customerID}/list/edit/{productID} (customerID=${customer.customerId}, productID=${product.productId})}">Edit</a>
                 <a th:href="@{/{customerID}/list/delete/{productID} (customerID=${customer.customerId}, productID=${product.productId})}">Delete</a>
-<!--                <a th:href="@{/{cID}/customer/info/cart/addtowishlist/{pID}(cID=${customer.customerId}, pID=${product.productId})}">AddWishlist</a>-->
+            </td>
+            <td>
+                <a th:href="@{/{customerID}/list/addtocart/{id}(customerID=${customer.customerId}, id=${product.productId})}">AddCart</a>
+                <a th:href="@{/{customerID}/list/addtowishlist/{id}(customerID=${customer.customerId}, id=${product.productId})}">AddWishList</a>
             </td>
         </tr>
     </table>

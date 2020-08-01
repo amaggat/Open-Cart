@@ -18,6 +18,6 @@ public interface ProductRepository  {
     public void add(Product product);
     public void save(Product product);
     public void deleteById(Integer ID);
-    Collection<Product> addToCart (int productID, int cartID);
-    Collection<Product> addToWishList(int productID, int wishListID);
+    void addToCart (int productID, int customerID);
+    void addToWishList(int productID, int customerID);
 }

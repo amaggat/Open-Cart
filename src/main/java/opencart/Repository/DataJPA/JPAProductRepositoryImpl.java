@@ -89,12 +89,14 @@ public class JPAProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public Collection<Product> addToCart(int productID, int cartID) {
-        return null;
+    public void addToCart(int productID, int customerID) {
+        Query query = this.em.createNativeQuery("INSERT INTO `cart-product`(customerID, productID) VALUES(:customerID, :productID)");
+        query.setParameter("customerID", customerID).setParameter("productID", productID).executeUpdate();
     }
 
     @Override
-    public Collection<Product> addToWishList(int productID, int wishListID) {
-        return null;
+    public void addToWishList(int productID, int customerID) {
+        Query query = this.em.createNativeQuery("INSERT INTO `wishlist-product`(customerId, productId) VALUES (?, ?)");
+        query.setParameter(1, customerID).setParameter(2, productID).executeUpdate();
     }
 }

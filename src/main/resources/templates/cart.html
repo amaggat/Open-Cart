@@ -10,8 +10,13 @@
     <a th:href="@{/{ID}/list (ID=${customer.customerId})}">Product List</a>
     <br>
     <br>
+    <a th:href="@{/{ID}/customer/info/wishlist (ID = ${customer.customerId})}">WishList</a>
+    <br>
+    <br>
     <th>Checkout: </th>
     <td th:object="${checkout}" th:text="${checkout}"></td>
+    <br>
+    <br>
     <table border="1" cellpadding="10">
 
         <tr>

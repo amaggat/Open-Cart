@@ -71,6 +71,7 @@ public class ProductController {
         model.addAttribute("customer", customer);
         return "redirect:/{ID}/list";
     }
+
     @RequestMapping("{customerID}/list/delete/{productID}")
     public ModelAndView deleteProduct(@PathVariable(name = "productID") Integer id, @PathVariable("customerID") Integer ID)
     {
@@ -100,6 +101,24 @@ public class ProductController {
         Customer customer = customerService.findCustomerByID(ID);
         model.addAttribute("customer", customer);
         return "Product/searchResult";
+    }
+
+    @RequestMapping("{customerID}/list/addtowishlist/{id}")
+    public String AddToWishlist(@PathVariable("customerID") Integer customerID,@PathVariable("id") Integer id)
+    {
+        Product product = productService.findProductByID(id);
+        Customer customer = customerService.findCustomerByID(customerID);
+        productService.addToWishList(product.getProductId(),customer.getCustomerId());
+        return "redirect:/{customerID}/list";
+    }
+
+    @RequestMapping("{customerID}/list/addtocart/{id}")
+    public String AddToCart(@PathVariable("customerID") Integer customerID,@PathVariable("id") Integer id)
+    {
+        Product product = productService.findProductByID(id);
+        Customer customer = customerService.findCustomerByID(customerID);
+        productService.addToCart(product.getProductId(),customer.getCustomerId());
+        return "redirect:/{customerID}/list";
     }
 
 

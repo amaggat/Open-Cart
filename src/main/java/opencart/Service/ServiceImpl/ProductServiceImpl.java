@@ -61,4 +61,16 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(ID);
     }
 
+    @Override
+    @Transactional
+    public void addToCart(Integer productID, Integer customerID) {
+        productRepository.addToCart(productID, customerID);
+    }
+
+    @Override
+    @Transactional
+    public void addToWishList(Integer productID, Integer customerID) {
+        productRepository.addToWishList(productID, customerID);
+    }
+
 }

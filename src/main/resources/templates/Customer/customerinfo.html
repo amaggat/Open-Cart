@@ -17,6 +17,7 @@
                 <a th:href="@{/{ID}/customer/info/cart (ID = ${customer.customerId})}">Cart</a>
                 <br/><br/>
                 <a th:href="@{/{ID}/customer/info/wishlist (ID = ${customer.customerId})}">WishList</a>
+                <br/><br/>
             </tr>
             <tr><th>Customer ID</th><td th:text="${customer.customerId}">Customer ID</td></tr>
             <tr><th>First Name</th><td th:text="${customer.firstName}">First Name</td></tr>
