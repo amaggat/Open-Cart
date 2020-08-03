@@ -17,8 +17,12 @@ import java.util.Collection;
 @Controller
 public class CustomerController {
 
+    private final CustomerService customerService;
+
     @Autowired
-    private CustomerService customerService;
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     @RequestMapping(value = "/{ID}/customer/info")
     public String checkCustomer(@PathVariable Integer ID, Model model) {

@@ -11,8 +11,12 @@ import java.util.Collection;
 
 @Controller
 public class OrderController {
+    private final OrderService orderService;
+
     @Autowired
-    private OrderService orderService;
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @RequestMapping("/orderlist")
     public String viewOrderList(Model model) {

@@ -48,13 +48,13 @@
 
         <div class="otherbtn" th:object="${customer}">
             <button type="submit" class="cartbtn">
-                <a th:href="@{/{id}/list (id=${customer.customerId})}">
+                <a th:href="@{/{ID}/customer/info/cart (ID = ${customer.customerId})}">
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 </a>
             </button>
 
             <button type="submit" class="wishlistbtn">
-                <a th:href="@{/{id}/list (id=${customer.customerId})}">
+                <a th:href="@{/{ID}/customer/info/wishlist (ID = ${customer.customerId})}">
                     <i class="fa fa-heart" aria-hidden="true"></i>
                 </a>
             </button>

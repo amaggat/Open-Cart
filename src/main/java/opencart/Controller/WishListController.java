@@ -15,10 +15,14 @@ import java.util.Collection;
 
 @Controller
 public class WishListController {
+    private final WishListService wishListService;
+    private final CustomerService customerService;
+
     @Autowired
-    private WishListService wishListService;
-    @Autowired
-    private CustomerService customerService;
+    public WishListController(WishListService wishListService, CustomerService customerService) {
+        this.wishListService = wishListService;
+        this.customerService = customerService;
+    }
 
     @RequestMapping(value = "/{ID}/customer/info/wishlist")
     public String showWishlist(Model model, @PathVariable Integer ID)
