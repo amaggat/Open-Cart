@@ -231,9 +231,16 @@ img {vertical-align: middle;}
 
 
 /* CONTAINER */
-.container {}
+.container { width: 100%}
 
 .container  .wrapper {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.container  .wrapper  .col  {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     margin: auto;
@@ -241,7 +248,7 @@ img {vertical-align: middle;}
     font-family: arial;
 }
 
-.container  .wrapper  button  {
+.container  .wrapper .col button  {
     border: none;
     outline: 0;
     padding: 12px;
@@ -261,6 +268,7 @@ img {vertical-align: middle;}
 .container  .wrapper  button:hover  {
     opacity: 0.7;
 }
+
 
 .footer {}
 
