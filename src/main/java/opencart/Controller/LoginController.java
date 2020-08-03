@@ -31,7 +31,7 @@ public class LoginController {
             int customerID = customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword()).getCustomerId();
             return "redirect:/" + customerID + "/list";
         } catch (Exception e) {
-            return "403Page";
+            return "redirect:/registerPage";
         }
     }
 
