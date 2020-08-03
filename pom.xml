@@ -49,140 +49,10 @@
       <artifactId>mysql-connector-java</artifactId>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.hibernate</groupId>-->
-<!--      <artifactId>hibernate-core</artifactId>-->
-<!--      <version>5.4.0.Final</version>-->
-<!--    </dependency>-->
-
-
-
-<!--    <dependency>-->
-<!--      <groupId>junit</groupId>-->
-<!--      <artifactId>junit</artifactId>-->
-<!--      <version>4.11</version>-->
-<!--      <scope>test</scope>-->
-<!--    </dependency>-->
-
-<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <groupId>org.apache.tomcat</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <artifactId>tomcat-jdbc</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <groupId>org.thymeleaf</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <artifactId>thymeleaf</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <version>3.0.11.RELEASE</version>&ndash;&gt;-->
-<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
-
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-web</artifactId>-->
-<!--      <version>2.3.1.RELEASE</version>-->
-<!--    </dependency>-->
-
-<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <groupId>org.springframework.boot</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <artifactId>spring-boot-devtools</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <version>2.3.1.RELEASE</version>&ndash;&gt;-->
-<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <groupId>org.springframework.boot</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <artifactId>spring-boot-devtools</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <version>2.3.1.RELEASE</version>&ndash;&gt;-->
-<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
-
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--      <version>2.3.1.RELEASE</version>-->
-<!--    </dependency>-->
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-test</artifactId>-->
-<!--      <version>2.3.1.RELEASE</version>-->
-<!--    </dependency>-->
-
-<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <groupId>org.springframework</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <artifactId>spring-context</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <version>5.2.4.RELEASE</version>&ndash;&gt;-->
-<!--&lt;!&ndash;      <scope>compile</scope>&ndash;&gt;-->
-<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <groupId>org.springframework</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <artifactId>spring-web</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <version>5.2.4.RELEASE</version>&ndash;&gt;-->
-<!--&lt;!&ndash;      <scope>compile</scope>&ndash;&gt;-->
-<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <groupId>org.springframework</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <artifactId>spring-webmvc</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <version>5.2.4.RELEASE</version>&ndash;&gt;-->
-<!--&lt;!&ndash;      <scope>compile</scope>&ndash;&gt;-->
-<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
-
-<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.security/spring-security-config &ndash;&gt;-->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.security</groupId>-->
-<!--      <artifactId>spring-security-config</artifactId>-->
-<!--      <version>5.3.3.RELEASE</version>-->
-<!--    </dependency>-->
-
-<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.security/spring-security-web &ndash;&gt;-->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.security</groupId>-->
-<!--      <artifactId>spring-security-web</artifactId>-->
-<!--      <version>5.3.3.RELEASE</version>-->
-<!--    </dependency>-->
-
-
-<!--    <dependency>-->
-<!--      <groupId>javax.servlet</groupId>-->
-<!--      <artifactId>javax.servlet-api</artifactId>-->
-<!--      <version>4.0.1</version>-->
-<!--      <scope>provided</scope>-->
-<!--    </dependency>-->
-
-<!--    <dependency>-->
-<!--      <groupId>mysql</groupId>-->
-<!--      <artifactId>mysql-connector-java</artifactId>-->
-<!--      <version>8.0.20</version>-->
-<!--    </dependency>-->
-
-<!--    <dependency>-->
-<!--      <groupId>org.springframework</groupId>-->
-<!--      <artifactId>spring-jdbc</artifactId>-->
-<!--      <version>5.2.4.RELEASE</version>-->
-<!--    </dependency>-->
-
-<!--    <dependency>-->
-<!--      <groupId>org.springframework</groupId>-->
-<!--      <artifactId>spring-orm</artifactId>-->
-<!--      <version>5.2.0.RELEASE</version>-->
-<!--    </dependency>-->
-
-<!--    &lt;!&ndash;<dependency>-->
-<!--      <groupId>org.aspectj</groupId>-->
-<!--      <artifactId>aspectjrt</artifactId>-->
-<!--      &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
-<!--      <version>${aspectj.version}</version>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.aspectj</groupId>-->
-<!--      <artifactId>aspectjweaver</artifactId>-->
-<!--      &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
-<!--      <version>${aspectj.version}</version>-->
-<!--      <scope>runtime</scope>-->
-<!--    </dependency>&ndash;&gt;-->
 
     <dependency>
       <groupId>jakarta.validation</groupId>
@@ -190,42 +60,15 @@
       <version>2.0.2</version>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.data</groupId>-->
-<!--      <artifactId>spring-data-commons</artifactId>-->
-<!--      <version>2.2.0.RELEASE</version>-->
-<!--    </dependency>-->
-
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.data</groupId>-->
-<!--      <artifactId>spring-data-jpa</artifactId>-->
-<!--      <version>2.2.0.RELEASE</version>-->
-<!--    </dependency>-->
-
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-web</artifactId>-->
-<!--    </dependency>-->
-
-<!--    &lt;!&ndash; https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api &ndash;&gt;-->
-<!--    <dependency>-->
-<!--      <groupId>javax.persistence</groupId>-->
-<!--      <artifactId>javax.persistence-api</artifactId>-->
-<!--      <version>2.2</version>-->
-<!--    </dependency>-->
-
-<!--    &lt;!&ndash;MySQL connector&ndash;&gt;-->
-<!--    <dependency>-->
-<!--      <groupId>mysql</groupId>-->
-<!--      <artifactId>mysql-connector-java</artifactId>-->
-<!--    </dependency>-->
-
   </dependencies>
+
+  <distributionManagement>
+    <repository>
+      <id>internal.repo</id>
+      <name>Uet Open Cart</name>
+      <url>https://github.com/amaggat/OpenCart.git</url>
+    </repository>
+  </distributionManagement>
 
   <build>
     <finalName>OpenCart</finalName>

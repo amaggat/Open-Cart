@@ -74,4 +74,10 @@ public class CartServiceImpl implements CartService {
         cartRepository.initCart(ID);
     }
 
+    @Override
+    @Transactional
+    public void clear(Integer ID) {
+        cartRepository.clear(ID);
+    }
+
 }

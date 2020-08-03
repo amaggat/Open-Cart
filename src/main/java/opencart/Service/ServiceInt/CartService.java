@@ -15,4 +15,5 @@ public interface CartService {
     Product findProductByID(Integer ID);
     void addToCart(Integer productID, Integer customerID);
     void initCart(Integer ID);
+    void clear(Integer ID);
 }

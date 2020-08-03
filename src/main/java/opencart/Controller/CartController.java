@@ -66,6 +66,7 @@ public class CartController{
         model.addAttribute("checkout", checkOut);
         Customer customer = customerService.findCustomerByID(ID);
         model.addAttribute("customer", customer);
+        cartService.clear(ID);
         return "Product/payments";
     }
 

@@ -93,7 +93,12 @@ public class JPACartRepositoryImpl implements CartRepository {
         Query query = this.em.createNativeQuery("INSERT INTO cart (customerId, dateAdded, quantity) VALUES (?, ?, ?)");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        //System.out.println(dtf.format(now));
         query.setParameter(1, ID).setParameter(2, dtf.format(now)).setParameter(3, 1).executeUpdate();
+    }
+
+    @Override
+    public void clear(Integer ID) {
+        Query query = this.em.createNativeQuery("DELETE FROM `cart-product` WHERE customerId = " + ID);
+        query.executeUpdate();
     }
 }
