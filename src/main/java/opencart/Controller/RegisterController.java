@@ -2,7 +2,9 @@ package opencart.Controller;
 
 import opencart.Model.Customer;
 import opencart.Model.Product;
+import opencart.Service.ServiceInt.CartService;
 import opencart.Service.ServiceInt.CustomerService;
+import opencart.Service.ServiceInt.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,12 @@ public class RegisterController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private CartService cartService;
+
+    @Autowired
+    private WishListService wishListService;
+
     @RequestMapping(value = {"/registerPage"}, method = RequestMethod.GET)
     public String viewRegisterPage(Model model) {
         Customer customer = new Customer();
@@ -25,7 +33,10 @@ public class RegisterController {
 
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
     public String addUser(@ModelAttribute("customer") Customer customer){
+        int customerID = customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword()).getCustomerId();
         customerService.addCustomer(customer);
+        cartService.initCart(customerID);
+        wishListService.initWishlist(customerID);
         return "redirect:/loginPage/";
     }
 }

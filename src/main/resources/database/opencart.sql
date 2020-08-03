@@ -4,6 +4,9 @@
 -- ------------------------------------------------------
 -- Server version	8.0.20
 
+CREATE DATABASE opencart;
+USE opencart;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -222,3 +225,6 @@ CREATE TABLE `wishlist-product` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-07-31 23:56:52
+
+/* Ignore Foreign Key Check */
+SET FOREIGN_KEY_CHECKS = 0;

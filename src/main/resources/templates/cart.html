@@ -17,6 +17,9 @@
     <td th:object="${checkout}" th:text="${checkout}"></td>
     <br>
     <br>
+    <a th:href="@{/{ID}/customer/info/cart/paid (ID = ${customer.customerId})}">Get Bill</a>
+    <br>
+    <br>
     <table border="1" cellpadding="10">
 
         <tr>
@@ -30,6 +33,7 @@
             <th>Price Unit</th>
             <th>Actions</th>
         </tr>
+
         <tr th:each = "product : ${cartProducts}">
             <td th:text="${product.productId}">Product ID</td>
             <td th:text="${product.brand.brandId}">Brand Id</td>

@@ -15,4 +15,5 @@ public interface WishListRepository {
     WishList findWishListByID(Integer ID);
     void addProduct(Integer productID, Integer customerID);
     Product findProductByID(Integer ID);
+    void init(Integer ID);
 }

@@ -1,7 +1,9 @@
 package opencart.Controller;
 
 import opencart.Model.Customer;
+import opencart.Service.ServiceInt.CartService;
 import opencart.Service.ServiceInt.CustomerService;
+import opencart.Service.ServiceInt.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,12 @@ public class LoginController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private CartService cartService;
+
+    @Autowired
+    private WishListService wishListService;
+
     @RequestMapping(value = "/loginPage")
     public String showLogin(Model model) {
         Customer customer = new Customer();
@@ -29,11 +37,12 @@ public class LoginController {
         try {
             customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword());
             int customerID = customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword()).getCustomerId();
+//            cartService.initCart(customerID);
+//            wishListService.initWishlist(customerID);
             return "redirect:/" + customerID + "/list";
         } catch (Exception e) {
             return "redirect:/registerPage";
         }
     }
-
 
 }

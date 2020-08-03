@@ -16,4 +16,5 @@ public interface CartRepository{
     void save (Cart cart);
     Double checkOut();
     Product findProductById(Integer ID);
+    void initCart(Integer ID);
 }

@@ -21,6 +21,7 @@
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
+INSERT INTO `brand` VALUES (1,'SmartPhone','expensive'),(2,'Mam Tom','expensive'),(3,'Chao Long','expensive'),(4,'Tiet Canh','expensive'),(5,'Laptop','expensive'),(6,'Camera','expensive'),(7,'Car','expensive'),(8,'Plane','expensive'),(9,'Linh Tinh','expensive'),(10,'Moon','expensive'),(11,'Bim Bim','expensive');
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -30,6 +31,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES (1,'2020-08-03 10:42:43',1);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -39,6 +41,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `cart-product` WRITE;
 /*!40000 ALTER TABLE `cart-product` DISABLE KEYS */;
+INSERT INTO `cart-product` VALUES (1,9),(1,1),(1,2);
 /*!40000 ALTER TABLE `cart-product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,7 +71,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Thanh','Dat','thanhdat.vnu@gmail.com','0943883280','thanhhdatt','1','Mai Dich','Cau Giay','Ha Noi','Viet Nam'),(2,'Thanh','Dat','thanhdat.9620@gmail.com','0943883280','bundaumamtom','123','University of Engineering and Technology','Ha Noi','HaNoi','Vietnam'),(3,'Thanh','Dat','thanhdat.vnu@gmail.com','113','chaolongtietcanh','123','University of Engineering and Technology','HaNoi','HaNoi','Vietnam'),(4,'Thanh','Dat','thanhdat.9620@gmail.com','0943883280','thitchoruaman','hihahiho','University of Engineering and Technology, Ha Noi','HaNoi','HaNoi','Vietnam');
+INSERT INTO `customer` VALUES (1,'Thanh','Dat','thanhdat.vnu@gmail.com','0943883280','thanhhdatt','1','Mai Dich','Cau Giay','Ha Noi','Viet Nam');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +101,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (9,1,'Kinh lắm','Tiết Canh',5,'2020-07-27','2020-07-30',123),(10,1,'Cute','Mèo',5,'2020-07-27','2020-07-30',1),(11,1,'Cute','Sen Đá',5,'2020-07-27','2020-07-30',1),(12,1,'Chán ','Phở',5,'2020-07-27','2020-07-30',123),(13,1,'Ngon','Cây chuối',5,'2020-07-27','2020-07-30',1),(14,1,'Ngon lắm','Lá Ngón',5,'2020-07-27','2020-07-30',2),(15,1,'Riềng mẻ mắm tôm','Chó',2,'2020-06-30','2020-07-30',412),(16,1,'Riềng mẻ mắm tôm','Chó',3,'2020-07-06','2020-08-01',1234),(20,1,'Mắm Tôm','Chó',1,'2020-06-30','2020-06-30',10),(21,1,'Description','Chó',1,'2020-07-06','2020-07-27',1.2),(22,3,'Description','Acid B1',0,'2020-06-28','2020-07-07',0),(23,4,'Hello','Thanh Dat',0,'2020-06-28','2020-07-10',0),(24,4,'Cháo Lòng','Tiết Canh',1,'2020-07-06','2020-07-13',123),(26,1,'Laptop','iPhone 6s cộng',1,'2020-07-21','2020-07-13',12);
+INSERT INTO `product` VALUES (1,2,'Expensive','Thinkbook 14',1,'2020-07-21','2020-07-13',12),(2,2,'Expensive','Thinkbook 15',1,'2020-07-21','2020-07-13',13),(3,2,'Expensive','Macbook Pro 13 2018',1,'2020-07-21','2020-07-13',14),(4,2,'Expensive','Macbook Pro 15 2016',1,'2020-07-21','2020-07-13',15),(5,2,'Expensive','Ideapad 720s',1,'2020-07-21','2020-07-13',16),(6,2,'Expensive','Ideapad 730s',1,'2020-07-21','2020-07-13',17),(7,2,'Expensive','Dell XPS 13',1,'2020-07-21','2020-07-13',18),(8,2,'Expensive','Dell XPS 15',1,'2020-07-21','2020-07-13',19),(9,1,'Kinh lắm','Tiết Canh',5,'2020-07-27','2020-07-30',123),(10,1,'Cute','Mèo',5,'2020-07-27','2020-07-30',1),(11,1,'Cute','Sen Đá',5,'2020-07-27','2020-07-30',1),(12,1,'Chán ','Phở',5,'2020-07-27','2020-07-30',123),(13,1,'Ngon','Cây chuối',5,'2020-07-27','2020-07-30',1),(14,1,'Ngon lắm','Lá Ngón',5,'2020-07-27','2020-07-30',2),(15,1,'Riềng mẻ mắm tôm','Chó',2,'2020-06-30','2020-07-30',412),(16,1,'Riềng mẻ mắm tôm','Chó',3,'2020-07-06','2020-08-01',1234),(17,3,'Canon','Canon EOS 5D Mark IV',1,'2020-07-21','2020-07-13',120),(18,3,'Nikon','Nikon EOS D810',1,'2020-07-21','2020-07-13',124),(19,3,'Sony','Sony A7 Mark III EOS R',1,'2020-07-21','2020-07-13',125),(20,1,'Mắm Tôm','Chó',1,'2020-06-30','2020-06-30',10),(21,1,'Description','Chó',1,'2020-07-06','2020-07-27',1.2),(22,3,'Description','Acid B1',0,'2020-06-28','2020-07-07',0),(23,4,'Hello','Thanh Dat',0,'2020-06-28','2020-07-10',0),(24,4,'Cháo Lòng','Tiết Canh',1,'2020-07-06','2020-07-13',123),(26,1,'Laptop','iPhone 6s cộng',1,'2020-07-21','2020-07-13',12);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +121,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `wishlist-product` WRITE;
 /*!40000 ALTER TABLE `wishlist-product` DISABLE KEYS */;
-INSERT INTO `wishlist-product` VALUES (1,1),(1,11),(1,10),(1,10),(1,10),(1,10),(1,9),(1,9),(1,9),(1,9),(1,9);
+INSERT INTO `wishlist-product` VALUES (1,1);
 /*!40000 ALTER TABLE `wishlist-product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -131,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-31 23:58:30
+-- Dump completed on 2020-08-03 10:54:15

@@ -58,6 +58,12 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
     }
 
     @Override
+    public void init(Integer ID) {
+        Query query = this.em.createNativeQuery("INSERT INTO wishlist (customerId, status) VALUES (?, ?)");
+        query.setParameter(1, ID).setParameter(2, "Favourite").executeUpdate();
+    }
+
+    @Override
     public void save(WishList wishList) {
         if(wishList.getCustomerId()==null) this.em.merge(wishList);
         else this.em.persist(wishList);

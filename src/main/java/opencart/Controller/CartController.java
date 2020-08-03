@@ -58,4 +58,15 @@ public class CartController{
         return "redirect:/" + customerID + "/customer/info/cart";
     }
 
+    @RequestMapping("/{ID}/customer/info/cart/paid")
+    public String paid(@PathVariable Integer ID, Model model){
+        Collection<Product> cartProducts = cartService.showProductByCart(ID);
+        model.addAttribute("cartProducts",cartProducts);
+        double checkOut = cartService.checkOutCart();
+        model.addAttribute("checkout", checkOut);
+        Customer customer = customerService.findCustomerByID(ID);
+        model.addAttribute("customer", customer);
+        return "Product/payments";
+    }
+
 }

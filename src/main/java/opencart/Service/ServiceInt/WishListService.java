@@ -12,4 +12,5 @@ public interface WishListService {
     void removeProductFromWishList(Product product);
     Product findProductByID(Integer ID);
     void addToWishList(Integer productID, Integer customerID);
+    void initWishlist (Integer ID);
 }

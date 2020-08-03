@@ -63,8 +63,15 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    @Transactional
     public void addToCart(Integer productID, Integer customerID) {
         cartRepository.addProduct(productID, customerID);
+    }
+
+    @Override
+    @Transactional
+    public void initCart(Integer ID) {
+        cartRepository.initCart(ID);
     }
 
 }

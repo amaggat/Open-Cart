@@ -52,7 +52,14 @@ public class WishListServiceImpl implements WishListService {
     }
 
     @Override
+    @Transactional
     public void addToWishList(Integer productID, Integer customerID) {
         wishListRepository.addProduct(productID, customerID);
+    }
+
+    @Override
+    @Transactional
+    public void initWishlist(Integer ID) {
+        wishListRepository.init(ID);
     }
 }
