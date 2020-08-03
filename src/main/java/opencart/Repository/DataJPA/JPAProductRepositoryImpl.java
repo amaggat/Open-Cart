@@ -85,7 +85,9 @@ public class JPAProductRepositoryImpl implements ProductRepository {
     public void deleteById(Integer ID) {
         Query query = em.createNativeQuery("DELETE FROM product WHERE " +
                 "productId = " + ID);
+        Query query1 = this.em.createNativeQuery("ALTER TABLE product AUTO_INCREMENT = " + ID);
         query.executeUpdate();
+        query1.executeUpdate();
     }
 
     @Override

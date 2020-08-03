@@ -33,8 +33,8 @@ public class RegisterController {
 
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
     public String addUser(@ModelAttribute("customer") Customer customer){
-        int customerID = customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword()).getCustomerId();
         customerService.addCustomer(customer);
+        int customerID = customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword()).getCustomerId();
         cartService.initCart(customerID);
         wishListService.initWishlist(customerID);
         return "redirect:/loginPage/";
