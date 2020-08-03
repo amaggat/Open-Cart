@@ -5,7 +5,7 @@ This Open Cart Project is constructed by Spring Framework with Spring Boot, Thym
 
 ## Installation
 
-Clone project by this link [pip](https://github.com/amaggat/OpenCart.git) to get this project.
+Clone project by [this link](https://github.com/amaggat/OpenCart.git) to get this project.
 
 ```bash
 git clone https://github.com/amaggat/OpenCart.git
