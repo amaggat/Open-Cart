@@ -37,10 +37,10 @@ public class JPABrandRepositoryImpl implements BrandRepository {
     }
 
     @Override
-    public Collection<Product> showProductInBrand(String name) {
+    public Collection<Product> showProductInBrand(Integer ID) {
         Query query = this.em.createNativeQuery("SELECT p.* FROM product p " +
-                "INNER JOIN brand b ON p.brandId = b.brandId WHERE b.brandname = :name", Product.class);
-        query.setParameter("name", name).executeUpdate();
+                "INNER JOIN brand b ON p.brandId = b.brandId WHERE b.brandId = :ID", Product.class);
+        query.setParameter("ID", ID);
         return query.getResultList();
     }
 

@@ -34,8 +34,8 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     @Transactional
-    public Collection<Product> showProductByBrand(String name) {
-        return brandRepository.showProductInBrand(name);
+    public Collection<Product> showProductByBrand(Integer ID) {
+        return brandRepository.showProductInBrand(ID);
     }
 
     @Override

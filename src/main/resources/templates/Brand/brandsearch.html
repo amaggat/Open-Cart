@@ -118,7 +118,7 @@
 
 <div class="container">
     <div class="wrapper">
-        <div class="col" th:each = "product,state : ${listProducts}">
+        <div class="col" th:each = "product : ${productList}">
             <!--            <img src="" alt="" style="width:100%">-->
             <h1 th:text="${product.name}"></h1>
             <p hidden th:text="${product.productId}"></p>

@@ -38,15 +38,15 @@ public class BrandController {
         return "Brand/list";
     }
 
-    @RequestMapping("/{ID}/list/brands/{name}")
-    public String showBrandByName(@PathVariable Integer ID, Model model, @PathVariable String name){
-        Collection<Product> productList = brandService.showProductByBrand(name);
+    @RequestMapping("/{ID}/list/brands/{brandID}")
+    public String showBrandByName(@PathVariable Integer ID, Model model, @PathVariable Integer brandID){
+        Collection<Product> productList = brandService.showProductByBrand(brandID);
         model.addAttribute("productList", productList);
         Customer customer = customerService.findCustomerByID(ID);
         model.addAttribute("customer", customer);
         Product product = new Product();
         model.addAttribute("product", product);
-        return "Brand/list";
+        return "Brand/brandsearch";
     }
 
 }
