@@ -8,6 +8,7 @@ import java.util.Collection;
 public interface BrandService {
     Collection<Brand> findBrandByName(String name);
     Brand findBrandByID(Integer ID);
-    Collection<Product> showProductByBrand();
+    Collection<Product> showProductByBrand(String name);
     Collection<Product> removeProductFromBrand(Product product);
+    Collection<Brand> showAllBrand();
 }

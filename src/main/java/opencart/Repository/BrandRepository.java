@@ -11,5 +11,6 @@ public interface BrandRepository {
     Brand findBrandByID(int ID);
     Collection<Product> removeProductFromBrand (int productID);
     Collection<Product> addProductToBrand (Product product);
-    Collection<Product> showProductInBrand();
+    Collection<Product> showProductInBrand(String name);
+    Collection<Brand> showAll();
 }

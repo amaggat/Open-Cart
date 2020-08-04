@@ -15,10 +15,14 @@ import java.util.Collection;
 @Controller
 public class CartController{
 
+    private final CartService cartService;
+    private final CustomerService customerService;
+
     @Autowired
-    private CartService cartService;
-    @Autowired
-    private CustomerService customerService;
+    public CartController(CartService cartService, CustomerService customerService) {
+        this.cartService = cartService;
+        this.customerService = customerService;
+    }
 
     @RequestMapping("/{ID}/customer/info/cart")
     public String showCart(Model model, @PathVariable Integer ID){

@@ -15,14 +15,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class RegisterController {
 
-    @Autowired
-    private CustomerService customerService;
+    private final CustomerService customerService;
+
+    private final CartService cartService;
+
+    private final WishListService wishListService;
 
     @Autowired
-    private CartService cartService;
-
-    @Autowired
-    private WishListService wishListService;
+    public RegisterController(CartService cartService, CustomerService customerService, WishListService wishListService) {
+        this.cartService = cartService;
+        this.customerService = customerService;
+        this.wishListService = wishListService;
+    }
 
     @RequestMapping(value = {"/registerPage"}, method = RequestMethod.GET)
     public String viewRegisterPage(Model model) {

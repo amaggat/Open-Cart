@@ -17,11 +17,15 @@ import java.util.Collection;
 
 @Controller
 public class ProductController {
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+
+    private final CustomerService customerService;
 
     @Autowired
-    private CustomerService customerService;
+    public ProductController(ProductService productService, CustomerService customerService) {
+        this.productService = productService;
+        this.customerService = customerService;
+    }
 
     @RequestMapping("{ID}/list")
     public String viewListProductPage(Model model, @PathVariable Integer ID) {

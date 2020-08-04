@@ -16,14 +16,18 @@ import java.util.Collection;
 
 @Controller
 public class LoginController {
-    @Autowired
-    private CustomerService customerService;
+    private final CustomerService customerService;
+
+    private final CartService cartService;
+
+    private final WishListService wishListService;
 
     @Autowired
-    private CartService cartService;
-
-    @Autowired
-    private WishListService wishListService;
+    public LoginController(CustomerService customerService, CartService cartService, WishListService wishListService) {
+        this.customerService = customerService;
+        this.cartService = cartService;
+        this.wishListService = wishListService;
+    }
 
     @RequestMapping(value = "/loginPage")
     public String showLogin(Model model) {
@@ -37,8 +41,6 @@ public class LoginController {
         try {
             customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword());
             int customerID = customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword()).getCustomerId();
-//            cartService.initCart(customerID);
-//            wishListService.initWishlist(customerID);
             return "redirect:/" + customerID + "/list";
         } catch (Exception e) {
             return "redirect:/registerPage";
