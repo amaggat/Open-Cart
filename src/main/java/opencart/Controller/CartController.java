@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 
 @Controller
@@ -71,6 +73,9 @@ public class CartController{
         Customer customer = customerService.findCustomerByID(ID);
         model.addAttribute("customer", customer);
         cartService.clear(ID);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        model.addAttribute("time", now.format(dtf));
         return "Product/payments";
     }
 

@@ -262,7 +262,7 @@
 <div class="header">
     <div class="wrapper">
         <div class="logo">
-            <a th:href="@{{ID}/list (ID=${customer.customerId})}">
+            <a th:href="@{/{ID}/list (ID=${customer.customerId})}">
                 <img src="https://www.opencart.com/application/view/image/icon/opencart-logo.png" alt="">
             </a>
         </div>
@@ -288,13 +288,13 @@
 
         <div class="otherbtn">
             <button type="submit" class="cartbtn">
-                <a th:href="@{/list}">
+                <a th:href="@{/{id}/customer/info/cart (id=${customer.customerId})}">
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 </a>
             </button>
 
             <button type="submit" class="wishlistbtn">
-                <a th:href="@{/list}">
+                <a th:href="@{/{id}/customer/info/wishlist (id=${customer.customerId})}">
                     <i class="fa fa-heart" aria-hidden="true"></i>
                 </a>
             </button>
