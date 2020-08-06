@@ -8,27 +8,27 @@
 <div align="center" th:object="${customer}">
     <h1>Access User Info</h1>
     <br/>
-<!--    @{/mycontroller/} + ${type}-->
-    <form th:action = "@{/customer/{id}/info(id=${customer.customerId})}"  method="post">
+    <!--    @{/mycontroller/} + ${type}-->
+    <form method="post" th:action="@{/customer/{id}/info(id=${customer.customerId})}">
         <table border="0" cellpadding="10">
             <tr>
-                <td><input type="hidden" th:field = "*{customerId}"></td>
-                <td><input type="hidden" th:field = "*{firstName}"></td>
-                <td><input type="hidden" th:field = "*{lastName}"></td>
-                <td><input type="hidden" th:field = "*{email}"></td>
-                <td><input type="hidden" th:field = "*{phoneNumber}"></td>
-                <td><input type="hidden" th:field = "*{addressLine1}"></td>
-                <td><input type="hidden" th:field = "*{addressLine2}"></td>
-                <td><input type="hidden" th:field = "*{city}"></td>
-                <td><input type="hidden" th:field = "*{country}"></td>
+                <td><input th:field="*{customerId}" type="hidden"></td>
+                <td><input th:field="*{firstName}" type="hidden"></td>
+                <td><input th:field="*{lastName}" type="hidden"></td>
+                <td><input th:field="*{email}" type="hidden"></td>
+                <td><input th:field="*{phoneNumber}" type="hidden"></td>
+                <td><input th:field="*{addressLine1}" type="hidden"></td>
+                <td><input th:field="*{addressLine2}" type="hidden"></td>
+                <td><input th:field="*{city}" type="hidden"></td>
+                <td><input th:field="*{country}" type="hidden"></td>
             </tr>
             <tr>
                 <td>Account Name</td>
-                <td><input type="text" th:field = "*{accountName}"></td>
+                <td><input th:field="*{accountName}" type="text"></td>
             </tr>
             <tr>
                 <td>PassWord</td>
-                <td><input type="password" th:field="*{password}"/></td>
+                <td><input th:field="*{password}" type="password"/></td>
             </tr>
             <tr>
                 <td colspan="2">

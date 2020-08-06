@@ -8,38 +8,38 @@
 <div align="center">
     <h1>Product Information</h1>
     <br/>
-    <form th:action = "@{/{id}/list/saveProduct (id=${customer.customerId})}" th:object="${product}" method="post">
+    <form method="post" th:action="@{/{id}/list/saveProduct (id=${customer.customerId})}" th:object="${product}">
         <table border="0" cellpadding="10">
             <tr>
-                <input type="hidden" th:field = "*{productId}">
+                <input th:field="*{productId}" type="hidden">
             </tr>
             <tr>
                 <td>Brand ID</td>
-                <td><input type="text" th:field="*{brand.brandId}"/></td>
+                <td><input th:field="*{brand.brandId}" type="text"/></td>
             </tr>
             <tr>
                 <td>Description</td>
-                <td><input type="text" th:field="*{description}"/></td>
+                <td><input th:field="*{description}" type="text"/></td>
             </tr>
             <tr>
                 <td>Product Name</td>
-                <td><input type="text" th:field="*{name}"/></td>
+                <td><input th:field="*{name}" type="text"/></td>
             </tr>
             <tr>
                 <td>Quantity</td>
-                <td><input type="text" th:field="*{quantity}"/></td>
+                <td><input th:field="*{quantity}" type="text"/></td>
             </tr>
             <tr>
                 <td>Date Added</td>
-                <td><input type="date" th:field="*{dateAdded}"/></td>
+                <td><input th:field="*{dateAdded}" type="date"/></td>
             </tr>
             <tr>
                 <td>Date Modified</td>
-                <td><input type="date" th:field="*{dateModified}"/></td>
+                <td><input th:field="*{dateModified}" type="date"/></td>
             </tr>
             <tr>
                 <td>Price Unit</td>
-                <td><input type="text" th:field="*{price}"/></td>
+                <td><input th:field="*{price}" type="text"/></td>
             </tr>
             <tr>
                 <td colspan="2">

@@ -7,9 +7,6 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Set;
 
 @Getter

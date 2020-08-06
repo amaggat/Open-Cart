@@ -4,12 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.support.MutableSortDefinition;
-import org.springframework.beans.support.PropertyComparator;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import java.util.*;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,16 +19,6 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customerId", nullable = false)
     private Integer customerId;
-
-//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-//    private Set<CustomerRole> customerRoles;
-
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinTable(name = "customer-role",
-//            joinColumns = @JoinColumn(name = "customerId"),
-//            inverseJoinColumns = @JoinColumn(name = "roleId"))
-//    private Set<Role> roles;
-
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", fetch = FetchType.LAZY)
     private Set<Order> orders;

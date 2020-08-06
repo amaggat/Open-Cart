@@ -7,6 +7,8 @@ import java.util.Collection;
 
 public interface CategoryService {
     Collection<Category> findCategoryByName(String name);
+
     Category findCategoryByID(Integer ID);
+
     Collection<Product> showProductByCategory(Integer categoryID);
 }

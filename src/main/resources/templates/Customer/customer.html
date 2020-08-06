@@ -5,7 +5,7 @@
     <title>Customer Manager</title>
 </head>
 <body>
-<div align = "center">
+<div align="center">
     <h1>Customer</h1>
 
     <table border="1" cellpadding="10">
@@ -17,7 +17,7 @@
             <th>Action</th>
 
         </tr>
-        <tr th:each = "customer : ${listCustomer}">
+        <tr th:each="customer : ${listCustomer}">
             <td th:text="${customer.firstName}">First Name</td>
             <td th:text="${customer.lastName}">Last Name</td>
             <td th:text="${customer.email}">Email</td>

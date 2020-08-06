@@ -11,7 +11,7 @@
     <a th:href="@{/{id}/list (id=${customer.customerId})}" th:object="${customer}">Product</a>
     <br>
     <br>
-    <form  th:object="${customer}" method="get">
+    <form method="get" th:object="${customer}">
         <table border="2" cellpadding="10">
             <tr>
                 <a th:href="@{/{ID}/customer/info/cart (ID = ${customer.customerId})}">Cart</a>
@@ -19,19 +19,49 @@
                 <a th:href="@{/{ID}/customer/info/wishlist (ID = ${customer.customerId})}">WishList</a>
                 <br/><br/>
             </tr>
-            <tr><th>Customer ID</th><td th:text="${customer.customerId}">Customer ID</td></tr>
-            <tr><th>First Name</th><td th:text="${customer.firstName}">First Name</td></tr>
-            <tr><th>Last Name</th><td th:text="${customer.lastName}">Last Name</td></tr>
-            <tr><th>Email</th><td th:text="${customer.email}">Email</td></tr>
-            <tr><th>Phone Number</th><td th:text="${customer.phoneNumber}">Phone Number</td></tr>
-            <tr><th>Account Name</th><td th:text="${customer.accountName}">Account Name</td></tr>
-            <tr><th>Address Line 1</th><td th:text="${customer.addressLine1}">Address Line 1</td></tr>
-            <tr><th>Address Line 2</th><td th:text="${customer.addressLine2}">Address Line 2</td></tr>
-            <tr><th>City</th><td th:text="${customer.city}">City</td></tr>
-            <tr><th>Country</th><td th:text="${customer.country}">Country</td></tr>
+            <tr>
+                <th>Customer ID</th>
+                <td th:text="${customer.customerId}">Customer ID</td>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <td th:text="${customer.firstName}">First Name</td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td th:text="${customer.lastName}">Last Name</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td th:text="${customer.email}">Email</td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td th:text="${customer.phoneNumber}">Phone Number</td>
+            </tr>
+            <tr>
+                <th>Account Name</th>
+                <td th:text="${customer.accountName}">Account Name</td>
+            </tr>
+            <tr>
+                <th>Address Line 1</th>
+                <td th:text="${customer.addressLine1}">Address Line 1</td>
+            </tr>
+            <tr>
+                <th>Address Line 2</th>
+                <td th:text="${customer.addressLine2}">Address Line 2</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td th:text="${customer.city}">City</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td th:text="${customer.country}">Country</td>
+            </tr>
         </table>
         <br>
-        <button type="submit" th:object="${customer}">
+        <button th:object="${customer}" type="submit">
             <a th:href="@{/{ID}/customer/info/edit (ID = ${customer.customerId})}">Edit Information</a>
         </button>
     </form>

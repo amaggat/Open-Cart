@@ -1,8 +1,6 @@
 package opencart.Service.ServiceImpl;
 
 import opencart.Model.Order;
-import opencart.Model.Product;
-import opencart.Repository.OrderDetailRepository;
 import opencart.Repository.OrderRepository;
 import opencart.Service.ServiceInt.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;

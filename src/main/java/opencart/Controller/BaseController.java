@@ -13,7 +13,7 @@ import java.security.Principal;
 @Controller
 public class BaseController {
 
-    @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcomePage(Model model) {
         return "Login/welcomePage";
     }

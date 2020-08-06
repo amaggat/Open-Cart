@@ -1,6 +1,5 @@
 package opencart.Repository.DataJPA;
 
-import opencart.Model.Customer;
 import opencart.Repository.RoleRepository;
 import org.springframework.stereotype.Repository;
 

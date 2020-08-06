@@ -1,12 +1,14 @@
 package opencart.Repository.DataJPA;
 
-import opencart.Model.Cart;
 import opencart.Model.Product;
 import opencart.Repository.ProductRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.Collection;
 
 @Repository
@@ -17,8 +19,8 @@ public class JPAProductRepositoryImpl implements ProductRepository {
     //oke
     @Override
     public Collection<Product> findAllProduct() {
-        TypedQuery<Product> q = em.createQuery("SELECT b FROM Product b ORDER BY b.productId",Product.class);
-        return (Collection<Product>)q.getResultList();
+        TypedQuery<Product> q = em.createQuery("SELECT b FROM Product b ORDER BY b.productId", Product.class);
+        return (Collection<Product>) q.getResultList();
     }
 
     //oke

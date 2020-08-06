@@ -1,7 +1,6 @@
 package opencart.Controller;
 
 import opencart.Model.Customer;
-import opencart.Model.Product;
 import opencart.Service.ServiceInt.CartService;
 import opencart.Service.ServiceInt.CustomerService;
 import opencart.Service.ServiceInt.WishListService;
@@ -34,7 +33,7 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute("customer") Customer customer){
+    public String addUser(@ModelAttribute("customer") Customer customer) {
         customerService.addCustomer(customer);
         int customerID = customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword()).getCustomerId();
         cartService.initCart(customerID);

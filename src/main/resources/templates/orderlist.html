@@ -5,7 +5,7 @@
     <title>Order Manager</title>
 </head>
 <body>
-<div align = "center">
+<div align="center">
     <h1>Order Manager</h1>
     <br>
     <br>
@@ -20,7 +20,7 @@
             <th>Customer Id</th>
             <th>Action</th>
         </tr>
-        <tr th:each = "order : ${listOrders}">
+        <tr th:each="order : ${listOrders}">
             <td th:text="${order.orderId}">Order ID</td>
             <td th:text="${order.orderDate}">Order Date</td>
             <td th:text="${order.requiredDate}">Required Date</td>

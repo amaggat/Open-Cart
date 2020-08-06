@@ -75,7 +75,7 @@
             border-radius: 10px;
         }
 
-        .container_signin  p  a  {
+        .container_signin p a {
             color: #33EEFF;
         }
 
@@ -92,10 +92,10 @@
 
 <body>
 <!--<a th:href="@{'/customer/' + ${customer.customerId}}">access</a>-->
-<form th:action="@{/validate}" th:object="${customer}" method="post">
+<form method="post" th:action="@{/validate}" th:object="${customer}">
     <div class="container">
         <div class="menu">
-            <img src="opencart-logo.png" alt="" class="logoimg">
+            <img alt="" class="logoimg" src="opencart-logo.png">
         </div>
         <h1>Sign in</h1>
         <hr>
@@ -103,45 +103,48 @@
         <div class="full_name">
             <div class="name">
                 <label for="ID"><b></b></label>
-                <input type="hidden" th:field="*{customerId}" placeholder="" name="psw" id="ID" required>
+                <input id="ID" name="psw" placeholder="" required th:field="*{customerId}" type="hidden">
             </div>
             <div class="name">
                 <label for="fname"><b></b></label>
-                <input type="hidden" th:field="*{firstName}" placeholder="Enter First name" name="psw" id="fname" required>
+                <input id="fname" name="psw" placeholder="Enter First name" required th:field="*{firstName}"
+                       type="hidden">
             </div>
 
             <div class="name">
                 <label for="lname"><b></b></label>
-                <input type="hidden" th:field="*{lastName}" placeholder="Enter Last name" name="psw" id="lname" required>
+                <input id="lname" name="psw" placeholder="Enter Last name" required th:field="*{lastName}"
+                       type="hidden">
             </div>
         </div>
 
         <label for="email"><b></b></label>
-        <input type="hidden" th:field="*{email}" placeholder="Enter Email" name="email" id="email" required>
+        <input id="email" name="email" placeholder="Enter Email" required th:field="*{email}" type="hidden">
 
         <label for="phone"><b></b></label>
-        <input type="hidden" th:field="*{phoneNumber}" placeholder="Enter Phone" name="phone" id="phone" required>
+        <input id="phone" name="phone" placeholder="Enter Phone" required th:field="*{phoneNumber}" type="hidden">
 
         <label for="account"><b>Account</b></label>
-        <input type="text" th:field="*{accountName}" placeholder="Enter Account Name" name="account" id="account" required>
+        <input id="account" name="account" placeholder="Enter Account Name" required th:field="*{accountName}"
+               type="text">
 
         <label for="password"><b>Password</b></label>
-        <input type="text" th:field="*{password}" placeholder="Repeat Password" name="password" id="password" required>
+        <input id="password" name="password" placeholder="Repeat Password" required th:field="*{password}" type="text">
 
         <label for="add1"><b></b></label>
-        <input type="hidden" th:field="*{addressLine1}" placeholder="Enter Address1" name="add1" id="add1" required>
+        <input id="add1" name="add1" placeholder="Enter Address1" required th:field="*{addressLine1}" type="hidden">
 
         <label for="add2"><b></b></label>
-        <input type="hidden" th:field="*{addressLine2}" placeholder="Enter Address2" name="add2" id="add2" required>
+        <input id="add2" name="add2" placeholder="Enter Address2" required th:field="*{addressLine2}" type="hidden">
 
         <label for="city"><b></b></label>
-        <input type="hidden" th:field="*{city}" placeholder="Enter City" name="city" id="city" required>
+        <input id="city" name="city" placeholder="Enter City" required th:field="*{city}" type="hidden">
 
         <label for="country"><b></b></label>
-        <input type="hidden" th:field="*{country}" placeholder="Enter Country" name="country" id="country" required>
+        <input id="country" name="country" placeholder="Enter Country" required th:field="*{country}" type="hidden">
 
         <hr>
-        <button type="submit" class="loginbtn" >Sign in</button>
+        <button class="loginbtn" type="submit">Sign in</button>
     </div>
 
     <div class="container_signin">

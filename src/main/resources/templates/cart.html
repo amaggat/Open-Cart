@@ -5,7 +5,7 @@
     <title>Cart Manager</title>
 </head>
 <body>
-<div align = "center" th:object="${customer}">
+<div align="center" th:object="${customer}">
     <h1>Cart Manager</h1>
     <a th:href="@{/{ID}/list (ID=${customer.customerId})}">Product List</a>
     <br>
@@ -13,7 +13,7 @@
     <a th:href="@{/{ID}/customer/info/wishlist (ID = ${customer.customerId})}">WishList</a>
     <br>
     <br>
-    <th>Checkout: </th>
+    <th>Checkout:</th>
     <td th:object="${checkout}" th:text="${checkout}"></td>
     <br>
     <br>
@@ -34,7 +34,7 @@
             <th>Actions</th>
         </tr>
 
-        <tr th:each = "product : ${cartProducts}">
+        <tr th:each="product : ${cartProducts}">
             <td th:text="${product.productId}">Product ID</td>
             <td th:text="${product.brand.brandId}">Brand Id</td>
             <td th:text="${product.description}">Description</td>

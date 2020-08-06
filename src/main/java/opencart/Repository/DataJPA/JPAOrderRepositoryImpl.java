@@ -1,15 +1,12 @@
 package opencart.Repository.DataJPA;
 
 import opencart.Model.Order;
-import opencart.Model.Product;
 import opencart.Repository.OrderRepository;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import java.util.Collection;
 
 @Repository

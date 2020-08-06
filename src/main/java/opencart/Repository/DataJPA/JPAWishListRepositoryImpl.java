@@ -1,6 +1,5 @@
 package opencart.Repository.DataJPA;
 
-import opencart.Model.Cart;
 import opencart.Model.Product;
 import opencart.Model.WishList;
 import opencart.Repository.WishListRepository;
@@ -11,7 +10,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.Collection;
-import java.util.List;
 
 @Repository
 public class JPAWishListRepositoryImpl implements WishListRepository {
@@ -65,7 +63,7 @@ public class JPAWishListRepositoryImpl implements WishListRepository {
 
     @Override
     public void save(WishList wishList) {
-        if(wishList.getCustomerId()==null) this.em.merge(wishList);
+        if (wishList.getCustomerId() == null) this.em.merge(wishList);
         else this.em.persist(wishList);
     }
 

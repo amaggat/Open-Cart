@@ -1,7 +1,6 @@
 package opencart.Service.ServiceInt;
 
 import opencart.Model.Order;
-import opencart.Model.Product;
 
 import java.util.Collection;
 

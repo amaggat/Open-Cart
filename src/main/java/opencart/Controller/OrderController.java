@@ -19,7 +19,7 @@ public class OrderController {
     }
 
     @RequestMapping("/orderlist")
-    public String viewOrderList(Model model) {
+    public String viewOrdered(Model model) {
         Collection<Order> listOrders = orderService.listAllOrder();
         model.addAttribute("listOrders", listOrders);
         return "orderlist";

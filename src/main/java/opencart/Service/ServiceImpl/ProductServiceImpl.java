@@ -36,15 +36,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public Collection<Product> listAllProducts()
-    {
+    public Collection<Product> listAllProducts() {
         return productRepository.findAllProduct();
     }
 
     @Override
     @Transactional
-    public void addProduct(Product product)
-    {
+    public void addProduct(Product product) {
         productRepository.add(product);
     }
 
@@ -56,8 +54,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public void deleteProduct(Integer ID)
-    {
+    public void deleteProduct(Integer ID) {
         productRepository.deleteById(ID);
     }
 
