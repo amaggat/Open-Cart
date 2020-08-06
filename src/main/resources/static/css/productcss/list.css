@@ -246,6 +246,15 @@ img {vertical-align: middle;}
     margin: auto;
     text-align: center;
     font-family: arial;
+    height: 600px;
+}
+
+.container  .wrapper  .col  .btn  {
+    height: 50%;
+}
+
+.container  .wrapper  .col  .info  {
+    height: 50%;
 }
 
 .container  .wrapper .col button  {
