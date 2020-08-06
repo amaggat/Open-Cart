@@ -1,19 +1,74 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="ISO-8859-1">
+
     <title>Cart Manager</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/cart.css">
 </head>
 <body>
-<div align="center" th:object="${customer}">
+
+<div class="header">
+    <div class="wrapper">
+        <div class="logo">
+            <a th:href="@{/{id}/list (id=${customer.customerId})}">
+                <img src="https://www.opencart.com/application/view/image/icon/opencart-logo.png" alt="">
+            </a>
+        </div>
+
+<!--        <div class="searchbar">-->
+<!--            <form th:action = "@{/{ID}/list/search(ID=${customer.customerId})}" th:object="${product}" method="post">-->
+<!--                <table border="0" cellpadding="10">-->
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <input type="text" th:field="*{name}" name="Type product ID" placeholder="Seach" class="search-form">-->
+<!--                        </td>-->
+<!--                        <td colspan="2">-->
+<!--                            <button type="submit" class="searchbtn">-->
+<!--                                <a href="">-->
+<!--                                    <i class="fa fa-search" aria-hidden="true"></i>-->
+<!--                                </a>-->
+<!--                            </button>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--            </form>-->
+<!--        </div>-->
+    </div>
+</div>
+
+<div class="menu">
+    <div class="wrapper">
+        <ul class="menulist">
+            <li><a th:href="@{/{id}/list/brands/1 (id=${customer.customerId})}">BÚN ĐẬU</a></li>
+            <li><a th:href="@{/{id}/list/brands/2 (id=${customer.customerId})}">CHÁO LÒNG</a></li>
+            <li><a th:href="@{/{id}/list/brands/3 (id=${customer.customerId})}">TIẾT CANH</a></li>
+            <li><a th:href="@{/{id}/list/brands/4 (id=${customer.customerId})}">THỊT CHÓ</a></li>
+            <li><a th:href="@{/{id}/list/brands/5 (id=${customer.customerId})}">MẮM TÔM</a></li>
+            <li><a th:href="@{/{id}/list/brands/6 (id=${customer.customerId})}">RIỀNG MẺ</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div align = "center" th:object="${customer}">
     <h1>Cart Manager</h1>
-    <a th:href="@{/{ID}/list (ID=${customer.customerId})}">Product List</a>
-    <br>
+<!--    <a th:href="@{/{ID}/list (ID=${customer.customerId})}">Product List</a>-->
+<!--    <br>-->
     <br>
     <a th:href="@{/{ID}/customer/info/wishlist (ID = ${customer.customerId})}">WishList</a>
     <br>
     <br>
-    <th>Checkout:</th>
+    <th>Checkout: </th>
     <td th:object="${checkout}" th:text="${checkout}"></td>
     <br>
     <br>
@@ -34,7 +89,7 @@
             <th>Actions</th>
         </tr>
 
-        <tr th:each="product : ${cartProducts}">
+        <tr th:each = "product : ${cartProducts}">
             <td th:text="${product.productId}">Product ID</td>
             <td th:text="${product.brand.brandId}">Brand Id</td>
             <td th:text="${product.description}">Description</td>

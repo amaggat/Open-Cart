@@ -118,42 +118,38 @@
 
 <div class="container">
     <div class="wrapper">
-        <div class="col" th:each = "product,state : ${listProducts}">
+        <div class="col" th:each = "product : ${productList}">
             <!--            <img src="" alt="" style="width:100%">-->
-            <div class="info">
-                <h1 th:text="${product.name}"></h1>
-                <p hidden th:text="${product.productId}"></p>
-                <p th:text="${product.brand.brandName}"></p>
-                <p hidden th:text="${product.quantity}"></p>
-                <p hidden th:text="${product.description}"></p>
-                <p hidden th:text="${product.dateAdded}"></p>
-                <p hidden th:text="${product.dateModified}"></p>
-                <p class="price" th:text="${product.price}"></p>
-                <p th:text="${product.description}"></p>
-                <p hidden th:text="${product.price}"></p>
-            </div>
-            <div class="btn">
-                <p>
-                    <a th:href="@{/{customerID}/list/edit/{productID} (customerID=${customer.customerId}, productID=${product.productId})}">
-                        <button>Edit</button>
-                    </a>
-                </p>
-                <p>
-                    <a th:href="@{/{customerID}/list/delete/{productID} (customerID=${customer.customerId}, productID=${product.productId})}">
-                        <button>Delete</button>
-                    </a>
-                </p>
-                <p>
-                    <a th:href="@{/{customerID}/list/addtocart/{id}(customerID=${customer.customerId}, id=${product.productId})}">
-                        <button>Add to Cart</button>
-                    </a>
-                </p>
-                <p>
-                    <a th:href="@{/{customerID}/list/addtowishlist/{id}(customerID=${customer.customerId}, id=${product.productId})}">
-                        <button>Add to Wishlist</button>
-                    </a>
-                </p>
-            </div>
+            <h1 th:text="${product.name}"></h1>
+            <p hidden th:text="${product.productId}"></p>
+            <p th:text="${product.brand.brandName}"></p>
+            <p hidden th:text="${product.quantity}"></p>
+            <p hidden th:text="${product.description}"></p>
+            <p hidden th:text="${product.dateAdded}"></p>
+            <p hidden th:text="${product.dateModified}"></p>
+            <p class="price" th:text="${product.price}"></p>
+            <p th:text="${product.description}"></p>
+            <p hidden th:text="${product.price}"></p>
+            <p>
+                <a th:href="@{/{customerID}/list/edit/{productID} (customerID=${customer.customerId}, productID=${product.productId})}">
+                    <button>Edit</button>
+                </a>
+            </p>
+            <p>
+                <a th:href="@{/{customerID}/list/delete/{productID} (customerID=${customer.customerId}, productID=${product.productId})}">
+                    <button>Delete</button>
+                </a>
+            </p>
+            <p>
+                <a th:href="@{/{customerID}/list/addtocart/{id}(customerID=${customer.customerId}, id=${product.productId})}">
+                    <button>Add to Cart</button>
+                </a>
+            </p>
+            <p>
+                <a th:href="@{/{customerID}/list/addtowishlist/{id}(customerID=${customer.customerId}, id=${product.productId})}">
+                    <button>Add to Wishlist</button>
+                </a>
+            </p>
         </div>
     </div>
 

@@ -34,13 +34,19 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     @Transactional
-    public Collection<Product> showProductByBrand() {
-        return brandRepository.showProductInBrand();
+    public Collection<Product> showProductByBrand(Integer ID) {
+        return brandRepository.showProductInBrand(ID);
     }
 
     @Override
     @Transactional
     public Collection<Product> removeProductFromBrand(Product product) {
         return brandRepository.removeProductFromBrand(product.getProductId());
+    }
+
+    @Override
+    @Transactional
+    public Collection<Brand> showAllBrand() {
+        return brandRepository.showAll();
     }
 }

@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class LoginController {
-
     private final CustomerService customerService;
+
     private final CartService cartService;
+
     private final WishListService wishListService;
 
     @Autowired
@@ -33,12 +34,10 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/validate", method = RequestMethod.POST)
-    public String validateUser(@ModelAttribute("customer") Customer customer) {
+    public String loginProcess(@ModelAttribute("customer") Customer customer) {
         try {
             customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword());
             int customerID = customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword()).getCustomerId();
-//            cartService.initCart(customerID);
-//            wishListService.initWishlist(customerID);
             return "redirect:/" + customerID + "/list";
         } catch (Exception e) {
             return "redirect:/registerPage";

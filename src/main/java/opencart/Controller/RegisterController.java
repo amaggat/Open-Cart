@@ -15,13 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RegisterController {
 
     private final CustomerService customerService;
+
     private final CartService cartService;
+
     private final WishListService wishListService;
 
     @Autowired
-    public RegisterController(CustomerService customerService, CartService cartService, WishListService wishListService) {
-        this.customerService = customerService;
+    public RegisterController(CartService cartService, CustomerService customerService, WishListService wishListService) {
         this.cartService = cartService;
+        this.customerService = customerService;
         this.wishListService = wishListService;
     }
 
@@ -33,7 +35,7 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/adduser", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute("customer") Customer customer) {
+    public String addUser(@ModelAttribute("customer") Customer customer){
         customerService.addCustomer(customer);
         int customerID = customerService.findCustomerByAccountAndPassword(customer.getAccountName(), customer.getPassword()).getCustomerId();
         cartService.initCart(customerID);
