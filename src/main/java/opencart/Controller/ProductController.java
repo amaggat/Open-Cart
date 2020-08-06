@@ -8,11 +8,14 @@ import opencart.Model.Product;
 import opencart.Service.ServiceInt.CustomerService;
 import opencart.Service.ServiceInt.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import java.util.Collection;
 
 @Controller
@@ -38,7 +41,7 @@ public class ProductController {
         return "Product/list";
     }
 
-    @RequestMapping(value="{ID}/list/new", method= RequestMethod.GET)
+    @RequestMapping(value = "{ID}/list/new", method = RequestMethod.GET)
     public String showNewProductForm(Model model, @PathVariable Integer ID) {
         Product product = new Product();
         model.addAttribute("product", product);
@@ -57,11 +60,10 @@ public class ProductController {
     }
 
     @RequestMapping("{customerID}/list/edit/{productID}")
-    public ModelAndView editProduct(@PathVariable("productID") Integer productID, @PathVariable("customerID") Integer customerID)
-    {
+    public ModelAndView editProduct(@PathVariable("productID") Integer productID, @PathVariable("customerID") Integer customerID) {
         ModelAndView modelAndView = new ModelAndView("Product/editProduct");
         Product product = productService.findProductByID(productID);
-        modelAndView.addObject("product",product);
+        modelAndView.addObject("product", product);
         Customer customer = customerService.findCustomerByID(customerID);
         modelAndView.addObject("customer", customer);
         return modelAndView;
@@ -77,15 +79,15 @@ public class ProductController {
     }
 
     @RequestMapping("{customerID}/list/delete/{productID}")
-    public ModelAndView deleteProduct(@PathVariable(name = "productID") Integer id, @PathVariable("customerID") Integer ID)
-    {
+    public ModelAndView deleteProduct(@PathVariable(name = "productID") Integer id, @PathVariable("customerID") Integer ID) {
         ModelAndView modelAndView = new ModelAndView("Product/delete");
         Product product = productService.findProductByID(id);
-        modelAndView.addObject("product",product);
+        modelAndView.addObject("product", product);
         Customer customer = customerService.findCustomerByID(ID);
         modelAndView.addObject("customer", customer);
         return modelAndView;
     }
+
     @RequestMapping(value = "{ID}/list/deleteProduct", method = RequestMethod.POST)
     public String deleteProduct(@ModelAttribute("product") Product product, @PathVariable Integer ID, Model model) {
         productService.deleteProduct(product.getProductId());
@@ -95,7 +97,7 @@ public class ProductController {
         return "redirect:/{ID}/list";
     }
 
-    @RequestMapping(value="{ID}/list/search")
+    @RequestMapping(value = "{ID}/list/search")
     public String searchProduct(Model model, Product product, @PathVariable Integer ID) {
         Collection<Product> products = productService.findProductByName(product.getName());
         model.addAttribute("products", products);
@@ -108,20 +110,18 @@ public class ProductController {
     }
 
     @RequestMapping("{customerID}/list/addtowishlist/{id}")
-    public String AddToWishlist(@PathVariable("customerID") Integer customerID,@PathVariable("id") Integer id)
-    {
+    public String AddToWishlist(@PathVariable("customerID") Integer customerID, @PathVariable("id") Integer id) {
         Product product = productService.findProductByID(id);
         Customer customer = customerService.findCustomerByID(customerID);
-        productService.addToWishList(product.getProductId(),customer.getCustomerId());
+        productService.addToWishList(product.getProductId(), customer.getCustomerId());
         return "redirect:/{customerID}/list";
     }
 
     @RequestMapping("{customerID}/list/addtocart/{id}")
-    public String AddToCart(@PathVariable("customerID") Integer customerID,@PathVariable("id") Integer id)
-    {
+    public String AddToCart(@PathVariable("customerID") Integer customerID, @PathVariable("id") Integer id) {
         Product product = productService.findProductByID(id);
         Customer customer = customerService.findCustomerByID(customerID);
-        productService.addToCart(product.getProductId(),customer.getCustomerId());
+        productService.addToCart(product.getProductId(), customer.getCustomerId());
         return "redirect:/{customerID}/list";
     }
 

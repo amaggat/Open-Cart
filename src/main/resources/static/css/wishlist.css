@@ -1,11 +1,11 @@
-*{
+* {
 
 }
 
 body {
     width: 100%;
     background-color: white;
-    font-family: open sans,sans-serif;
+    font-family: open sans, sans-serif;
     font-weight: 400;
 }
 
@@ -20,23 +20,23 @@ body {
     height: 60px;
 }
 
-.header  .wrapper  {
+.header .wrapper {
     /* position: relative; */
     display: flex;
 }
 
-.header  .wrapper  .logo {
+.header .wrapper .logo {
     width: 30%;;
     padding: 10px;
     height: 100%;
 }
 
-.header  .wrapper  .logo  img {
+.header .wrapper .logo img {
     width: 100%;
     height: 100%;
 }
 
-.header  .wrapper  .searchbar  {
+.header .wrapper .searchbar {
     /* overflow: hidden; */
     display: flex;
     /* position: relative; */
@@ -48,17 +48,17 @@ body {
 
 }
 
-.searchbar  .container {
+.searchbar .container {
     height: 50px;
 }
 
-.header  .wrapper  .searchbar  .search-form {
+.header .wrapper .searchbar .search-form {
     /* position: absolute; */
     transform: translateY(50%);
 
 }
 
-.header  .wrapper  .searchbar  .searchbtn {
+.header .wrapper .searchbar .searchbtn {
     /* position: absolute;    */
     width: 100px;
     background-color: #33B7FF;
@@ -68,11 +68,12 @@ body {
     transform: translateY(50%);
 }
 
-.header  .wrapper  .searchbar  .search  a{}
+.header .wrapper .searchbar .search a {
+}
 
 
 /* MENU */
-.menu  {
+.menu {
 }
 
 .menulist {
@@ -97,6 +98,6 @@ body {
     transition: 0.3s;
 }
 
-.menulist  li  a:hover  {
+.menulist li a:hover {
     background-color: #339EFF;
 }

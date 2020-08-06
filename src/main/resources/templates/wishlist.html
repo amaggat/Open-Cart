@@ -3,16 +3,15 @@
 <head>
     <title>Wish List Manager</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" rel="stylesheet">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/wishlist.css">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link href="/css/wishlist.css" rel="stylesheet">
 </head>
 <body>
 
@@ -20,7 +19,7 @@
     <div class="wrapper">
         <div class="logo">
             <a th:href="@{/{id}/list (id=${customer.customerId})}">
-                <img src="https://www.opencart.com/application/view/image/icon/opencart-logo.png" alt="">
+                <img alt="" src="https://www.opencart.com/application/view/image/icon/opencart-logo.png">
             </a>
         </div>
 
@@ -58,7 +57,7 @@
     </div>
 </div>
 
-<div align = "center" th:object="${customer}">
+<div align="center" th:object="${customer}">
     <h1>Wish List Manager</h1>
     <a th:href="@{/{ID}/list (ID=${customer.customerId})}">Product List</a>
     <br>
@@ -77,7 +76,7 @@
             <th>Price Unit</th>
             <th>Actions</th>
         </tr>
-        <tr th:each = "product : ${wishlistProducts}">
+        <tr th:each="product : ${wishlistProducts}">
             <td th:text="${product.productId}">Product ID</td>
             <td th:text="${product.name}">Product Name</td>
             <td th:text="${product.description}">Description</td>

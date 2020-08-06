@@ -28,7 +28,7 @@ public class BrandController {
     }
 
     @RequestMapping("/{ID}/list/brands")
-    public String showAllBrands(@PathVariable Integer ID, Model model){
+    public String showAllBrands(@PathVariable Integer ID, Model model) {
         Collection<Brand> brands = brandService.showAllBrand();
         model.addAttribute("brands", brands);
         Customer customer = customerService.findCustomerByID(ID);
@@ -39,7 +39,7 @@ public class BrandController {
     }
 
     @RequestMapping("/{ID}/list/brands/{brandID}")
-    public String showBrandByName(@PathVariable Integer ID, Model model, @PathVariable Integer brandID){
+    public String showBrandByName(@PathVariable Integer ID, Model model, @PathVariable Integer brandID) {
         Collection<Product> productList = brandService.showProductByBrand(brandID);
         model.addAttribute("productList", productList);
         Customer customer = customerService.findCustomerByID(ID);
