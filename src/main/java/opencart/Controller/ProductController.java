@@ -21,7 +21,6 @@ import java.util.Collection;
 @Controller
 public class ProductController {
     private final ProductService productService;
-
     private final CustomerService customerService;
 
     @Autowired

@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class RegisterController {
-
     private final CustomerService customerService;
-
     private final CartService cartService;
-
     private final WishListService wishListService;
 
     @Autowired
