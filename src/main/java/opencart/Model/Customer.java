@@ -13,7 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "customer")
+@Table(name = "customer", uniqueConstraints = @UniqueConstraint(columnNames = {"customerId", "accountName"}))
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

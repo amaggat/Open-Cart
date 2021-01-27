@@ -1,10 +1,11 @@
+-- save current foreign key settings and disable foreign key checks
 -- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
 -- Host: localhost    Database: opencart
 -- ------------------------------------------------------
 -- Server version	8.0.20
 
-CREATE DATABASE opencart;
+# CREATE DATABASE opencart;
 USE opencart;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT = @@CHARACTER_SET_CLIENT */;
@@ -135,7 +136,8 @@ CREATE TABLE `customer`
     `addressLine2` varchar(500) NOT NULL,
     `city`         varchar(45)  NOT NULL,
     `country`      varchar(45)  NOT NULL,
-    PRIMARY KEY (`customerId`)
+    PRIMARY KEY (`customerId`),
+    CONSTRAINT `uc_customer` UNIQUE (customerId, accountName)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 5
   DEFAULT CHARSET = utf8mb4

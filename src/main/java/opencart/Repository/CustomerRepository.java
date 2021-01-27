@@ -7,7 +7,7 @@ import java.util.Collection;
 public interface CustomerRepository {
     Customer findByAccountNameAndPassword(String accountName, String password);
 
-    Collection<Customer> findCustomerByName(String customerName);
+    Customer findCustomerByName(String customerName);
 
     Customer findCustomerByID(Integer ID);
 

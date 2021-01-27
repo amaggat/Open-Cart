@@ -2,31 +2,42 @@ package opencart.Repository.DataJPA;
 
 import opencart.Model.Customer;
 import opencart.Repository.CustomerRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import static org.junit.Assert.*;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 @Repository
 public class JPACustomerRepositoryImpl implements CustomerRepository {
     @PersistenceContext
     private EntityManager em;
+    BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public Customer findByAccountNameAndPassword(String accountName, String password) {
-        TypedQuery<Customer> query = this.em.createQuery("SELECT c FROM Customer c " +
-                "WHERE c.accountName=:account AND c.password=:password", Customer.class);
-        query.setParameter("account", accountName);
-        query.setParameter("password", password);
-        return query.getSingleResult();
+//        TypedQuery<Customer> query = this.em.createQuery("SELECT c FROM Customer c " +
+//                "WHERE c.accountName=:account", Customer.class);
+//        query.setParameter("account", accountName);
+//        passwordEncoder.matches(password, );
+        Customer customer = findCustomerAccount(accountName);
+        if(passwordEncoder.matches(password, customer.getPassword())){
+            System.out.println("Find Customer Successfully");
+            return customer;
+        }
+        return null;
+//        return query.getSingleResult();
     }
 
     @Override
-    public Collection<Customer> findCustomerByName(String customerName) {
+    public Customer findCustomerByName(String name) {
         TypedQuery<Customer> query = this.em.createQuery("SELECT c FROM Customer c " +
                 "WHERE c.lastName=:name OR c.firstName=:name", Customer.class);
-        query.setParameter("name", customerName);
-        return query.getResultList();
+        query.setParameter("name", name);
+        return query.getResultList().get(0);
     }
 
     @Override
@@ -59,13 +70,15 @@ public class JPACustomerRepositoryImpl implements CustomerRepository {
         Query query = this.em.createNativeQuery("INSERT INTO customer " +
                 "(firstName, lastName, email, phone, accountName, password, addressLine1, addressLine2, city, country) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        //query.setParameter(1, customer.getCustomerId());
+        passwordEncoder = new BCryptPasswordEncoder(10);
+        String password = passwordEncoder.encode(customer.getPassword());
+        assertTrue(passwordEncoder.matches(customer.getPassword(), password));
         query.setParameter(1, customer.getFirstName());
         query.setParameter(2, customer.getLastName());
         query.setParameter(3, customer.getEmail());
         query.setParameter(4, customer.getPhoneNumber());
         query.setParameter(5, customer.getAccountName());
-        query.setParameter(6, customer.getPassword());
+        query.setParameter(6, password);
         query.setParameter(7, customer.getAddressLine1());
         query.setParameter(8, customer.getAddressLine2());
         query.setParameter(9, customer.getCity());
