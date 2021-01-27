@@ -15,6 +15,7 @@ public class BaseController {
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcomePage(Model model) {
+        System.out.println("Hello");
         return "Login/welcomePage";
     }
 
